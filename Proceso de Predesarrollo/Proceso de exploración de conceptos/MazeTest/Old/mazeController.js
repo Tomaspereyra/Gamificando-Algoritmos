@@ -39,22 +39,14 @@ gameScene.preload = function () {
 	this.load.image ('Start', 'Assets/Start.png');
 	this.load.image ('Exit', 'Assets/Exit.png');
 	this.load.image ('Player', 'Assets/Beholder.png');
-	this.load.spritesheet('explosion', 'Assets/FireExplosion.png', {frameWidth: 32, frameHeight: 32});
 	
 }
 
 gameScene.create = function () {    
 	console.log("create()...");
 	StartMap(CreateTestMap());
-	this.anims.create({
-        key: 'explosion',
-        frames: this.anims.generateFrameNumbers('explosion'),
-        frameRate: 10,
-        repeat: -1
-    });
-	
+	//PlayOrders("MoveForward();SpinLeft();SpinRight();MoveForward();")
 }
-
 
 gameScene.update = function() {
 	if (currentPlayerActions != null){
@@ -68,10 +60,9 @@ gameScene.update = function() {
 }
 
 function RestartMap(){
-	currentPlayerActions = null;
 	currentPlayer.Reset();
 	currentPlayer.Draw();
-	
+	currentPlayerActions.finished = true;
 }
 
 function StartMap(map){

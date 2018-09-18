@@ -96,7 +96,7 @@ Player.prototype.Place = function(x, y){
 }
 
 Player.prototype.IsAlive = function(){
-	return (this.map.tiles[this.x][this.y] != WALL);
+	return !this.map.tiles[this.x][this.y].IsWall();
 }
 	
 Player.prototype.GetCanvasX = function(){
@@ -139,25 +139,13 @@ Player.prototype.AngleFromOrientation = function(orientation){
 	return angle;
 }	
 	
-Player.prototype.TakeSpriteOutOfScene = function(){
-	
-	//Lo sacamos de escena
-	this.sprite.x = -500;
-	this.sprite.y = -500;
-
-}
-	
 Player.prototype.Draw = function(){
 	if (this.sprite == null){
 		this.sprite = this.gameScene.add.sprite(this.GetCanvasX(), this.GetCanvasY(), 'Player');
-		this.sprite.anims.load('explosion');
 	} else {
 		this.sprite.x = this.GetCanvasX();
 		this.sprite.y = this.GetCanvasY();
-		this.sprite.anims.stop();
-		this.sprite.setTexture("Player");
 	}
-	
 	this.UpdateSpriteOrientation();
 }
 
@@ -169,44 +157,37 @@ Player.prototype.PlayOrders = function(orderString){
 
 Player.prototype.MoveForward = function(){
 	//console.log(gameScene.game);
-	if (this.IsAlive()){
-		if (this.orientation == N){
-			this.y--;
-		} else if (this.orientation == S){
-			this.y++;
-		} else if (this.orientation == E){
-			this.x++;
-		} else if (this.orientation == W){
-			this.x--;
-		}
-		
-		if (this.IsAlive())
-			this.actions.EnqueueAction(new MoveForwardAction(this.orientation));
-		else
-			this.actions.EnqueueAction(new MoveForwardAndDieAction(this.orientation));
+	
+	if (this.orientation == N){
+		this.y++;
+	} else if (this.orientation == S){
+		this.y--;
+	} else if (this.orientation == E){
+		this.x++;
+	} else if (this.orientation == W){
+		this.x--;
 	}
+	
+	this.actions.EnqueueAction(new MoveForwardAction(this.orientation));
 }
 
 Player.prototype.SpinRight = function(){
 	//console.log(gameScene.game);
-	if (this.IsAlive()){
-		this.orientation++;
-		
-		if (this.orientation > W)
-			this.orientation = N;
-		
-		this.actions.EnqueueAction(new SpinAction(RIGHT));
-	}
+	
+	this.orientation++;
+	
+	if (this.orientation > W)
+		this.orientation = N;
+	
+	this.actions.EnqueueAction(new SpinAction(RIGHT));
 }
 
 Player.prototype.SpinLeft = function(){
-	if (this.IsAlive()){
-		this.orientation--;
-		if (this.orientation < N)
-			this.orientation = W;
-		
-		this.actions.EnqueueAction(new SpinAction(LEFT));
-	}
+	this.orientation--;
+	if (this.orientation < N)
+		this.orientation = W;
+	
+	this.actions.EnqueueAction(new SpinAction(LEFT));
 }
 
 //PLAYER ACTIONS
@@ -299,56 +280,7 @@ MoveForwardAction.prototype.Update = function(){
 	this.player.sprite.x += this.speed * this.xStep;
 	this.player.sprite.y += this.speed * this.yStep;
 	this.distanceCovered += this.speed;
-	if (this.distanceCovered >= SPRITE_SIZE)
+	if (this.distanceCovered >= 32)
 		this.finished = true;
 	
-}
-
-function MoveForwardAndDieAction (direction){
-	
-	
-	if (direction == N){
-		this.xStep = 0;
-		this.yStep = -1;
-	} else if (direction == S){
-		this.xStep = 0;
-		this.yStep = 1;
-	} else if (direction == E){
-		this.xStep = 1;
-		this.yStep = 0;
-	} else if (direction == W){
-		this.xStep = -1;
-		this.yStep = 0;
-	}
-
-	this.speed = 1;
-	this.player = null;
-	this.distanceCovered = 0;
-	this.finished = false;
-	this.animating = false;
-	console.log("new MoveForwardAndDieAction. Direction : " + direction);
-	
-}
-
-MoveForwardAndDieAction.prototype.Update = function(){
-	this.distanceCovered += this.speed;
-	if (this.distanceCovered < (SPRITE_SIZE / 2)){
-		this.player.sprite.x += this.speed * this.xStep;
-		this.player.sprite.y += this.speed * this.yStep;
-		
-	} else {	
-		if (!this.animating){
-			this.animating = true;
-			this.player.sprite.anims.play('explosion');
-		} else {
-			this.distanceCovered += this.speed;
-			if (this.distanceCovered >= 150 + ((SPRITE_SIZE / 2))){
-				console.log("FInished!");
-				this.player.sprite.anims.pause();
-				this.finished = true;
-				this.player.TakeSpriteOutOfScene();
-			}
-		}
-		
-	}
 }
