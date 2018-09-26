@@ -2,7 +2,7 @@
 
 var FLOOR = 0;
 var WALL = 1;
-var START = 2
+var START = 2;
 var EXIT = 3;
 var SPRITE_SIZE = 32;
 var PIVOT_OFFSET = (SPRITE_SIZE / 2);
@@ -17,7 +17,7 @@ function MazeMap (width, height, defaultOrientation) {
 		this.tiles[i] = new Array(height);
 	}
 }
-	
+
 MazeMap.prototype.FromString = function (str){
 	rows = str.split("/");
 	console.log("Length : " + rows.length);
@@ -44,7 +44,6 @@ MazeMap.prototype.IndexToSprite = function(index){
 		console.log("ERROR : IndexToSprite() : index " + index + " Is not valid!");
 	}
 	return result;
-	
 }
 
 MazeMap.prototype.GetStart = function (){
@@ -81,11 +80,10 @@ var RIGHT = 1;
 
 function Player(map, gameScene){
 	var startPos = map.GetStart();
-	this.x = startPos[0];
-	this.y = startPos[1];
-	this.sprite = null;
 	this.map = map;
+	this.Place(startPos[0], startPos[1]);
 	this.SetOrientation(map.defaultOrientation);
+	this.sprite = null;
 	this.actions = null;
 	this.gameScene = gameScene;
 }
@@ -97,6 +95,10 @@ Player.prototype.Place = function(x, y){
 
 Player.prototype.IsAlive = function(){
 	return (this.map.tiles[this.x][this.y] != WALL);
+}
+
+Player.prototype.IsDead = function(){
+	return !this.IsAlive();
 }
 	
 Player.prototype.GetCanvasX = function(){
@@ -168,7 +170,6 @@ Player.prototype.PlayOrders = function(orderString){
 }
 
 Player.prototype.MoveForward = function(){
-	//console.log(gameScene.game);
 	if (this.IsAlive()){
 		if (this.orientation == N){
 			this.y--;
@@ -188,7 +189,6 @@ Player.prototype.MoveForward = function(){
 }
 
 Player.prototype.SpinRight = function(){
-	//console.log(gameScene.game);
 	if (this.IsAlive()){
 		this.orientation++;
 		
@@ -210,7 +210,6 @@ Player.prototype.SpinLeft = function(){
 }
 
 //PLAYER ACTIONS
-
 function PlayerActions(player){
 	this.finished = false;
 	this.pendingActions = [];
