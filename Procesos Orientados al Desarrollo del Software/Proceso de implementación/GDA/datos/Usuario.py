@@ -46,4 +46,4 @@ class Usuario:
         return self.idUsuario
 
     def __str__(self):
-        return str("Usuario: "+self.getUsername() + " Password: "+self.getPassword() + " E-mail: "+self.getEmail() + " Nombre: "+self.getNombre() + " Apellido: "+self.getApellido())
+        return str("ID:"+str(self.getId())+" Usuario: "+self.getUsername() + " Password: "+self.getPassword() + " E-mail: "+self.getEmail() + " Nombre: "+self.getNombre() + " Apellido: "+self.getApellido())

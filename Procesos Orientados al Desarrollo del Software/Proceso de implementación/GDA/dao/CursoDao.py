@@ -1,8 +1,11 @@
 import MySQLdb
 from Conexion import Sesion
+from dao.EscenarioDao import EscenarioDao
+from datos.Curso import Curso
 
 
 class CursoDao:
+
     def iniciarOperacion(self):
 
         try:
@@ -45,3 +48,41 @@ class CursoDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+
+    def traerCursosPorDocente(self, idDocente):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        lstCursos = []
+        curso = Curso(False, "")
+        escenario = EscenarioDao()
+        try:
+            cursor.execute("""select * from Curso where Curso.Docente_idDocente='%i'""" % idDocente)
+            resultado = cursor.fetchall()
+            for fila in range(len(resultado)):
+                for columna in range(len(resultado[fila])):
+                    if columna == 0:
+                        curso.setIdCurso(resultado[fila][columna])
+
+                    if columna == 1:
+                        curso.setPuedeSaltear(resultado[fila][columna])
+                    if columna == 2:
+                        curso.setNombre(resultado[fila][columna])
+                    if columna == 3:
+                        curso.setDocente(resultado[fila][columna])
+                        curso.setListaEscenario(escenario.traerEscenariosPorCurso(curso.getIdCurso()))
+                        lstCursos.append(curso)
+                        curso = Curso(False, "")  # creo una nueva instancia por que se maneja
+                        #  por referencia, si no, se pisan en la lista.
+        except:
+            print "Error, no se pudo ejecutar la query"
+
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+
+        return lstCursos
+
+
+
+
+

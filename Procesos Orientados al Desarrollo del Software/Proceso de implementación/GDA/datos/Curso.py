@@ -1,18 +1,17 @@
 from Docente import Docente
 
 
-
 class Curso:
     def __init__(self, sePuedeSaltear, nombre):
         self.sePuedeSaltear = sePuedeSaltear
         self.nombre = nombre
-        self.docente = Docente
+        self.docente = 0
         self.escenario = []
 
     def setIdCurso(self, idCurso):
         self.idCurso = idCurso
 
-    def sePuedeSaltear(self, sePuede):
+    def setPuedeSaltear(self, sePuede):
         self.sePuedeSaltear = sePuede
 
     def setNombre(self, nombre):
@@ -40,6 +39,6 @@ class Curso:
         return self.escenario
 
     def __str__(self):
-        print "Datos del Curso:", self.getIdCurso(), self.getSepuedeSaltar(), self.getNombre(), self.getDocente()
-        for escenario in self.getEscenario():
-            print escenario.__str__()
+        return str(
+            "ID: " + str(self.getIdCurso()) + " Se puede saltear: " + str(self.getSepuedeSaltar()) + " Nombre:  " +
+            self.getNombre() + " Docente: " + str(self.getDocente()))

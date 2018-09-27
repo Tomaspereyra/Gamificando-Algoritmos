@@ -1,6 +1,9 @@
 import MySQLdb
 from Conexion import Sesion
-from datos import Docente
+from datos.Docente import Docente
+from dao.CursoDao import CursoDao
+
+
 
 class DocenteDao:
     def iniciarOperacion(self):
@@ -14,15 +17,15 @@ class DocenteDao:
         return sesion
 
     def agregarDocente(self, docente):
-        sesion= self.iniciarOperacion()
-        cursor= sesion.obtenerCursor()
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
         try:
-           cursor.execute("""insert into Docente(Usuario_idUsuario) 
+            cursor.execute("""insert into Docente(Usuario_idUsuario) 
            values('%i')""" % (docente.getId()))
-           sesion.commit()
+            sesion.commit()
         except:
-           print "Error en ejecucion de la query"
-           sesion.getEstado().rollback()  # volver al estado anterior
+            print "Error en ejecucion de la query"
+            sesion.getEstado().rollback()  # volver al estado anterior
 
         finally:
             cursor.close()
@@ -43,8 +46,32 @@ class DocenteDao:
             cursor.close()
             sesion.cerrarConexion()
 
-docente = Docente.Docente("tomas", "ppp", "uuu", "eee", "ee")
-docente.setIdUsuario(1)
+    def traerDocente(self, idUsuario):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        docente = None
+        try:
+            cursor.execute("""select * from Docente where Docente.Usuario_idUsuario='%i'""" % idUsuario)  # traigo el docente
+            resultado = cursor.fetchone()
+            if resultado is not None:  # pregunto si el docente existe
+                cursor.execute("""select * from Usuario where Usuario.idUsuario='%i'""" % idUsuario)  # pido el usuario
+                usuario = cursor.fetchone()
+                cursoDao = CursoDao()
+                lstCursos = cursoDao.traerCursosPorDocente(idUsuario)
+                docente = Docente(usuario[1], usuario[2], usuario[3], usuario[4], usuario[5])
+                docente.agregarCursos(lstCursos)
+        except:
+            print "Error, no se pudo traer el docente"
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+
+        return docente
+
+
 docenteDao = DocenteDao()
 
-docenteDao.agregarDocente(docente)
+docente= docenteDao.traerDocente(1)
+docente.__str__()  # tengo que ver por que me imprime la direccion de memoria
+
+

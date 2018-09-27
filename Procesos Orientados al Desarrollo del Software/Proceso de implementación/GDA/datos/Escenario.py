@@ -55,9 +55,5 @@ class Escenario:
         return self.curso
 
     def __str__(self):
-        print "Datos Escenario:", self.getBloquesPerimitidos(), self.getCantBloquesMax(), self.getHint(), self.getPosiblesSolucion(), self.getDescripcion()
+        return str("Datos Escenario:"+ self.getBloquesPerimitidos()+ self.getCantBloquesMax()+ self.getHint()+ self.getPosiblesSolucion()+ self.getDescripcion())
 
-cursoNuevo = Curso(False, "nombre")
-escenarioo = Escenario('5', '3', "HINT", "Una buena solucion", "Juego facil")
-cursoNuevo.setListaEscenario(escenarioo)
-escenarioo.setCurso(cursoNuevo)

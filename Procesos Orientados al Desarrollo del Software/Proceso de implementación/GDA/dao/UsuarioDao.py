@@ -56,6 +56,7 @@ class UsuarioDao:
             resultado = cursor.fetchone()
             if resultado is not None:
                 usuario = Usuario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
+                usuario.setIdUsuario(resultado[0])
         except:
             print "Error, no se pudo traer el usuario"
         finally:
