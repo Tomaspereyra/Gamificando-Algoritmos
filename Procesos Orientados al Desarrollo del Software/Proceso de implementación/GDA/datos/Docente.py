@@ -3,8 +3,8 @@ from datos.Usuario import Usuario
 
 class Docente(Usuario):
 
-    def __init__(self, username, password, email, nombre, apellido):
-        Usuario.__init__(self, username, password, email, nombre, apellido)
+    def __init__(self, username, password, email, nombre, apellido, fechaNacimiento):
+        Usuario.__init__(self, username, password, email, nombre, apellido, fechaNacimiento)
         self.cursosCreados =[]
 
     def agregarCursos(self, curso):
@@ -23,4 +23,3 @@ class Docente(Usuario):
         print "Datos Usuario: ", self.getUsername(), self.getNombre()
         print self.getCursosCreados()
 
-docente = Docente("tomas", "ppp", "uuu", "eee", "ee")
