@@ -1,4 +1,4 @@
-from Curso import Curso
+from datos.Curso import Curso
 
 
 class Escenario:
@@ -55,5 +55,5 @@ class Escenario:
         return self.curso
 
     def __str__(self):
-        return str("Datos Escenario:"+ self.getBloquesPerimitidos()+ self.getCantBloquesMax()+ self.getHint()+ self.getPosiblesSolucion()+ self.getDescripcion())
+        return str("Datos Escenario:" + str(self.getBloquesPerimitidos())+ str(self.getCantBloquesMax()) + self.getHint()+ self.getPosiblesSolucion() + self.getDescripcion())
 

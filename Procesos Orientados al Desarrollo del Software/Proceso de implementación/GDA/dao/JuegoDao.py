@@ -62,5 +62,22 @@ class JuegoDao:
 
         return juego
 
-juego = JuegoDao()
-print juego.traerJuego("fornite")
+    def traerJuegoPorId(self, id):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        juego = None
+        try:
+            cursor.execute("""select * from Juego where Juego.idJuego='%i'""" % id)
+            resultado = cursor.fetchone()
+            if resultado is not None:
+                juego = Juego(resultado[1], resultado[2])
+                juego.setId(resultado[0])
+        except:
+            print "Error, no se pudo traer el juego"
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+
+        return juego
+
+
