@@ -1,0 +1,59 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>Blockly Maze Test</title>
+	
+	<script type="text/javascript" src="jquery.js"></script> <!-- JQuery -->
+	
+	<script type="text/javascript" src="phaser/phaser.min.js"></script> 	
+	
+	<script type="text/javascript" src="materialize/js/materialize.js"></script> <!-- Materialize JS -->
+	<link rel="stylesheet" type="text/css" href="materialize/css/materialize.css"> <!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Materialize material-icons -->
+	
+	<script type="text/javascript" src="blockly/blockly_compressed.js"></script> <!-- Blockly -->
+	<script type="text/javascript" src="blockly/msg/js/en.js"></script> <!-- Blockly Language Support -->
+	<script type="text/javascript" src="blockly/generators/javascript.js"></script> <!-- Blockly Language Support -->
+	
+	<script type="text/javascript" src="maze_blocks.js"></script> <!-- Maze Custom Blocks -->
+	<script type="text/javascript" src="mazeModel.js"></script> <!-- Maze Model -->
+	<script type="text/javascript" src="mazeController.js"></script> <!-- Maze Controller -->
+	
+	
+</head>
+<body>
+	<div class='row'>
+		<div id='blockly-div' class="col s5" style="height: 600px; width: 800px;"></div>
+		<div id='intermediate-div' class="col s2 center-align">
+			<div class='row center-align' align="center" >
+				<button class="btn waves-effect waves-light" type='button' id='play-button'>¡Jugar!<i class="material-icons right">done_outline</i>
+				</button> 
+			</div>
+			<div class='row center-align' align="center" >
+				<button class="btn waves-effect waves-light" type='button' id='reset-button'>¡Reiniciar!<i class="material-icons right">autorenew</i>
+				</button> 
+			</div>
+		</div>
+		
+		<div id='phaser-div' class="col s5" style="height: 480px; width: 600px;"></div>
+	</div>
+</body>
+
+<xml id="toolbox" style="display: none">
+  <block type="maze_move_forward"></block>
+  <block type="maze_spin"></block>
+  <block type="maze_if"></block>
+  <block type="maze_ifElse"></block>
+  <block type="maze_forever"></block>
+  
+  
+  
+</xml>
+
+<script>
+  var workspace = Blockly.inject('blockly-div',
+      {toolbox: document.getElementById('toolbox')});
+</script>
+
+
