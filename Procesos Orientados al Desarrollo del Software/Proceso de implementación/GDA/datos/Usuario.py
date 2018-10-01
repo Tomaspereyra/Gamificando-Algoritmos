@@ -1,5 +1,5 @@
 class Usuario:
-    def __init__(self, username, password, email, nombre, apellido, fechaNacimiento):
+    def __init__(self, username, password, email, nombre, apellido,fechaNacimiento):
       self.username = username
       self.password = password
       self.email = email
@@ -8,7 +8,7 @@ class Usuario:
       self.fechaNacimiento = fechaNacimiento
 
     def setIdUsuario(self, idUsuario):
-        self.idUsuario = idUsuario
+        self.idUsuario=idUsuario
 
     def getUsername(self):
         return self.username
