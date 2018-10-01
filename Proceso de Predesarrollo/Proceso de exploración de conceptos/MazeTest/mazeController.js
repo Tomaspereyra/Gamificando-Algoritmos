@@ -1,11 +1,9 @@
 //Event handlers
 $( document ).ready(function() {
 	$("#play-button" ).click(function() {
-		if (currentPlayerActions == null){
-			Blockly.JavaScript.addReservedWords('code');
-			var code = Blockly.JavaScript.workspaceToCode(workspace);
-			PlayOrders(code);
-		}
+		Blockly.JavaScript.addReservedWords('code');
+		var code = Blockly.JavaScript.workspaceToCode(workspace);
+		PlayOrders(code);
 	});   
 	$("#reset-button" ).click(function() {
 		RestartMap();
@@ -65,12 +63,6 @@ gameScene.update = function() {
 			console.log("Updating Actions!");
 		} else {
 			console.log("Player Actions Finished Rendering!");
-			if (currentPlayer.IsOnExit()){
-				alert("Felicidades! Resolviste el laberinto!")
-			} else {
-				alert("Lo siento, no lograste resolver el laberinto!")
-			}
-			RestartMap();
 		}
 	}
 }
@@ -105,31 +97,10 @@ function MoveForward(){
 	currentPlayer.MoveForward();
 }
 
-function IsWallAhead(){
-	return currentPlayer.IsWallAhead();
-}
-
-function IsPathAhead(){
-	return currentPlayer.IsPathAhead();
-}
-
-function IsHoleAhead(){
-	return currentPlayer.IsHoleAhead();
-}
-
-function NotFinished(){
-	return currentPlayer.NotFinished();
-}
 
 function PlayOrders(orderString){
-	console.log("Orders : \n" + orderString);
 	currentPlayerActions = currentPlayer.PlayOrders(orderString);
-	if (currentPlayerActions.HitActionCap()){
-		alert("El algoritmo provoca un ciclo infinito.")
-		RestartMap();
-	} else {
-		currentPlayerActions.Start();	
-	}
+	currentPlayerActions.Start();
 }
 
 //Testing

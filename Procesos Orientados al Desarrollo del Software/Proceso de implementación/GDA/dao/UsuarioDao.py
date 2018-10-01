@@ -20,10 +20,10 @@ class UsuarioDao:
 
         cursor = sesion.obtenerCursor()
         try:
-            cursor.execute("""insert into Usuario(username,password,email,nombre,apellido, fechaNacimiento)
-              values('%s', '%s', '%s', '%s', '%s', '%s' )""" % (
+            cursor.execute("""insert into Usuario(username,password,email,nombre,apellido)
+              values('%s', '%s', '%s', '%s', '%s')""" % (
                 usuario.getUsername(), usuario.getPassword(), usuario.getEmail(), usuario.getNombre(),
-                usuario.getApellido(), usuario.getFechaNacimiento()))
+                usuario.getApellido()))
             sesion.commit()
         except:
             print "Error en ejecucion de la query"
@@ -55,7 +55,7 @@ class UsuarioDao:
             cursor.execute("""select * from Usuario where Usuario.username='%s'""" % username)
             resultado = cursor.fetchone()
             if resultado is not None:
-                usuario = Usuario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5], resultado[6])
+                usuario = Usuario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
                 usuario.setIdUsuario(resultado[0])
         except:
             print "Error, no se pudo traer el usuario"
@@ -69,11 +69,11 @@ class UsuarioDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         try:
-            cursor.execute("""update Usuario set username='%s',password='%s',email ='%s',nombre = '%s' , apellido = '%s', fechaNacimiento = '%s' 
+            cursor.execute("""update Usuario set username='%s',password='%s',email ='%s',nombre = '%s' , apellido = '%s' 
                     where username= '%s'""" % (
                 usuarioActualizado.getUsername(), usuarioActualizado.getPassword(),
                 usuarioActualizado.getEmail(), usuarioActualizado.getNombre(),
-                usuarioActualizado.getApellido(), usuarioActualizado.getFechaNacimiento(), usuario.getUsername()))
+                usuarioActualizado.getApellido(), usuario.getUsername()))
             sesion.commit()
         except:
             print "Error, no se pudo actualizar"
