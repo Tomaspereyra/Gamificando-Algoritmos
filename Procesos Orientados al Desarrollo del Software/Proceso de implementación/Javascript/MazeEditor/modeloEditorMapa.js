@@ -93,4 +93,4 @@ mapa.PintarTileSeleccionado(2,4);
 mapa.PintarTileSeleccionado(3,4);
 mapa.PintarTileSeleccionado(4,4);
 
-print("Mapa : \n" + mapa.ToString());
+console.log("Mapa : \n" + mapa.ToString());
