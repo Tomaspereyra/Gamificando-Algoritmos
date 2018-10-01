@@ -53,8 +53,27 @@ function dibujarMapa(mapa){
 	for (var row = 0; row < mapa.ancho; row++){
 		for (var col = 0; col < mapa.altura; col++){
 			//console.log("Drawing : Row,col = [" + row + "," + col + "] -> " + this.tiles[row][col]);
-			sprite = gameScene.add.sprite((SPRITE_SIZE *row),(SPRITE_SIZE * col), mapIndexToSprite(mapa.grilla[row][col]));
+			sprite = gameScene.add.sprite((SPRITE_SIZE *row),(SPRITE_SIZE * col), mapIndexToSprite(mapa.grilla[row][col])).setInteractive();
+			
+			sprite.on('pointerdown', function (pointer) {
+
+        		this.setTint(0xff0000);
+
+    		});
+
+   			 sprite.on('pointerout', function (pointer) {
+
+        		this.clearTint();
+
+   			 });
+
+   			 sprite.on('pointerup', function (pointer) {
+
+      		  this.clearTint();
+
+    		});
 			sprite.setOrigin(0, 0);
 		}
 	}
 }
+
