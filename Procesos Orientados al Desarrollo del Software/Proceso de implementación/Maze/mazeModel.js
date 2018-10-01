@@ -4,8 +4,10 @@ var FLOOR = 0;
 var WALL = 1;
 var START = 2;
 var EXIT = 3;
+var HOLE = 4;
 var SPRITE_SIZE = 32;
 var PIVOT_OFFSET = (SPRITE_SIZE / 2);
+var MAX_ACTION_COUNT = 500;
 
 function MazeMap (width, height, defaultOrientation) {
 	this.height = height;
@@ -16,6 +18,14 @@ function MazeMap (width, height, defaultOrientation) {
 	for (var i = 0; i < width; i++) {
 		this.tiles[i] = new Array(height);
 	}
+}
+
+MazeMap.prototype.GetTile = function (x, y){
+	
+	if ((x < 0 || x >= this.width || y < 0 || y >= this.height) ||  this.tiles[x][y] == null)
+		return WALL;
+	else
+		return this.tiles[x][y];
 }
 
 MazeMap.prototype.FromString = function (str){
@@ -76,7 +86,7 @@ var S = 2;
 var W = 3;
 var LEFT = 0;
 var RIGHT = 1;
-
+var INTERACTION_COUNT_CAP = 4000;
 
 function Player(map, gameScene){
 	var startPos = map.GetStart();
@@ -86,11 +96,16 @@ function Player(map, gameScene){
 	this.sprite = null;
 	this.actions = null;
 	this.gameScene = gameScene;
+	this.interactionCount = 0;
 }
 
 Player.prototype.Place = function(x, y){
 	this.x = x;
 	this.y = y;
+}
+
+Player.prototype.IsOnExit = function(){
+	return (this.map.tiles[this.x][this.y] == EXIT);
 }
 
 Player.prototype.IsAlive = function(){
@@ -113,6 +128,7 @@ Player.prototype.Reset = function(){
 	pos = this.map.GetStart();
 	this.Place(pos[0], pos[1]);
 	this.SetOrientation(this.map.defaultOrientation);
+	this.interactionCount = 0;
 }
 
 Player.prototype.SetOrientation = function(orientation){
@@ -169,8 +185,42 @@ Player.prototype.PlayOrders = function(orderString){
 	return this.actions;
 }
 
+Player.prototype.TileAhead = function(){
+	var tile = null;
+	if (this.orientation == N){
+		tile = this.map.GetTile(this.x, this.y - 1);
+	} else if (this.orientation == S){
+		tile = this.map.GetTile(this.x, this.y + 1);
+	} else if (this.orientation == E){
+		tile = this.map.GetTile(this.x + 1, this.y);
+	} else if (this.orientation == W){
+		tile = this.map.GetTile(this.x - 1, this.y);
+	}
+	return tile;
+}
+
+Player.prototype.IsWallAhead = function(){
+	return this.TileAhead() == WALL;
+}
+
+Player.prototype.IsPathAhead = function(){
+	return (this.TileAhead() == FLOOR || this.TileAhead() == START || this.TileAhead() == EXIT);
+}
+
+Player.prototype.IsHoleAhead = function(){
+	return this.TileAhead() == HOLE;
+}
+
+Player.prototype.Finished = function(){
+	return (this.IsDead() || this.IsOnExit() || this.actions.HitActionCap() || this.interactionCount++ >= INTERACTION_COUNT_CAP);
+}
+
+Player.prototype.NotFinished = function(){
+	return !this.Finished();
+}
+
 Player.prototype.MoveForward = function(){
-	if (this.IsAlive()){
+	if (this.NotFinished()){
 		if (this.orientation == N){
 			this.y--;
 		} else if (this.orientation == S){
@@ -189,7 +239,7 @@ Player.prototype.MoveForward = function(){
 }
 
 Player.prototype.SpinRight = function(){
-	if (this.IsAlive()){
+	if (this.NotFinished()){
 		this.orientation++;
 		
 		if (this.orientation > W)
@@ -200,7 +250,7 @@ Player.prototype.SpinRight = function(){
 }
 
 Player.prototype.SpinLeft = function(){
-	if (this.IsAlive()){
+	if (this.NotFinished()){
 		this.orientation--;
 		if (this.orientation < N)
 			this.orientation = W;
@@ -215,6 +265,14 @@ function PlayerActions(player){
 	this.pendingActions = [];
 	this.player = player;
 }	
+
+PlayerActions.prototype.HitActionCap = function(){
+	return (this.ActionCount() >= MAX_ACTION_COUNT);
+}
+
+PlayerActions.prototype.ActionCount = function(){
+	return this.pendingActions.length;
+}
 
 PlayerActions.prototype.EnqueueAction = function(action){
 	action.player = this.player;
@@ -257,6 +315,7 @@ function SpinAction(direction){
 	this.player = null;
 	this.degreesRotated = 0;
 	this.finished = false;
+	console.log("new SpinAction. Direction : " + direction);
 }
 	
 SpinAction.prototype.Update = function(){

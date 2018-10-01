@@ -1,6 +1,6 @@
 import MySQLdb
 from Conexion import Sesion
-from datos import Escenario
+from datos.Escenario import Escenario
 
 
 class EscenarioDao:
@@ -62,4 +62,23 @@ class EscenarioDao:
             cursor.close()
             sesion.cerrarConexion()
         return resultado
+
+    def traerEscenario(self, idEscenario):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        resultado = None
+        escenario = None
+        try:
+            cursor.execute("""select * from Escenario where Escenario.idEscenario='%i'""" % idEscenario)
+            resultado = cursor.fetchone()
+            if resultado is not None:
+                escenario = Escenario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
+                escenario.setIdEscenario(resultado[0])
+
+        except:
+            print "Error no se pudo traer los escenarios"
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+        return escenario
 

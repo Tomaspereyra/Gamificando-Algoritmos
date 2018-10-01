@@ -56,4 +56,5 @@ class Curso:
     def __str__(self):
         return str(
             "ID: " + str(self.getIdCurso()) + " Se puede saltear: " + str(self.getSepuedeSaltar()) + " Nombre:  " +
-            self.getNombre() + " Docente: " + str(self.getDocente()))
+            self.getNombre() + " Docente: " + str(self.getDocente()) + " Juego: "+str(self.getJuego().__str__()))
+
