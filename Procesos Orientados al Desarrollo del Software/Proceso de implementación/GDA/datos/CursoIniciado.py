@@ -1,4 +1,5 @@
-import Curso
+from datos.Curso import Curso
+from datos.Estudiante import Estudiante
 
 
 class CursoIniciado:
@@ -6,7 +7,6 @@ class CursoIniciado:
     def __init__(self):
         self.curso = Curso
         self.escenarioRealizado = []
-        self.estudiante = estudiante
 
     def setCurso(self, curso):
         self.curso = curso
@@ -14,8 +14,6 @@ class CursoIniciado:
     def agregarEscenario(self, escenarioRealizado):
         self.escenarioRealizado.append(escenarioRealizado)
 
-    def setEstudiante(self, estudiante):
-        self.estudiante = estudiante
 
     def setIdCursoIniciado(self,cursoIniciado):
         self.idCursoIniciado=cursoIniciado
@@ -26,5 +24,5 @@ class CursoIniciado:
     def getCurso(self):
         return self.curso
 
-    def getEstudiante(self):
-        return self.estudiante
+    def __str__(self):
+        return str(str(self.getCurso().__str__()))

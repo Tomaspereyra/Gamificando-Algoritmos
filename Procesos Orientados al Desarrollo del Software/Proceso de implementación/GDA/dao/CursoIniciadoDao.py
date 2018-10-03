@@ -1,6 +1,10 @@
 import MySQLdb
 
 from Conexion import Sesion
+from datos.Estudiante import Estudiante
+from datos.CursoIniciado import CursoIniciado
+from dao.CursoDao import CursoDao
+from dao.EscenarioEnProcesoDao import EscenarioEnProcesoDao
 
 
 class CursoIniciadoDao:
@@ -47,3 +51,29 @@ class CursoIniciadoDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+
+    def traerCursosPorEstudiante(self, idEstudiante):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        lstCursos = []
+        curso = CursoIniciado()
+        cursodao = CursoDao()
+
+        try:
+            cursor.execute("""select * from cursoiniciado where cursoiniciado.Estudiante_idEstudiante = '%i'"""
+                           % idEstudiante)
+            resultado = cursor.fetchall()
+            escenarioenproceso = EscenarioEnProcesoDao()
+            for fila in range(len(resultado)):
+                 for columna in range(len(resultado[fila])):
+                     if columna == 0:
+                         curso.setIdCursoIniciado(resultado[fila][columna])
+                         curso.agregarEscenario(escenarioenproceso.traerEscenariosPorCurso(resultado[fila][columna]))
+                     if columna == 2:
+                         curso.setCurso(cursodao.traerCurso(resultado[fila][columna]))
+                         lstCursos.append(curso)
+                         curso = CursoIniciado()
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+            return lstCursos

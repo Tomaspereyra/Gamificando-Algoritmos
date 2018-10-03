@@ -1,6 +1,8 @@
 import MySQLdb
 
 from Conexion import Sesion
+from datos.Estudiante import Estudiante
+from dao.CursoIniciadoDao import CursoIniciadoDao
 
 
 class EstudianteDao:
@@ -15,7 +17,7 @@ class EstudianteDao:
 
         return sesion
 
-    def agregarEstudiente(self, estudiante):
+    def agregar(self, estudiante):
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
@@ -45,3 +47,27 @@ class EstudianteDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+
+    def traerEstudiante(self, idUsuario):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        estudiante = None
+        try:
+            cursor.execute("""select * from usuario inner join estudiante where usuario.idUsuario = '%i' and 
+            estudiante.Usuario_idUsuario = '%i'""" % (idUsuario, idUsuario))
+            resultado = cursor.fetchone()
+            estudiante = Estudiante(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5], resultado[6])
+            estudiante.setIdUsuario(resultado[0])
+            estudiante.setIdEstudiante(resultado[7])
+            cursoiniciadodao = CursoIniciadoDao()
+            estudiante.agregarCursos(cursoiniciadodao.traerCursosPorEstudiante(estudiante.getIdEstudiante()))
+
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+            return estudiante
+
+
+estudiante = EstudianteDao()
+for item in estudiante.traerEstudiante(2).getCursosIniciados():
+    print item

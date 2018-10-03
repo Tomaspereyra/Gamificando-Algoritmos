@@ -1,9 +1,9 @@
-import Usuario
+from datos.Usuario import Usuario
 
 
-class Estudiante(Usuario.Usuario):
-    def __init__(self, username, password, email, nombre, apellido):
-        Usuario.Usuario.__init__(self, username, password, email, nombre, apellido)
+class Estudiante(Usuario):
+    def __init__(self, username="-", password="-", email="-", nombre="-", apellido="-", fechaNacimiento=0):
+        Usuario.__init__(self, username, password, email, nombre, apellido, fechaNacimiento)
         self.cursosIniciados = []
 
     def agregarCursos(self, cursos):
@@ -12,5 +12,11 @@ class Estudiante(Usuario.Usuario):
     def getCursosIniciados(self):
         return self.cursosIniciados
 
+    def setIdEstudiante(self, idEstudiante):
+        self.idEstudiante = idEstudiante
+
     def getIdEstudiante(self):
-        return self.getId()
+        return self.idEstudiante
+
+    def __str__(self):
+        return str(self.getNombre())
