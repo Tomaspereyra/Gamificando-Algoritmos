@@ -19,7 +19,7 @@ class CursoIniciadoDao:
 
         return sesion
 
-    def agregar(self, cursoIniciado):
+    def agregar(self, idEstudiante,idCurso):
 
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
@@ -27,7 +27,7 @@ class CursoIniciadoDao:
         try:
             cursor.execute("""insert into CursoIniciado(Estudiante_idEstudiante, Curso_idCurso) 
              values ('%i','%i')""" % (
-                cursoIniciado.getEstudiante().getIdEstudiante(), cursoIniciado.getCurso().getIdCurso()))
+                idEstudiante, idCurso))
             sesion.commit()
         except:
             print "Error en la ejecucion de la query"
@@ -77,3 +77,5 @@ class CursoIniciadoDao:
             cursor.close()
             sesion.cerrarConexion()
             return lstCursos
+
+

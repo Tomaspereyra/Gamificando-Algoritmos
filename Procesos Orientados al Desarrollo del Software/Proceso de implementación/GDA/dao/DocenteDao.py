@@ -16,12 +16,12 @@ class DocenteDao:
 
         return sesion
 
-    def agregarDocente(self, docente):
+    def agregarDocente(self, idUsuario):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         try:
             cursor.execute("""insert into Docente(Usuario_idUsuario) 
-           values('%i')""" % (docente.getId()))
+           values('%i')""" % idUsuario)
             sesion.commit()
         except:
             print "Error en ejecucion de la query"
@@ -59,6 +59,8 @@ class DocenteDao:
                 cursoDao = CursoDao()
                 lstCursos = cursoDao.traerCursosPorDocente(idUsuario)
                 docente = Docente(usuario[1], usuario[2], usuario[3], usuario[4], usuario[5], usuario[6])
+                docente.setIdUsuario(usuario[0])
+                docente.setIdDocente(resultado[0])
                 docente.agregarCursos(lstCursos)
 
         finally:

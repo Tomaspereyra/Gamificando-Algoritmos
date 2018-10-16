@@ -3,6 +3,7 @@ import MySQLdb
 from Conexion import Sesion
 from datos.Estudiante import Estudiante
 from dao.CursoIniciadoDao import CursoIniciadoDao
+from datos.CursoIniciado import CursoIniciado
 
 
 class EstudianteDao:
@@ -17,13 +18,13 @@ class EstudianteDao:
 
         return sesion
 
-    def agregar(self, estudiante):
+    def agregar(self, usuario):
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
         try:
             cursor.execute("""insert into Estudiante(Usuario_idUsuario)
-              values('%i')""" % (estudiante.getId()))
+              values('%i')""" % (usuario.getId()))
 
             sesion.commit()
         except:
@@ -39,7 +40,8 @@ class EstudianteDao:
 
         cursor = sesion.obtenerCursor()
         try:
-            cursor.execute("""delete Estudiante from Estudiante where Estudiante.Usuario_idUsuario='%i'""" % (estudiante.getId()))
+            cursor.execute(
+                """delete Estudiante from Estudiante where Estudiante.Usuario_idUsuario='%i'""" % (estudiante.getId()))
             sesion.commit()
         except:
             print "Error, no se pudo eliminar"
@@ -68,6 +70,5 @@ class EstudianteDao:
             return estudiante
 
 
-estudiante = EstudianteDao()
-for item in estudiante.traerEstudiante(2).getCursosIniciados():
-    print item
+
+

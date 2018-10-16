@@ -4,8 +4,8 @@ from datos.Estudiante import Estudiante
 
 class CursoIniciado:
 
-    def __init__(self):
-        self.curso = Curso
+    def __init__(self, curso="-"):
+        self.curso = curso
         self.escenarioRealizado = []
 
     def setCurso(self, curso):
@@ -25,4 +25,4 @@ class CursoIniciado:
         return self.curso
 
     def __str__(self):
-        return str(str(self.getCurso().__str__()))
+        return str(self.getCurso().__str__())

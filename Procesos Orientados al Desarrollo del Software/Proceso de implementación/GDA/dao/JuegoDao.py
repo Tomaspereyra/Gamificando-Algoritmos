@@ -14,13 +14,13 @@ class JuegoDao:
 
         return sesion
 
-    def agregar(self, juego):
+    def agregar(self, nombre, descripcion):
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
         try:
             cursor.execute("""insert into Juego(nombre,descripcion)
-              values('%s', '%s')""" % (juego.getNombre(), juego.getDescripcion()))
+              values('%s', '%s')""" % (nombre, descripcion))
             sesion.commit()
         except:
             print "Error en ejecucion de la query"

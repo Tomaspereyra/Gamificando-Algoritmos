@@ -5,6 +5,7 @@ class Docente(Usuario):
 
     def __init__(self, username, password, email, nombre, apellido, fechaNacimiento):
         Usuario.__init__(self, username, password, email, nombre, apellido, fechaNacimiento)
+        self.idDocente=0
         self.cursosCreados =[]
 
     def agregarCursos(self, curso):
@@ -20,6 +21,11 @@ class Docente(Usuario):
         return self.idDocente
 
     def __str__(self):
-        print "Datos Usuario: ", self.getUsername(), self.getNombre()
-        print self.getCursosCreados()
+        return str("ID Usuario: "+str(self.getId())+" Nombre de usuario: " + self.getUsername()+" Email: " +
+                   self.getEmail()+ " Nombre: " + self.getNombre() + " Apellido: "+ self.getApellido() +
+                   " Fecha Nacimiento: " + str(self.getFechaNacimiento()) + str(self.imprimirLista()))
+
+    def imprimirLista(self):
+        return ''.join('\n'.join(map(str, sl)) for sl in self.getCursosCreados())
+
 
