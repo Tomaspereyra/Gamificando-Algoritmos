@@ -1,3 +1,4 @@
+
 var gameScene = new Phaser.Scene('MazeScene');
 
 var config = {
@@ -54,22 +55,33 @@ function dibujarMapa(mapa){
 		for (var col = 0; col < mapa.altura; col++){
 			//console.log("Drawing : Row,col = [" + row + "," + col + "] -> " + this.tiles[row][col]);
 			sprite = gameScene.add.sprite((SPRITE_SIZE *row),(SPRITE_SIZE * col), mapIndexToSprite(mapa.grilla[row][col])).setInteractive();
-			
+			sprite.row = row
+			sprite.col = col
+
 			sprite.on('pointerdown', function (pointer) {
 
-        		this.setTint(0xff0000);
+        		this.setTint(0xff0000,console.log("X=",row ,"Y=",col));
 
     		});
 
+    		sprite.on('pointermove', function (pointer) {
+
+       			x = pointer.x;
+        		y = pointer.y;
+        		row=Math.floor((x/SPRITE_SIZE));  
+        		col=Math.floor((y/SPRITE_SIZE));
+
+   			 });
+
    			 sprite.on('pointerout', function (pointer) {
 
-        		this.clearTint();
+        		this.clearTint(console.log("X=",row ,"Y=",col));
 
    			 });
 
    			 sprite.on('pointerup', function (pointer) {
 
-      		  this.clearTint();
+      		  this.clearTint(console.log("X=",row ,"Y=",col));
 
     		});
 			sprite.setOrigin(0, 0);
