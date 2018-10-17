@@ -1,15 +1,21 @@
+from datos.Escenario import Escenario
 
-class EscenarioEnProceso():
-    def __init__(self, puntajeObtenido, solucionBrindada, cantidadBloquesUtilizados, tiempoSolucion, intentos, fechaInicio, fechaFinalizacion):
+
+class EscenarioEnProceso:
+    def __init__(self, puntajeObtenido=0, solucionBrindada="-", cantidadBloquesUtilizados=0, tiempoSolucion=0, intentos=0, fechaInicio=0, fechaFinalizacion=0):
         self.puntajeObtenido=puntajeObtenido
         self.solucionBrindada=solucionBrindada
-        self.escenario=escenario
-        self.cursoIniciado=cursoIniciado
         self.cantidadBloquesUtilizados = cantidadBloquesUtilizados
         self.tiempoSolucion = tiempoSolucion
         self.intentos = intentos
         self.fechaInicio = fechaInicio
         self.fechaFinalizacion = fechaFinalizacion
+
+    def setId(self, idEscenario):
+        self.id = idEscenario
+
+    def getId(self):
+        return self.id
 
     def getPuntajeObtenido(self):
         return self.puntajeObtenido
@@ -28,6 +34,9 @@ class EscenarioEnProceso():
 
     def setEscenario(self, escenario):
         self.escenario = escenario
+
+    def setCurso(self, cursoIniciado):
+        self.cursoIniciado = cursoIniciado
 
     def getCurso(self):
         return self.cursoIniciado
@@ -61,3 +70,6 @@ class EscenarioEnProceso():
 
     def getFechaFinalizacion(self):
         return self.fechaFinalizacion
+
+    def __str__(self):
+        return str("id escenario en proceso: "+str(self.getId())+" Solucion: "+self.getSolucionBrindada() + " intentos:  "+ str(self.getIntentos()))

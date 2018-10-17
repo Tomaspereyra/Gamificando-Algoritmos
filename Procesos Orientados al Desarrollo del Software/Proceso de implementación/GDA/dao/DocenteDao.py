@@ -4,8 +4,8 @@ from datos.Docente import Docente
 from dao.CursoDao import CursoDao
 
 
-
 class DocenteDao:
+
     def iniciarOperacion(self):
 
         try:
@@ -16,12 +16,12 @@ class DocenteDao:
 
         return sesion
 
-    def agregarDocente(self, docente):
+    def agregarDocente(self, idUsuario):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         try:
             cursor.execute("""insert into Docente(Usuario_idUsuario) 
-           values('%i')""" % (docente.getId()))
+           values('%i')""" % idUsuario)
             sesion.commit()
         except:
             print "Error en ejecucion de la query"
@@ -58,20 +58,16 @@ class DocenteDao:
                 usuario = cursor.fetchone()
                 cursoDao = CursoDao()
                 lstCursos = cursoDao.traerCursosPorDocente(idUsuario)
-                docente = Docente(usuario[1], usuario[2], usuario[3], usuario[4], usuario[5])
+                docente = Docente(usuario[1], usuario[2], usuario[3], usuario[4], usuario[5], usuario[6])
+                docente.setIdUsuario(usuario[0])
+                docente.setIdDocente(resultado[0])
                 docente.agregarCursos(lstCursos)
-        except:
-            print "Error, no se pudo traer el docente"
+
         finally:
             cursor.close()
             sesion.cerrarConexion()
 
         return docente
 
-
-docenteDao = DocenteDao()
-
-docente= docenteDao.traerDocente(1)
-docente.__str__()  # tengo que ver por que me imprime la direccion de memoria
 
 

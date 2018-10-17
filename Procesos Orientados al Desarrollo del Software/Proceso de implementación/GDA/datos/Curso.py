@@ -2,10 +2,9 @@ from Docente import Docente
 
 
 class Curso:
-    def __init__(self, sePuedeSaltear, nombre, juego, descripcion):
+    def __init__(self, sePuedeSaltear=False, nombre="-", juego="-", descripcion="-"):
         self.sePuedeSaltear = sePuedeSaltear
         self.nombre = nombre
-        self.docente = 0
         self.escenario = []
         self.juego = juego
         self.descripcion = descripcion
@@ -20,9 +19,6 @@ class Curso:
     def setNombre(self, nombre):
         self.nombre = nombre
 
-    def setDocente(self, docente):
-        self.docente = docente
-
     def setListaEscenario(self, escenario):
         self.escenario.append(escenario)
 
@@ -34,9 +30,6 @@ class Curso:
 
     def getNombre(self):
         return self.nombre
-
-    def getDocente(self):
-        return self.docente
 
     def getEscenario(self):
         return self.escenario
@@ -56,4 +49,5 @@ class Curso:
     def __str__(self):
         return str(
             "ID: " + str(self.getIdCurso()) + " Se puede saltear: " + str(self.getSepuedeSaltar()) + " Nombre:  " +
-            self.getNombre() + " Docente: " + str(self.getDocente()))
+            self.getNombre() + " Docente: " + " Juego: "+str(self.getJuego().__str__()))
+

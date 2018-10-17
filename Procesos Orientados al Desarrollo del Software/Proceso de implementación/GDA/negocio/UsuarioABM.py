@@ -9,9 +9,9 @@ class UsuarioABM:
     def traerUsuario(self, username):
         return self.dao.traerUsuario(username)
 
-    def registrarUsuario(self, username, password, email, nombre, apellido):
+    def registrarUsuario(self, username, password, email, nombre, apellido, fechaNacimiento):
         if self.traerUsuario(username) is None:
-            usuario = Usuario(username, password, email, nombre, apellido)
+            usuario = Usuario(username, password, email, nombre, apellido, fechaNacimiento)
             self.dao.agregar(usuario)
         else:
             print "El usuario ya esta registrado"
@@ -37,8 +37,4 @@ class UsuarioABM:
 
 
 
-usuarioAbm = UsuarioABM()
 
-# usuarioAbm.registrarUsuario("user", "dd", "ee", "rr", "a")
-usuario = Usuario("tomas","dd", "ee", "rr", "a")
-usuarioAbm.editarUsuario(usuarioAbm.traerUsuario("tomasss"), usuario)

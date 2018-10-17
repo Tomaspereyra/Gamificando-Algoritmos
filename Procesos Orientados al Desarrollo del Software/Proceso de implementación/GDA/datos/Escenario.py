@@ -1,4 +1,4 @@
-from Curso import Curso
+from datos.Curso import Curso
 
 
 class Escenario:
@@ -9,7 +9,6 @@ class Escenario:
         self.hint = hint
         self.posiblesSolucion = posibleSolucion
         self.descripcion = descripcion
-        self.curso = Curso
 
 
     def setIdEscenario(self, idEscenario):
@@ -48,12 +47,7 @@ class Escenario:
     def getIdEscenario(self):
         return self.idEscenario
 
-    def setCurso(self, curso):
-        self.curso=curso
-
-    def getCurso(self):
-        return self.curso
-
     def __str__(self):
-        return str("Datos Escenario:"+ self.getBloquesPerimitidos()+ self.getCantBloquesMax()+ self.getHint()+ self.getPosiblesSolucion()+ self.getDescripcion())
+        return str("Datos Escenario:" + str(self.getBloquesPerimitidos())+ str(self.getCantBloquesMax()) +
+                   self.getHint() + self.getPosiblesSolucion() + self.getDescripcion())
 
