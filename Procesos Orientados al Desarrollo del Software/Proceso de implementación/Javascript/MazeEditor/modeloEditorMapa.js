@@ -41,12 +41,8 @@ Mapa.prototype.EstablecerSalida=function(x,y){
 		this.grilla[x][y]=SALIDA
 }
 
-Mapa.prototype.PintarTileSeleccionado=function(x,y){
-	this.grilla[x][y]=this.tileSeleccionado;
-}
-
-Mapa.prototype.AsignarTileSeleccionado=function(tipoTile){
-	this.tileSeleccionado = tipoTile;
+Mapa.prototype.asignarTile=function(x,y,tipoTile){
+	this.grilla[x][y]=tipoTile;
 }
 
 Mapa.prototype.IndexToChar = function(index){
@@ -66,7 +62,7 @@ Mapa.prototype.IndexToChar = function(index){
     }
 }
 
-Mapa.prototype.ToString = function(){
+Mapa.prototype.ToPrettyString = function(){
     var str = "";
     for(var fila=0; fila<this.ancho; fila++){
 		for(var columna=0; columna<this.altura;columna++){
@@ -78,19 +74,39 @@ Mapa.prototype.ToString = function(){
     return str;
 }
 
-//Esto seria un "Main" de prueba
-var mapa = new Mapa(32, 32);
-//Pintamos todo con Pared
-mapa.LlenarGrilla(PARED);
+Mapa.prototype.ToString = function(){
+    var str = "";
+    for(var fila=0; fila<this.ancho; fila++){
+        for(var columna=0; columna<this.altura;columna++){
+            str += this.grilla[fila][columna];
+            //str += this.grilla[fila][columna];
+        }
+        str += "/";
+    }
+    return str;
+}
 
-mapa.AsignarTileSeleccionado(PISO);
-mapa.PintarTileSeleccionado(1,1);
-mapa.PintarTileSeleccionado(1,2);
-mapa.PintarTileSeleccionado(1,3);
-mapa.PintarTileSeleccionado(1,4);
-mapa.AsignarTileSeleccionado(SALIDA);
-mapa.PintarTileSeleccionado(2,4);
-mapa.PintarTileSeleccionado(3,4);
-mapa.PintarTileSeleccionado(4,4);
+Mapa.prototype.Validar=function(){ //si es valido devuelve true sino falso
+    var contadorInicio=0;
+    var contadorSalida=0;
 
-console.log("Mapa : \n" + mapa.ToString());
+    for(var fila=0; fila<this.ancho; fila++){
+        for(var columna=0; columna<this.altura;columna++){
+             if(this.grilla[fila][columna]==INICIO){
+                contadorInicio=contadorInicio+1;
+             }
+
+            if(this.grilla[fila][columna]==SALIDA){
+                contadorSalida=contadorSalida+1;
+            }
+            
+        }
+    }
+
+    if(contadorInicio>1 && contadorSalida>1){
+         return false; 
+    }
+    else{
+        return true;
+    }   
+}

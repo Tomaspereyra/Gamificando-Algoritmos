@@ -67,30 +67,18 @@ function dibujarMapa(mapa){
         		col=Math.floor((y/SPRITE_SIZE));
         		console.log("X=",row ,"Y=",col);
 
-                if(pincel==PARED){
-                    mapa.CambiarAPared(row,col);
-                    this.setTexture('Wall');
-                }
-                
-                if(pincel==PISO){
-                    mapa.CambiarAPiso(row,col);
-                    this.setTexture('Floor');
-                }
-                
-                if(pincel==INICIO){
-                    mapa.EstablecerInicio(row,col);
-                    this.setTexture('Start');
-                }
-
-                if(pincel==SALIDA){
-                    mapa.EstablecerSalida(row,col);
-                    this.setTexture('Exit');
-                }
+                mapa.asignarTile(row,col,pincel);
+                this.setTexture(mapIndexToSprite(pincel));
 
         		this.setTint(0xff0000);//lo pinto de rojo
 
     		});
 
+            sprite.on('pointermove', function (pointer) {
+
+              this.clearTint();
+
+            }); 
 
    			 sprite.on('pointerup', function (pointer) {//cuando levanta el click del mouse lo vuelve a pintar gris
 
@@ -107,27 +95,22 @@ function paletaMapa(){
 		for (var col = 0; col < 4; col++){
 			sprite = gameScene.add.sprite((SPRITE_SIZE *0),(SPRITE_SIZE * col), mapIndexToSprite(col)).setInteractive();
 			sprite.setOrigin(0,0);
-            sprite.col = col
+            sprite.col = col;
 
 
           
             sprite.on('pointerdown', function (pointer) {//cuando tengo click
-                if (sprite.col=0) {
-                    pincel=PISO;
-                }
-                 if (sprite.col=1) {
-                    pincel=PARED;
-                }
-                 if (sprite.col=2) {
-                    pincel=INICIO;
-                }
-                 if (sprite.col=3) {
-                    pincel=SALIDA;
-                }
+               pincel=this.col;
 
                 this.setTint(0xff0000);//lo pinto de rojo
 
             });
+            
+            sprite.on('pointermove', function (pointer) {
+
+              this.clearTint();
+
+            }); 
             
             sprite.on('pointerup', function (pointer) {//cuando levanta el click del mouse lo vuelve a pintar gris
 
@@ -138,7 +121,7 @@ function paletaMapa(){
         }
 		
 	
-	//return this.AsignarTileSeleccionado(tileSeleccionado);
+	
 
 }
 
