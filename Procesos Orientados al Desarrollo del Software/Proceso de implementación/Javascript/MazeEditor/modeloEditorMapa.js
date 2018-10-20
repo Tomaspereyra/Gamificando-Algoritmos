@@ -103,10 +103,5 @@ Mapa.prototype.Validar=function(){ //si es valido devuelve true sino falso
         }
     }
 
-    if(contadorInicio>1 && contadorSalida>1){
-         return false; 
-    }
-    else{
-        return true;
-    }   
+    return (contadorInicio==1 && contadorSalida==1);
 }
