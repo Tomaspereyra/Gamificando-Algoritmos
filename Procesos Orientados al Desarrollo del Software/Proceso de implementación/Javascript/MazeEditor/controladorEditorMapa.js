@@ -130,3 +130,26 @@ function dibujarTodo(mapa){
 	paletaMapa();
 
 }
+
+function guardarMapa(mapa){
+    String mapaGuardado=0;
+    if(mapa.validar()){
+
+        mapaGuardado=mapa.toString();
+        alert("El mapa se ha guardado con exito");  
+
+    }else{
+        alert("Error, el mapa no es valido. Requisito: solo debe tener una entrada y una salida");
+    }
+    return mapaGuardado;
+}
+
+//Event handlers
+$( document ).ready(function() {
+    $("#Guardar-Mapa" ).click(function() {
+        guardarMapa(mapaPrueba);
+    });   
+    $("#Borrar-Mapa" ).click(function() {
+        LlenarGrilla(PISO);
+    });  
+});
