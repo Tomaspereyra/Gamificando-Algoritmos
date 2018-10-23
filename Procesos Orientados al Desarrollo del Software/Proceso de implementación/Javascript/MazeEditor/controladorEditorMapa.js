@@ -38,10 +38,11 @@ function mapIndexToSprite(index){
     }	
 }
 
+var mapaPrueba=new Mapa(16,16);
+
 gameScene.create = function () {    
- var mapaPrueba=new Mapa(16,16);
- mapaPrueba.LlenarGrilla(PISO);
- dibujarTodo(mapaPrueba);	
+	mapaPrueba.LlenarGrilla(PARED);
+	dibujarTodo(mapaPrueba);	
 }
 
 
@@ -90,32 +91,24 @@ function dibujarMapa(mapa){
 	}
 }
 
-function paletaMapa(){
+function dibujarPaleta(){
 			
 		for (var col = 0; col < 4; col++){
 			sprite = gameScene.add.sprite((SPRITE_SIZE *0),(SPRITE_SIZE * col), mapIndexToSprite(col)).setInteractive();
 			sprite.setOrigin(0,0);
             sprite.col = col;
 
-
-          
             sprite.on('pointerdown', function (pointer) {//cuando tengo click
-               pincel=this.col;
-
+				pincel=this.col;
                 this.setTint(0xff0000);//lo pinto de rojo
-
             });
             
             sprite.on('pointermove', function (pointer) {
-
-              this.clearTint();
-
+				this.clearTint();
             }); 
             
             sprite.on('pointerup', function (pointer) {//cuando levanta el click del mouse lo vuelve a pintar gris
-
-              this.clearTint();//limpia el tint rojo a original
-
+				this.clearTint();//limpia el tint rojo a original
             });   
 
         }
@@ -127,20 +120,20 @@ function paletaMapa(){
 
 function dibujarTodo(mapa){
 	dibujarMapa(mapa);
-	paletaMapa();
-
+	dibujarPaleta();
 }
 
 function guardarMapa(mapa){
-    String mapaGuardado=0;
-    if(mapa.validar()){
+    var mapaGuardado = null;
+    if(mapa.Validar()){
 
-        mapaGuardado=mapa.toString();
+        mapaGuardado=mapa.ToString();
         alert("El mapa se ha guardado con exito");  
 
     }else{
         alert("Error, el mapa no es valido. Requisito: solo debe tener una entrada y una salida");
     }
+	console.log("" + mapaGuardado);
     return mapaGuardado;
 }
 
@@ -150,6 +143,6 @@ $( document ).ready(function() {
         guardarMapa(mapaPrueba);
     });   
     $("#Borrar-Mapa" ).click(function() {
-        LlenarGrilla(PISO);
+        LlenarGrilla(pincel);
     });  
 });

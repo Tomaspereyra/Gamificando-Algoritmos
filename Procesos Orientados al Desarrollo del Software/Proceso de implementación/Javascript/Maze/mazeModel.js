@@ -15,6 +15,7 @@ function MazeMap (width, height, defaultOrientation) {
 	this.defaultOrientation = defaultOrientation;
 	console.log("Constructor : [" + width + "," + height + "]");
 	this.tiles = new Array(width);
+	this.valid = false;
 	for (var i = 0; i < width; i++) {
 		this.tiles[i] = new Array(height);
 	}
@@ -29,16 +30,50 @@ MazeMap.prototype.GetTile = function (x, y){
 }
 
 MazeMap.prototype.FromString = function (str){
+	
+	if (this.ValidMapString(str)){
+		rows = str.split("/");
+		var newHeight = rows.length;
+		var newWidth = rows[0].length;
+		console.log ("New Size : [" + newWidth + "," + newHeight + "]");
+		//console.log("Length : " + rows.length);
+		for (var row = 0; row < this.height; row++){	
+			for (var col = 0; col < this.width; col++){
+				//console.log("FromString : Row,col = [" + row + "," + col + "]");
+				this.tiles[row][col] = parseInt(rows[row][col]);
+			}
+		}
+		this.width = newWidth;
+		this.height = newHeight;
+		this.valid = true;
+		console.log(this.tiles);
+	} else {
+		this.valid = false;
+	}
+	
+}
+
+MazeMap.prototype.ValidMapString = function(str){
+	if (str == null || str.length == 0 || str == "")
+		return false;
 	rows = str.split("/");
-	console.log("Length : " + rows.length);
+	if (rows.length == 0)
+		return false;
+	var rowLength = rows[0].length;
 	for (var row = 0; row < this.height; row++){	
 		for (var col = 0; col < this.width; col++){
+			if (rows[row].length != rowLength) //Irregular
+				return false;
 			//console.log("FromString : Row,col = [" + row + "," + col + "]");
-			this.tiles[row][col] = parseInt(rows[row][col]);
+			var parsedTile = parseInt(rows[row][col]);
+			if (isNaN(parsedTile))
+				return false;
+			if (parsedTile < FLOOR || parsedTile > HOLE)
+				return false;
 		}
 	}
-	console.log(this.tiles);
-}
+	return true;
+}	
 
 MazeMap.prototype.IndexToSprite = function(index){
 	var result;
@@ -204,7 +239,8 @@ Player.prototype.IsWallAhead = function(){
 }
 
 Player.prototype.IsPathAhead = function(){
-	return (this.TileAhead() == FLOOR || this.TileAhead() == START || this.TileAhead() == EXIT);
+	var tileAhead = this.TileAhead();
+	return (tileAhead == FLOOR || tileAhead == START || tileAhead == EXIT);
 }
 
 Player.prototype.IsHoleAhead = function(){

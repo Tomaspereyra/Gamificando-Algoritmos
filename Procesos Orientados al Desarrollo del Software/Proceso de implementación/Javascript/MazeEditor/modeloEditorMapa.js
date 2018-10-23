@@ -77,11 +77,13 @@ Mapa.prototype.ToPrettyString = function(){
 Mapa.prototype.ToString = function(){
     var str = "";
     for(var fila=0; fila<this.ancho; fila++){
-        for(var columna=0; columna<this.altura;columna++){
+        if (fila > 0)
+			str += "/";
+		for(var columna=0; columna<this.altura;columna++){
             str += this.grilla[fila][columna];
             //str += this.grilla[fila][columna];
         }
-        str += "/";
+        
     }
     return str;
 }

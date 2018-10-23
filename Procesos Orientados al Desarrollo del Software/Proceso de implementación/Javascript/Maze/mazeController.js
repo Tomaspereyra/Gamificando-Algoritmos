@@ -10,6 +10,12 @@ $( document ).ready(function() {
 	$("#reset-button" ).click(function() {
 		RestartMap();
 	});  
+	$("#set-map-string-button" ).click(function() {
+		var mapString = prompt("Por favor, ingrese el codigo del mapa", "");
+		if (mapString != null)
+			SetNewMap(mapString);
+		
+	});  
 });
 ///*** INIT DATA ***///
 	
@@ -47,7 +53,8 @@ gameScene.preload = function () {
 
 gameScene.create = function () {    
 	console.log("create()...");
-	StartMap(CreateTestMap());
+	//StartMap(CreateTestMap());
+	StartMap(CreateTestMap2());
 	this.anims.create({
         key: 'explosion',
         frames: this.anims.generateFrameNumbers('explosion'),
@@ -73,6 +80,19 @@ gameScene.update = function() {
 			RestartMap();
 		}
 	}
+}
+
+function SetNewMap (mapString){
+	
+	var map = new MazeMap(16, 16, 0);
+	map.FromString(mapString);
+	if (map.valid){
+		StartMap(map);
+		RestartMap();
+	} else {
+		alert("Mapa ingresado invalido!")
+	}
+	
 }
 
 function RestartMap(){
@@ -133,6 +153,16 @@ function PlayOrders(orderString){
 }
 
 //Testing
+
+function CreateTestMap2(){
+
+	var map = new MazeMap(16, 16, S);
+	map.FromString("0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000200000000000/0000000000000000/0000300000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000/0000000000000000");
+	return map;
+
+}
+
+
 
 function CreateTestMap(){
 
