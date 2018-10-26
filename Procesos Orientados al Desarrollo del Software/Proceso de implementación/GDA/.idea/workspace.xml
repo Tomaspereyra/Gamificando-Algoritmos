@@ -21,7 +21,7 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.53" value="1" />
-          <entry key="project.open.time.54" value="1" />
+          <entry key="project.open.time.54" value="2" />
           <entry key="project.open.time.56" value="1" />
           <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.58" value="2" />
@@ -34,106 +34,96 @@
           <entry key="project.open.time.84" value="1" />
           <entry key="project.open.time.87" value="1" />
           <entry key="project.open.time.94" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="193" />
+          <entry key="py" value="244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="193" />
+          <entry key="Python" value="244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="24" />
-          <entry key="dummy" value="37" />
-          <entry key="py" value="36385" />
+          <entry key="dummy" value="47" />
+          <entry key="py" value="40691" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="37" />
-          <entry key="Python" value="36409" />
+          <entry key="PLAIN_TEXT" value="47" />
+          <entry key="Python" value="40715" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/EstudianteDao.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datos/Docente.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="102" lean-forward="true" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datos/Usuario.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-              <folding>
-                <marker date="1538422654025" expanded="true" signature="290:291" ph="..." />
-                <marker date="1538422654025" expanded="true" signature="291:296" ph="..." />
-                <marker date="1538422654025" expanded="true" signature="943:982" ph="..." />
-                <marker date="1538422654025" expanded="true" signature="1178:1184" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/negocio/DocenteABM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <marker date="1539378752601" expanded="true" signature="133:134" ph="..." />
-                <marker date="1539378752601" expanded="true" signature="133:139" ph="..." />
-                <marker date="1539378752601" expanded="true" signature="446:448" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dao/DocenteDao.py">
+        <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="61" column="50" lean-forward="true" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+            <state relative-caret-position="289">
+              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <marker date="1540512564617" expanded="true" signature="75:80" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/testTraerEstudiante.py">
+        <entry file="file://$PROJECT_DIR$/test/testComenzarCurso.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+            <state relative-caret-position="272">
+              <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
               <folding>
-                <marker date="1539707502856" expanded="true" signature="76:77" ph="..." />
+                <element signature="e#0#53#0" expanded="true" />
+                <marker date="1540512422475" expanded="true" signature="165:166" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testAgregarEstudiante.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="92" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="92" />
+              <folding>
+                <marker date="1539703833349" expanded="true" signature="103:122" ph="..." />
+                <marker date="1539703833349" expanded="true" signature="116:117" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <marker date="1540510974449" expanded="true" signature="89:90" ph="..." />
+                <marker date="1540510974449" expanded="true" signature="89:91" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testAgregarCurso.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <marker date="1540512599237" expanded="true" signature="131:479" ph="..." />
               </folding>
             </state>
           </provider>
@@ -153,34 +143,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/testTraerDocente.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <marker date="1539711363139" expanded="true" signature="67:72" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datos/Estudiante.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+            <state>
+              <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <marker date="1539703631046" expanded="true" signature="148:153" ph="..." />
+                <marker date="1540512564576" expanded="true" signature="109:114" ph="..." />
               </folding>
             </state>
           </provider>
@@ -206,41 +174,44 @@
       <list>
         <option value="$PROJECT_DIR$/dao/conexion.py" />
         <option value="$PROJECT_DIR$/dao/Conexion.py" />
-        <option value="$PROJECT_DIR$/negocio/CursoABM.py" />
-        <option value="$PROJECT_DIR$/negocio/EscenarioABM.py" />
         <option value="$PROJECT_DIR$/negocio/EscenarioRealizadoABM.py" />
         <option value="$PROJECT_DIR$/datos/EscenarioRealizado.py" />
         <option value="$PROJECT_DIR$/datos/EscenarioLaberinto.py" />
-        <option value="$PROJECT_DIR$/dao/EscenarioLaberintoDao.py" />
         <option value="$PROJECT_DIR$/datos/Juego.py" />
         <option value="$PROJECT_DIR$/test/testUsuario.py" />
         <option value="$PROJECT_DIR$/dao/EscenarioRealizadoDao.py" />
         <option value="$PROJECT_DIR$/dao/EscenarioEnProceso.py" />
         <option value="$PROJECT_DIR$/dao/UsuarioDao.py" />
         <option value="$PROJECT_DIR$/datos/prueba.py" />
-        <option value="$PROJECT_DIR$/datos/EscenarioEnProceso.py" />
-        <option value="$PROJECT_DIR$/dao/EscenarioEnProcesoDao.py" />
-        <option value="$PROJECT_DIR$/datos/Curso.py" />
-        <option value="$PROJECT_DIR$/dao/CursoDao.py" />
-        <option value="$PROJECT_DIR$/datos/Escenario.py" />
-        <option value="$PROJECT_DIR$/dao/EscenarioDao.py" />
         <option value="$PROJECT_DIR$/dao/JuegoDao.py" />
-        <option value="$PROJECT_DIR$/negocio/JuegoABM.py" />
-        <option value="$PROJECT_DIR$/negocio/CursoIniciadoABM.py" />
         <option value="$PROJECT_DIR$/negocio/UsuarioABM.py" />
         <option value="$PROJECT_DIR$/negocio/DocenteABM.py" />
-        <option value="$PROJECT_DIR$/negocio/EstudianteABM.py" />
         <option value="$PROJECT_DIR$/test/testAgregarEstudiante.py" />
         <option value="$PROJECT_DIR$/datos/Usuario.py" />
-        <option value="$PROJECT_DIR$/datos/CursoIniciado.py" />
         <option value="$PROJECT_DIR$/test/testTraerEstudiante.py" />
-        <option value="$PROJECT_DIR$/dao/CursoIniciadoDao.py" />
         <option value="$PROJECT_DIR$/dao/EstudianteDao.py" />
         <option value="$PROJECT_DIR$/datos/Estudiante.py" />
         <option value="$PROJECT_DIR$/test/testAgregarDocente.py" />
         <option value="$PROJECT_DIR$/datos/Docente.py" />
         <option value="$PROJECT_DIR$/test/testTraerDocente.py" />
         <option value="$PROJECT_DIR$/dao/DocenteDao.py" />
+        <option value="$PROJECT_DIR$/datos/Curso.py" />
+        <option value="$PROJECT_DIR$/dao/CursoIniciadoDao.py" />
+        <option value="$PROJECT_DIR$/datos/CursoIniciado.py" />
+        <option value="$PROJECT_DIR$/dao/EscenarioLaberintoDao.py" />
+        <option value="$PROJECT_DIR$/dao/EscenarioDao.py" />
+        <option value="$PROJECT_DIR$/negocio/EscenarioABM.py" />
+        <option value="$PROJECT_DIR$/datos/EscenarioEnProceso.py" />
+        <option value="$PROJECT_DIR$/dao/EscenarioEnProcesoDao.py" />
+        <option value="$PROJECT_DIR$/datos/Escenario.py" />
+        <option value="$PROJECT_DIR$/negocio/EscenarioEnProcesoABM.py" />
+        <option value="$PROJECT_DIR$/dao/CursoDao.py" />
+        <option value="$PROJECT_DIR$/negocio/CursoABM.py" />
+        <option value="$PROJECT_DIR$/test/testComenzarCurso.py" />
+        <option value="$PROJECT_DIR$/negocio/JuegoABM.py" />
+        <option value="$PROJECT_DIR$/negocio/CursoIniciadoABM.py" />
+        <option value="$PROJECT_DIR$/negocio/EstudianteABM.py" />
+        <option value="$PROJECT_DIR$/test/testAgregarCurso.py" />
       </list>
     </option>
   </component>
@@ -332,8 +303,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testTraerDocente">
-    <configuration name="CursoIniciadoDao" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.testAgregarCurso">
+    <configuration name="JuegoABM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,32 +312,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/negocio" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/CursoIniciadoDao.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="EstudianteDao" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="GDA" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/EstudianteDao.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/negocio/JuegoABM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -396,6 +346,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="testAgregarCurso" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="GDA" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testAgregarCurso.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="testAgregarDocente" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -417,7 +388,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testTraerDocente" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="testAgregarEstudiante" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -429,7 +400,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testTraerDocente.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testAgregarEstudiante.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -438,7 +409,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testTraerEstudiante" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="testComenzarCurso" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -450,7 +421,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testTraerEstudiante.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testComenzarCurso.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -461,19 +432,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.Usuario" />
-      <item itemvalue="Python.EstudianteDao" />
-      <item itemvalue="Python.testTraerEstudiante" />
-      <item itemvalue="Python.CursoIniciadoDao" />
+      <item itemvalue="Python.testAgregarCurso" />
       <item itemvalue="Python.testAgregarDocente" />
-      <item itemvalue="Python.testTraerDocente" />
+      <item itemvalue="Python.JuegoABM" />
+      <item itemvalue="Python.testAgregarEstudiante" />
+      <item itemvalue="Python.testComenzarCurso" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.testTraerDocente" />
+        <item itemvalue="Python.testAgregarCurso" />
+        <item itemvalue="Python.testComenzarCurso" />
+        <item itemvalue="Python.testAgregarEstudiante" />
+        <item itemvalue="Python.JuegoABM" />
         <item itemvalue="Python.testAgregarDocente" />
-        <item itemvalue="Python.testTraerEstudiante" />
-        <item itemvalue="Python.EstudianteDao" />
-        <item itemvalue="Python.CursoIniciadoDao" />
       </list>
     </recent_temporary>
   </component>
@@ -492,7 +463,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -542,18 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/EscenarioABM.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/EscenarioRealizadoABM.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/1707289955/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -568,84 +526,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/EscenarioLaberintoDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datos/prueba.py" />
-    <entry file="file://$PROJECT_DIR$/datos/Escenario.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/EscenarioDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="42" column="120" lean-forward="true" selection-start-line="42" selection-start-column="120" selection-end-line="42" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/Juego.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="42" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/JuegoDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/JuegoABM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <marker date="1539371112593" expanded="true" signature="121:126" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/EscenarioEnProcesoDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/CursoDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1538593487369" expanded="true" signature="1492:2118" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testUsuario.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -663,90 +544,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/UsuarioDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/EscenarioEnProceso.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="74" column="110" selection-start-line="74" selection-start-column="110" selection-end-line="74" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/CursoIniciado.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/CursoIniciadoDao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/Curso.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-142">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/EscenarioLaberinto.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="94" selection-start-line="18" selection-start-column="94" selection-end-line="18" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testAgregarEstudiante.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="92" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="92" />
-          <folding>
-            <marker date="1539703833349" expanded="true" signature="103:122" ph="..." />
-            <marker date="1539703833349" expanded="true" signature="116:117" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <marker date="1539703631046" expanded="true" signature="148:153" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testAgregarDocente.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding>
-            <marker date="1539710609452" expanded="true" signature="69:70" ph="..." />
-            <marker date="1539710609452" expanded="true" signature="69:75" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datos/Usuario.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
+        <state relative-caret-position="782">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <marker date="1538422654025" expanded="true" signature="290:291" ph="..." />
@@ -754,13 +554,6 @@
             <marker date="1538422654025" expanded="true" signature="943:982" ph="..." />
             <marker date="1538422654025" expanded="true" signature="1178:1184" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datos/Estudiante.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -774,20 +567,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/testTraerDocente.py">
+    <entry file="file://$PROJECT_DIR$/datos/Juego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/Curso.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/EstudianteDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
           <folding>
-            <marker date="1539711363139" expanded="true" signature="67:72" ph="..." />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datos/Docente.py">
+    <entry file="file://$PROJECT_DIR$/datos/Estudiante.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="102" lean-forward="true" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
+        <state relative-caret-position="442">
+          <caret line="26" column="83" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="26" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/CursoIniciado.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="29" column="62" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1540504771382" expanded="true" signature="649:655" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/CursoIniciadoDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1540504386000" expanded="true" signature="1557:2238" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/EscenarioLaberintoDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/EscenarioLaberinto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/DocenteDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="61" column="48" lean-forward="true" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/EscenarioDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="100" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/UsuarioDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
@@ -804,22 +674,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/EstudianteDao.py">
+    <entry file="file://$PROJECT_DIR$/datos/Escenario.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="85">
+          <caret line="5" column="107" selection-start-line="5" selection-start-column="107" selection-end-line="5" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/EscenarioEnProceso.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/EscenarioEnProcesoDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <marker date="1540509412077" expanded="true" signature="450:869" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/DocenteDao.py">
+    <entry file="file://$PROJECT_DIR$/negocio/EscenarioEnProcesoABM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="61" column="50" lean-forward="true" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+        <state relative-caret-position="317">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+            <marker date="1540509836042" expanded="true" signature="128:129" ph="..." />
+            <marker date="1540509836042" expanded="true" signature="128:134" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/EscenarioABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <marker date="1540506342824" expanded="true" signature="63:64" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testTraerDocente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <marker date="1539711363139" expanded="true" signature="67:72" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/JuegoDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="54" column="57" lean-forward="true" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/JuegoABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testAgregarDocente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <marker date="1539710609452" expanded="true" signature="69:70" ph="..." />
+            <marker date="1539710609452" expanded="true" signature="69:75" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/CursoDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-822">
+          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <marker date="1540510803104" expanded="true" signature="1428:2185" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/Docente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="25" column="102" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+          <folding>
+            <marker date="1540512564576" expanded="true" signature="109:114" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testAgregarCurso.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1540512599237" expanded="true" signature="131:479" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <marker date="1540510974449" expanded="true" signature="89:90" ph="..." />
+            <marker date="1540510974449" expanded="true" signature="89:91" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testAgregarEstudiante.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="92" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="92" />
+          <folding>
+            <marker date="1539703833349" expanded="true" signature="103:122" ph="..." />
+            <marker date="1539703833349" expanded="true" signature="116:117" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testComenzarCurso.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+            <marker date="1540512422475" expanded="true" signature="165:166" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <marker date="1540512564617" expanded="true" signature="75:80" ph="..." />
           </folding>
         </state>
       </provider>

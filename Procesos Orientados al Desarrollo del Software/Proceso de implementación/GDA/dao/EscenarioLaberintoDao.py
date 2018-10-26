@@ -59,7 +59,6 @@ class EscenarioLaberintoDao:
                 escenarioLaberinto = EscenarioLaberinto(resultado[1], resultado[2], resultado[3], resultado[4],
                                                         resultado[5], resultado[7])
                 escenarioLaberinto.setIdEscenario(resultado[0])
-                # falta traer el curso al que pertenece
 
         finally:
             cursor.close()

@@ -35,12 +35,6 @@ class EscenarioEnProceso:
     def setEscenario(self, escenario):
         self.escenario = escenario
 
-    def setCurso(self, cursoIniciado):
-        self.cursoIniciado = cursoIniciado
-
-    def getCurso(self):
-        return self.cursoIniciado
-
     def setCantidadBloquesUtilizados(self, cantidad):
         self.cantidadBloquesUtilizados = cantidad
 

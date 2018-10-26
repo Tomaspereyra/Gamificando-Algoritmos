@@ -18,18 +18,32 @@ class EscenarioEnProcesoDao:
 
         return sesion
 
-    def agregar(self, escenarioEnProceso, idCurso):
+    def comenzarEscenario(self, fechaInicio, idEscenario, idCurso):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
 
         try:
-            cursor.execute("""insert into EscenarioEnProceso(puntajeObtenido, solucionBrindada, fechaInicio, 
-            fechaFinalizacion, cantidadBloquesUtilizados, tiempoSolucion, intentos,CursoIniciado_idCursoIniciado,
-             Escenario_idEscenario) values('%i','%s','%s','%s','%i','%i','%i','%i','%i')""" %
-                           (escenarioEnProceso.getPuntajeObtenido(), escenarioEnProceso.getSolucionBrindada(),
-                            escenarioEnProceso.getFechaInicio(), escenarioEnProceso.getFechaFinalizacion(),
-                            escenarioEnProceso.getCantidadBloquesUtilizados(), escenarioEnProceso.getTiempoSolucion(),
-                            escenarioEnProceso.getIntentos(), idCurso, escenarioEnProceso.getEscenario().getIdEscenario()))
+            cursor.execute("""insert into EscenarioEnProceso(fechaInicio, Escenario_idEscenario, 
+            CursoIniciado_idCursoIniciado) values ('%s', '%i','%i')""" % (fechaInicio, idEscenario, idCurso))
+            sesion.commit()
+        finally:
+             cursor.close()
+             sesion.cerrarConexion()
+
+    def terminarEscenario(self, escenarioEnProceso):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+
+        try:
+            cursor.execute(""" update EscenarioEnProceso set puntajeObtenido ='%i', solucionBrindada = '%s', 
+            fechaFinalizacion='%s', cantidadBloquesUtilizados='%i', tiempoSolucion='%i', intentos ='%i' 
+            where idEscenarioEnProceso = '%i'""" % (escenarioEnProceso.getPuntajeObtenido(),
+                                                   escenarioEnProceso.getSolucionBrindada(),
+                                                   escenarioEnProceso.getFechaFinalizacion(),
+                                                   escenarioEnProceso.getCantidadBloquesUtilizados(),
+                                                   escenarioEnProceso.getTiempoSolucion(),
+                                                   escenarioEnProceso.getIntentos(), escenarioEnProceso.getId()))
+
             sesion.commit()
 
         finally:
@@ -91,4 +105,28 @@ class EscenarioEnProcesoDao:
             sesion.cerrarConexion()
             return lstEscenarios
 
+    def traerEscenario(self, idEscenario):
+        sesion = Sesion()
+        cursor = sesion.obtenerCursor()
+        escenarioEnProceso = EscenarioEnProceso()
+        escenario =EscenarioDao()
+
+
+        try:
+            cursor.execute("""select * from EscenarioEnProceso where EscenarioEnProceso.idEscenarioEnProceso ='%i'""" %
+                           idEscenario)
+            resultado = cursor.fetchone()
+            escenarioEnProceso.setId(resultado[0])
+            escenarioEnProceso.setPuntajeObtenido(resultado[1])
+            escenarioEnProceso.setSolucionBrindada(resultado[2])
+            escenarioEnProceso.setFechaInicio(resultado[3])
+            escenarioEnProceso.setFechaFinalizacion(resultado[4])
+            escenarioEnProceso.setCantidadBloquesUtilizados(resultado[5])
+            escenarioEnProceso.setTiempoSolucion(resultado[6])
+            escenarioEnProceso.setIntentos(resultado[7])
+            escenarioEnProceso.setEscenario(escenario.traerEscenario(resultado[8]))
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+            return escenarioEnProceso
 
