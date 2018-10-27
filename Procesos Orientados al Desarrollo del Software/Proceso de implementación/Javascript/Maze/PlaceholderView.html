@@ -1,45 +1,45 @@
-<!doctype html> 
-<html lang="en"> 
-<head> 
+<!doctype html>
+<html lang="en">
+<head>
 	<meta charset="UTF-8" />
     <title>Blockly Maze Test</title>
-	
+
 	<script type="text/javascript" src="../Lib/jquery.js"></script> <!-- JQuery -->
-	
-	<script type="text/javascript" src="../Lib/phaser/phaser.min.js"></script> 	
-	
+
+	<script type="text/javascript" src="../Lib/phaser/phaser.min.js"></script>
+
 	<script type="text/javascript" src="../Lib/materialize/js/materialize.js"></script> <!-- Materialize JS -->
 	<link rel="stylesheet" type="text/css" href="../Lib/materialize/css/materialize.css"> <!-- Materialize CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Materialize material-icons -->
-	
+
 	<script type="text/javascript" src="../Lib/blockly/blockly_compressed.js"></script> <!-- Blockly -->
 	<script type="text/javascript" src="../Lib/blockly/msg/js/en.js"></script> <!-- Blockly Language Support -->
 	<script type="text/javascript" src="../Lib/blockly/generators/javascript.js"></script> <!-- Blockly Language Support -->
-	
+
 	<script type="text/javascript" src="maze_blocks.js"></script> <!-- Maze Custom Blocks -->
 	<script type="text/javascript" src="mazeModel.js"></script> <!-- Maze Model -->
 	<script type="text/javascript" src="mazeController.js"></script> <!-- Maze Controller -->
-	
-	
+
+
 </head>
 <body>
 	<div class='row'>
-		<div id='blockly-div' class="col s5" style="height: 600px; width: 800px;"></div>
+		<div id='blockly-div' class="col s5" style="height: 600px; width: 600px;"></div>
 		<div id='intermediate-div' class="col s2 center-align">
 			<div class='row center-align' align="center" >
 				<button class="btn waves-effect waves-light" type='button' id='play-button'>¡Jugar!<i class="material-icons right">done_outline</i>
-				</button> 
+				</button>
 			</div>
 			<div class='row center-align' align="center" >
 				<button class="btn waves-effect waves-light" type='button' id='reset-button'>¡Reiniciar!<i class="material-icons right">autorenew</i>
-				</button> 
+				</button>
 			</div>
 			<div class='row center-align' align="center" >
 				<button class="btn waves-effect waves-light" type='button' id='set-map-string-button'>¡Ingresar String Mapa!<i class="material-icons right">build</i>
-				</button> 
+				</button>
 			</div>
 		</div>
-		
+
 		<div id='phaser-div' class="col s5" style="height: 480px; width: 600px;"></div>
 	</div>
 </body>
@@ -56,5 +56,3 @@
   var workspace = Blockly.inject('blockly-div',
       {toolbox: document.getElementById('toolbox')});
 </script>
-
-
