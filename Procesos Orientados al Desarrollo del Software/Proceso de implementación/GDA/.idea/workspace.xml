@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04c95cbd-e9a2-4b94-9123-e9e3575eb471" name="Default Changelist" comment="" />
+    <list default="true" id="04c95cbd-e9a2-4b94-9123-e9e3575eb471" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/GDA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GDA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/__init__.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +66,46 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="471022543">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="97" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="97" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/negocio/DocenteABM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="37" />
+=======
         <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -72,6 +113,7 @@
               <folding>
                 <marker date="1540512564617" expanded="true" signature="75:80" ph="..." />
               </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
             </state>
           </provider>
         </entry>
@@ -79,17 +121,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/testComenzarCurso.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="375">
+              <caret line="25" column="102" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/DocenteDao.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+=======
             <state relative-caret-position="272">
               <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
                 <marker date="1540512422475" expanded="true" signature="165:166" ph="..." />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/test/testTraerDocente.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="23" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="23" />
+=======
         <entry file="file://$PROJECT_DIR$/test/testAgregarEstudiante.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -98,11 +162,21 @@
                 <marker date="1539703833349" expanded="true" signature="103:122" ph="..." />
                 <marker date="1539703833349" expanded="true" signature="116:117" ph="..." />
               </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/datos/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+=======
         <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -127,28 +201,47 @@
               </folding>
             </state>
           </provider>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/testAgregarDocente.py">
+        <entry file="file://$PROJECT_DIR$/dao/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/negocio/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="180">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding>
-                <marker date="1539710609452" expanded="true" signature="69:70" ph="..." />
-                <marker date="1539710609452" expanded="true" signature="69:75" ph="..." />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+=======
         <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
               <folding>
                 <marker date="1540512564576" expanded="true" signature="109:114" ph="..." />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
               </folding>
             </state>
           </provider>
@@ -168,6 +261,9 @@
       <find>def agregarUsuario\(self\, usuario\)\:\n    sesion \= self\.iniciarOperacion\(\)\n\n    cursor \= sesion\.obtenerCursor\(\)\n    try\:\n        cursor\.execute\(\&quot;\&quot;\&quot;insert into Usuario\(username\,password\,email\,nombre\,apellido\)\n          values\(\'\%s\'\, \'\%s\'\, \'\%s\'\, \'\%s\'\, \'\%s\'\)\&quot;\&quot;\&quot; \% \(\n            usuario\.getUsername\(\)\, usuario\.getPassword\(\)\, usuario\.getEmail\(\)\, usuario\.getNombre\(\)\,\n            usuario\.getApellido\(\)\)\)\n        sesion\.commit\(\)\n    except\:\n        \# print \&quot;Error en ejecucion de la query\&quot;\n        sesion\.getEstado\(\)\.rollback\(\)  \# volver al estado anterior\n\n    cursor\.close\(\)\n    sesion\.cerrarConexion\(\)</find>
       <find>return str\(\&quot;ID\: \&quot; \+ str\(self\.getId\(\)\) \+ \&quot; Nombre de usuario\: \&quot; \+ self\.getUsername\(\) \+ \&quot; Email\: \&quot; \+ self\.getEmail\(\) \+\n            \&quot; CursosIniciados\: \&quot; \+ str\(\' \'\.join\(self\.getCursosIniciados\(\)\)\) \+ \&quot; Nombre \:\&quot; \+ self\.getNombre\(\) \+\n                                       \&quot; Apellido\: \&quot; \+ self\.getApellido\(\)\)</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -195,6 +291,9 @@
         <option value="$PROJECT_DIR$/datos/Docente.py" />
         <option value="$PROJECT_DIR$/test/testTraerDocente.py" />
         <option value="$PROJECT_DIR$/dao/DocenteDao.py" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/negocio/__init__.py" />
+=======
         <option value="$PROJECT_DIR$/datos/Curso.py" />
         <option value="$PROJECT_DIR$/dao/CursoIniciadoDao.py" />
         <option value="$PROJECT_DIR$/datos/CursoIniciado.py" />
@@ -212,6 +311,7 @@
         <option value="$PROJECT_DIR$/negocio/CursoIniciadoABM.py" />
         <option value="$PROJECT_DIR$/negocio/EstudianteABM.py" />
         <option value="$PROJECT_DIR$/test/testAgregarCurso.py" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       </list>
     </option>
   </component>
@@ -238,6 +338,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -250,30 +351,6 @@
               <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
               <item name="GDA" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GDA" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GDA" type="462c0819:PsiDirectoryNode" />
-              <item name="datos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GDA" type="462c0819:PsiDirectoryNode" />
-              <item name="negocio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GDA" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GDA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -283,8 +360,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="mpo&#9;null&#9;null" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/datos/Usuario.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -303,8 +381,13 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="RunManager" selected="Python.__init__">
+    <configuration name="EstudianteDao" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
   <component name="RunManager" selected="Python.testAgregarCurso">
     <configuration name="JuegoABM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -316,7 +399,11 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/EstudianteDao.py" />
+=======
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/negocio/JuegoABM.py" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -346,7 +433,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
     <configuration name="testAgregarCurso" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       <module name="GDA" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -354,11 +445,19 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/negocio" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/negocio/__init__.py" />
+=======
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testAgregarCurso.py" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -395,9 +494,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testAgregarEstudiante.py" />
@@ -432,6 +531,21 @@
     </configuration>
     <list>
       <item itemvalue="Python.Usuario" />
+<<<<<<< HEAD
+      <item itemvalue="Python.EstudianteDao" />
+      <item itemvalue="Python.testTraerEstudiante" />
+      <item itemvalue="Python.testAgregarDocente" />
+      <item itemvalue="Python.testTraerDocente" />
+      <item itemvalue="Python.__init__" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.__init__" />
+        <item itemvalue="Python.testTraerDocente" />
+        <item itemvalue="Python.testAgregarDocente" />
+        <item itemvalue="Python.testTraerEstudiante" />
+        <item itemvalue="Python.EstudianteDao" />
+=======
       <item itemvalue="Python.testAgregarCurso" />
       <item itemvalue="Python.testAgregarDocente" />
       <item itemvalue="Python.JuegoABM" />
@@ -445,6 +559,7 @@
         <item itemvalue="Python.testAgregarEstudiante" />
         <item itemvalue="Python.JuegoABM" />
         <item itemvalue="Python.testAgregarDocente" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
       </list>
     </recent_temporary>
   </component>
@@ -462,14 +577,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+=======
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17868339" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30985916" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30831975" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -505,6 +624,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://C:/Python27/Lib/imputil.py" />
+    <entry file="file://$PROJECT_DIR$/negocio/EscenarioABM.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/EscenarioRealizadoABM.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/1707289955/__builtin__.py" />
+=======
     <entry file="file://C:/Python27/Lib/imputil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -519,6 +648,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
     <entry file="file://$PROJECT_DIR$/dao/Conexion.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -591,6 +721,12 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+=======
     <entry file="file://$PROJECT_DIR$/datos/Estudiante.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -606,22 +742,32 @@
             <element signature="e#0#29#0" expanded="true" />
             <marker date="1540504771382" expanded="true" signature="649:655" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/CursoIniciadoDao.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="1054">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+=======
         <state relative-caret-position="317">
           <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <marker date="1540504386000" expanded="true" signature="1557:2238" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/EscenarioLaberintoDao.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="238">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+=======
         <state relative-caret-position="918">
           <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
         </state>
@@ -641,6 +787,7 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
@@ -656,6 +803,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/UsuarioDao.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="374">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+=======
         <state relative-caret-position="221">
           <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
@@ -671,6 +822,7 @@
             <marker date="1539378752601" expanded="true" signature="133:139" ph="..." />
             <marker date="1539378752601" expanded="true" signature="446:448" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
@@ -690,17 +842,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/EscenarioEnProcesoDao.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+=======
         <state relative-caret-position="487">
           <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <marker date="1540509412077" expanded="true" signature="450:869" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/negocio/EscenarioEnProcesoABM.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="453">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+=======
         <state relative-caret-position="317">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
@@ -708,6 +869,7 @@
             <marker date="1540509836042" expanded="true" signature="128:129" ph="..." />
             <marker date="1540509836042" expanded="true" signature="128:134" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
@@ -745,6 +907,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/JuegoDao.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="136">
+          <caret line="8" column="92" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/EstudianteDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+=======
         <state relative-caret-position="-6">
           <caret line="54" column="57" lean-forward="true" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
         </state>
@@ -756,21 +931,47 @@
           <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/Usuario.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/test/testTraerEstudiante.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/testAgregarDocente.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="150">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding>
-            <marker date="1539710609452" expanded="true" signature="69:70" ph="..." />
-            <marker date="1539710609452" expanded="true" signature="69:75" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/datos/Estudiante.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/DocenteDao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+=======
     <entry file="file://$PROJECT_DIR$/dao/CursoDao.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-822">
@@ -806,10 +1007,35 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <marker date="1540512599237" expanded="true" signature="131:479" ph="..." />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/test/testTraerDocente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datos/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+=======
     <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -829,10 +1055,22 @@
           <folding>
             <marker date="1539703833349" expanded="true" signature="103:122" ph="..." />
             <marker date="1539703833349" expanded="true" signature="116:117" ph="..." />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/negocio/CursoABM.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/EstudianteABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+=======
     <entry file="file://$PROJECT_DIR$/test/testComenzarCurso.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -840,10 +1078,24 @@
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <marker date="1540512422475" expanded="true" signature="165:166" ph="..." />
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/datos/Docente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="102" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/negocio/DocenteABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="37" />
+=======
     <entry file="file://$PROJECT_DIR$/negocio/CursoIniciadoABM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -851,6 +1103,7 @@
           <folding>
             <marker date="1540512564617" expanded="true" signature="75:80" ph="..." />
           </folding>
+>>>>>>> b0aef73b109d1cb1ff455178e6ad2076d8bec4c4
         </state>
       </provider>
     </entry>
