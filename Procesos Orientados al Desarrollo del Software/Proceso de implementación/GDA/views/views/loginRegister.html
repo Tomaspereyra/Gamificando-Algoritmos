@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ingreso</title>
+	
+	<script type="text/javascript" src="../Lib/jquery.js"></script> <!-- JQuery -->
+	<script type="text/javascript" src="../Lib/materialize/js/materialize.js"></script> <!-- Materialize JS -->
+	
+	<link rel="stylesheet" type="text/css" href="../Lib/materialize/css/materialize.css"> <!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Materialize material-icons -->
+</head>
+<body>
+    <!--Contenedor General-->
+    <div class="container">
+        <div class="row">
+            <div class="col s8 offset-s2 m6 offset-m3">
+                <div class="card center-align">
+                    <div class="card-image">
+                        <!-- <img class="activator" src="https://o.aolcdn.com/images/dims3/GLOB/crop/5760x2880+0+480/resize/630x315!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F1e6a11c0ceb369bee739518f2618916d%2F205881769%2Fhealth-food-for-fitness-picture-id855098134"> -->
+						<img class="activator" src="https://login.gov/es/assets/img/login-gov-600x314.png">
+						
+                    </div>
+                    <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab" swicolor="black"><a class="active" href="#test4">Ingresar</a></li>
+                        <li class="tab"><a href="#test6">Registrarse</a></li>
+                    </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                    <div id="test4">
+                        <div class="row">
+                            <form action="" method="post">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input placeholder="Nombre de Usuario" id="usernameLogin" name="username" type="text" class="validate">
+                                    <label for="usernameLogin">Usuario</label>
+                                </div> 
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">vpn_key</i>
+                                    <input type="password" placeholder="Tu Contraseña" id="passwordLogin" name="password" type="text" class="validate">
+                                    <label for="passwordLogin">Contraseña</label>
+                                </div>  
+                                <div>
+                                    <button type="button" id="login" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Ingresar</button>
+                                </div>                             
+                            </form>                          
+                        </div>                       
+                    </div>
+                    <div id="test6">
+                        <div class="row">
+                            <form action="" method="post">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">border_color</i>
+                                    <input placeholder="Tu Nombre" id="email" name="email" type="text" class="validate">
+                                    <label for="email">Nombre/s</label>
+                                </div>                             
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">border_color</i>
+                                    <input placeholder="Tu Apellido" id="apellido" name="apellido" type="text" class="validate">
+                                    <label for="email">Apellido/s</label>
+                                </div>                             
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">email</i>
+                                    <input placeholder="ejemplo@dominio.com" id="email" name="email" type="text" class="validate">
+                                    <label for="email">Email</label>
+                                </div> 
+								<div class="input-field col s12">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input placeholder="Fecha de Nacimiento" id="fechaNacimiento" name="fechaNacimiento" type="text" class="datepicker">
+                                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                                </div> 
+								<div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input placeholder="Nombre de Usuario" id="usernameRegister" name="registerUsername" type="text" class="validate">
+                                    <label for="usernameRegister">Usuario</label>
+                                </div>  
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">vpn_key</i>
+                                    <input type="password" placeholder="tu contraseña" id="passwordRegister" name="password" type="text" class="password">
+                                    <label for="passwordRegister">Contraseña</label>
+                                </div>  
+                                <div>
+                                    <button type="button" id="registrarse" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Registrarse</button>
+                                </div>                             
+                            </form>                          
+                        </div>                    
+                    </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</body>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script type="text/javascript" src="../js/loginRegister.js"></script>
+</html>
