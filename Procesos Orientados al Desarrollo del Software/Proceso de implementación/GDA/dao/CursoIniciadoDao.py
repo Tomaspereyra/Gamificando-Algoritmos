@@ -52,6 +52,23 @@ class CursoIniciadoDao:
             cursor.close()
             sesion.cerrarConexion()
 
+    def traerCurso(self, idCurso):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        curso = CursoIniciado()
+        cursodao = CursoDao()
+        try:
+            cursor.execute("""select * from cursoiniciado where cursoiniciado.idCursoIniciado='%i'""" % idCurso)
+            resultado = cursor.fetchone()
+            escenario = EscenarioEnProcesoDao()
+            curso.setIdCursoIniciado(resultado[0])
+            curso.setCurso(cursodao.traerCurso(resultado[2]))
+            curso.agregarEscenario(escenario.traerEscenariosPorCurso(curso.getIdCursoIniciado()))
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+            return curso
+
     def traerCursosPorEstudiante(self, idEstudiante):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()

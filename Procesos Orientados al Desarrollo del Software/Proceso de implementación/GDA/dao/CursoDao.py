@@ -17,20 +17,17 @@ class CursoDao:
 
         return sesion
 
-    def agregar(self, idDocente):
+    def agregar(self, sePuedeSaltear, nombre, descripcion, idDocente, juego):
 
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
 
         try:
-            cursor.execute("""insert into Curso (sePuedeSaltear,nombre,docente_idDocente)
-             values('%s', '%s','%i')""" % (curso.getSepuedeSaltar(), curso.getNombre(),
-                                           idDocente))
+            cursor.execute("""insert into Curso (sePuedeSaltear,nombre,descripcion, docente_idDocente, Juego_idJuego)
+             values('%i', '%s','%s', '%i','%i')""" % (sePuedeSaltear, nombre, descripcion, idDocente, juego.getId()))
             sesion.commit()
-        except:
-            print "Error en la ejecucion de la query"
-            sesion.getEstado().rollback()
+
         finally:
             cursor.close()
             sesion.cerrarConexion()
@@ -54,6 +51,7 @@ class CursoDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         curso = Curso(False, "-", "juego", "descpripcion")
+        escenario = EscenarioDao()
         try:
             cursor.execute("""select * from Curso where Curso.idCurso = '%i'""" % idCurso)
             resultado = cursor.fetchone()
@@ -61,6 +59,8 @@ class CursoDao:
                 juego = JuegoDao()
                 curso = Curso(resultado[1], resultado[2], juego.traerJuegoPorId(resultado[5]), resultado[3])
                 curso.setIdCurso(resultado[0])
+                curso.setListaEscenario(escenario.traerEscenariosPorCurso(curso.getIdCurso()))
+
         finally:
             cursor.close()
             sesion.cerrarConexion()

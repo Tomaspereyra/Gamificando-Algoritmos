@@ -1,6 +1,7 @@
 import MySQLdb
 from Conexion import Sesion
 from datos.Escenario import Escenario
+from dao.EscenarioLaberintoDao import EscenarioLaberintoDao
 
 
 class EscenarioDao:
@@ -15,7 +16,7 @@ class EscenarioDao:
 
         return sesion
 
-    def agregar(self, escenario, idCurso):
+    def agregar(self, bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso):
 
         sesion = self.iniciarOperacion()
 
@@ -23,9 +24,7 @@ class EscenarioDao:
         try:
             cursor.execute("""insert into Escenario (bloquesPermitidos, cantBloquesMax, hint, posibleSolucion,
                            descripcion,Curso_idCurso) values('%i','%i','%s','%s','%s','%i')""" % (
-                escenario.getBloquesPerimitidos(), escenario.getCantBloquesMax(),
-                escenario.getHint(), escenario.getPosiblesSolucion(), escenario.getDescripcion(),
-                idCurso))
+                bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso))
             sesion.commit()
         except:
             print "Error en la ejecucion de la query"
@@ -53,6 +52,7 @@ class EscenarioDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         resultado = None
+        escenariolab = EscenarioLaberintoDao()
         try:
             cursor.execute("""select * from Escenario where Escenario.Curso_idCurso='%i'""" % idCurso)
             resultado = cursor.fetchall()

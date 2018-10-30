@@ -1,5 +1,4 @@
 from dao.CursoIniciadoDao import CursoIniciadoDao
-from datos.CursoIniciado import CursoIniciado
 
 
 class CursoIniciadoABM:
@@ -9,8 +8,11 @@ class CursoIniciadoABM:
     def traerCursosIniciadosPorEstudiante(self, estudiante):
         return self.dao.traerCursosPorEstudiante(estudiante.getIdEstudiante())
 
-    def agregarCursoIniciado(self, estudiante, curso):
+    def comenzarCurso(self, estudiante, curso):
         self.dao.agregar(estudiante.getIdEstudiante(), curso.getIdCurso())
 
     def eliminarCursoIniciado(self, cursoIniciado):
         self.dao.eliminar(cursoIniciado)
+
+    def traerCurso(self, idCurso):
+        return self.dao.traerCurso(idCurso)

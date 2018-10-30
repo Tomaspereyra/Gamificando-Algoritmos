@@ -3,7 +3,7 @@ from datos.Curso import Curso
 
 class Escenario:
 
-    def __init__(self, bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion):
+    def __init__(self, bloquesPermitidos=0, cantBloquesMax=0, hint="-", posibleSolucion="-", descripcion="-"):
         self.bloquesPerimitidos = bloquesPermitidos
         self.cantBloquesMax = cantBloquesMax
         self.hint = hint

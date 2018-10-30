@@ -14,9 +14,8 @@ class CursoIniciado:
     def agregarEscenario(self, escenarioRealizado):
         self.escenarioRealizado.append(escenarioRealizado)
 
-
-    def setIdCursoIniciado(self,cursoIniciado):
-        self.idCursoIniciado=cursoIniciado
+    def setIdCursoIniciado(self, cursoIniciado):
+        self.idCursoIniciado = cursoIniciado
 
     def getIdCursoIniciado(self):
         return self.idCursoIniciado
@@ -24,5 +23,11 @@ class CursoIniciado:
     def getCurso(self):
         return self.curso
 
+    def getEscenarios(self):
+        return self.escenarioRealizado
+
     def __str__(self):
-        return str(self.getCurso().__str__())
+        return str(self.getCurso().__str__() + "Escenarios: " + str(self.imprimirLista()))
+
+    def imprimirLista(self):
+        return ''.join('\n'.join(map(str, sl)) for sl in self.getEscenarios())
