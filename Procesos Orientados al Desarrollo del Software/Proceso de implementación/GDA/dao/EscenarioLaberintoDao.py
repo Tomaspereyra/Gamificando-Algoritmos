@@ -1,3 +1,4 @@
+import MySQLdb
 from Conexion import Sesion
 from datos.EscenarioLaberinto import EscenarioLaberinto
 
@@ -8,8 +9,8 @@ class EscenarioLaberintoDao:
 
         try:
             sesion = Sesion()  # iniciar sesion con la bd
-        except MySQLdb.OperationalError:
-            print "Error en la conexion"
+        except MySQLdb.OperationalError as e:
+            print "Error en la conexion " + str(e)
             sesion = None
 
         return sesion

@@ -21,8 +21,11 @@ function tryLogin(){
 		console.log("tryLogin() : " + JSON.stringify(data));
 		$.ajax({
 			url: "http://localhost:5000/auth/login",
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
 			context: document.body,
-			data : data
+			data : data,
+			type : "POST"
 		}).done(doneLogin);
 	}
 }
@@ -74,7 +77,10 @@ function tryRegister(){
 	$.ajax({
 		url: "http://localhost:5000/auth/register",
 		context: document.body,
-		data : data
+		dataType : "json",
+		contentType: "application/json; charset=utf-8",
+		data : data,
+		type : "POST"
 	}).done(doneLogin);
 	
 }

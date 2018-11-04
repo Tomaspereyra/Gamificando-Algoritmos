@@ -11,6 +11,8 @@ app.register_blueprint(registro.bp)
 
 
 @app.route('/')
+
+
 def hello():
     return 'Hello, World!'
 
