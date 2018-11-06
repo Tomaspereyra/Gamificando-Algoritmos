@@ -1,15 +1,16 @@
-import functools
+from __future__ import print_function
 import json
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_cors import CORS
+from flask import current_app as app
 
+import sys
+
+from util.errores import *
 from negocio.UsuarioABM import UsuarioABM
 
-app = Flask(__name__)
-CORS(app)
 usuarioABM = UsuarioABM()
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -43,17 +44,19 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    error = None
     if request.method == 'POST':
-        content = request.get_json()
-        print(str(content))
-        error = None
-        user = usuarioABM.traerUsuario(content['username'])
+        print('/login -> POST()', file=sys.stdout)
+        content = request.args;
 
+        user = usuarioABM.traerUsuario(content['username'])
+        #print('Pre-Validacion', file=sys.stdout)
         if user is None:
             error = 'Incorrect username.'
         elif not content['password'] == user.password:
             error = 'Incorrect password.'
 
+        print('Error : ' + error, file=sys.stdout)
         if error is None:
 
             session.clear()
@@ -62,12 +65,11 @@ def login():
                     "loged_in_user": content['username'],
                     "loged_in_password": content['password']
                 }
-            return json.dumps(data)
 
-        flash(error)
-
-    return json.dumps(user)
-
+            return createResponseAsJSON(data)
+        else:
+            return createResponseAsJSON(crearError(-1, error))
+    
 @bp.route('/test', methods=('GET', 'POST'))
 def test():
     if request.method == 'POST':
@@ -85,6 +87,6 @@ def test():
 
 @bp.route('/logout')
 def logout():
-    print str(session['user_id'])
+    print (str(session['user_id']))
     session.clear()
     return str(session)

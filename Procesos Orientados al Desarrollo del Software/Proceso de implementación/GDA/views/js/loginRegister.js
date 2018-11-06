@@ -12,6 +12,7 @@ $(document).ready(function(){
 
 function tryLogin(){
 	if (validateLoginInfo()){
+		/*
 		var username_ = $("#usernameLogin").val();
 		var password_ = $("#passwordLogin").val();
 		var data = {
@@ -21,12 +22,30 @@ function tryLogin(){
 		console.log("tryLogin() : " + JSON.stringify(data));
 		$.ajax({
 			url: "http://localhost:5000/auth/login",
-			dataType : "json",
-			contentType: "application/json; charset=utf-8",
-			context: document.body,
-			data : data,
-			type : "POST"
-		}).done(doneLogin);
+			json : data,
+			type : "POST",
+			done : function (data) {
+				alert("Done()...");
+				doneLogin(data);
+			}
+		})*/
+		
+		var username_ = $("#usernameLogin").val();
+		var password_ = $("#passwordLogin").val();
+		var data = {
+			username : username_,
+			password : password_
+		};
+		console.log("tryLogin() : " + JSON.stringify(data));
+		$.ajax({
+			url: "http://localhost:5000/auth/login?username=" + username_ + "&password=" + password_,
+			type : "POST",
+			datatype : "json"
+		}).done (function (data) {
+			console.log(JSON.stringify(data));
+			doneLogin(data);
+		})
+		
 	}
 }
 
