@@ -20,7 +20,4 @@ def crearError(errorCode, errorText):
     return json.dumps(data)
 
 def createResponseAsJSON(data):
-    return app.response_class(
-        response=data,
-        mimetype='application/json'
-    )
+    return json.dumps(data)

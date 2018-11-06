@@ -40,9 +40,9 @@ function tryLogin(){
 		$.ajax({
 			url: "http://localhost:5000/auth/login?username=" + username_ + "&password=" + password_,
 			type : "POST",
-			datatype : "json"
-		}).done (function (data) {
-			console.log(JSON.stringify(data));
+			dataType : "json"
+		}).always (function (data) {
+			console.log("Done Login. Data Received : " + JSON.stringify(data));
 			doneLogin(data);
 		})
 		
@@ -72,13 +72,13 @@ function doneLogin(data){
 	if (data.error != null){
 		showError(data);
 	} else {
-		alert("Usted se ha registrado con exito!");
+		alert("Usted ha ingresado al sistema con exito!");
 	}
 }
 
 function tryRegister(){
-	var username_ = $("#usernameLogin").val();
-	var password_ = $("#passwordLogin").val();
+	var username_ = $("#usernameRegister").val();
+	var password_ = $("#passwordRegister").val();
 	var email_ = $("#email").val();
 	var nombre_ = $("#nombre").val();
 	var apellido_ = $("#apellido").val();
@@ -94,14 +94,23 @@ function tryRegister(){
 		};
 	console.log("tryRegister() : " + JSON.stringify(data));
 	$.ajax({
-		url: "http://localhost:5000/auth/register",
-		context: document.body,
-		dataType : "json",
-		contentType: "application/json; charset=utf-8",
-		data : data,
-		type : "POST"
-	}).done(doneLogin);
+		url: "http://localhost:5000/auth/register?username=" + username_ + "&password=" + password_ + "&email=" + email_ +
+		"&nombre=" + nombre_ + "&apellido=" + apellido_ + "&fechaNacimiento=" + fechaNacimiento_,
+		type : "POST",
+		dataType : "json"
+	}).always(function (data){
+		console.log("Done Registering. Data Received : " + JSON.stringify(data));
+		doneRegister(data);
+	});
 	
+}
+
+function doneRegister(data){
+	if (data.error != null){
+		showError(data);
+	} else {
+		alert("Usted se ha registrado con exito!");
+	}
 }
 
 function init(){

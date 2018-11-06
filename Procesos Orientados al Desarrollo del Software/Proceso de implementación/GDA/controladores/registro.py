@@ -19,12 +19,14 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        mail = request.form.get('mail')
-        nombre = request.form.get('nombre')
-        apellido = request.form.get('apellido')
-        fechaNacimiento = request.form.get('fechaNacimiento')
+        print('/register -> POST()', file=sys.stdout)
+        content = request.args
+        username = content.get('username')
+        password = content.get('password')
+        mail = content.get('email')
+        nombre = content.get('nombre')
+        apellido = content.get('apellido')
+        fechaNacimiento = content.get('fechaNacimiento')
         error = None
 
         if not username:
@@ -36,18 +38,21 @@ def register():
 
         if error is None:
             usuarioABM.registrarUsuario(username, password, mail, nombre, apellido, fechaNacimiento)
-
-
-        flash(error)
-
-    return jsonify(error)
+            print('Response data : ' + username + " pw:" + password, file=sys.stdout)
+            data = {
+                "loged_in_user" : username,
+                "loged_in_password" : password
+            }
+            return createResponseAsJSON(data)
+        else:
+            return crearError(-2, error)
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     error = None
     if request.method == 'POST':
         print('/login -> POST()', file=sys.stdout)
-        content = request.args;
+        content = request.args
 
         user = usuarioABM.traerUsuario(content['username'])
         #print('Pre-Validacion', file=sys.stdout)
@@ -56,7 +61,8 @@ def login():
         elif not content['password'] == user.password:
             error = 'Incorrect password.'
 
-        print('Error : ' + error, file=sys.stdout)
+        print('Error : ' + str(error), file=sys.stdout)
+
         if error is None:
 
             session.clear()
@@ -64,12 +70,14 @@ def login():
             data = {
                     "loged_in_user": content['username'],
                     "loged_in_password": content['password']
-                }
+            }
 
             return createResponseAsJSON(data)
         else:
             return createResponseAsJSON(crearError(-1, error))
-    
+    else:
+        print('/register -> No Post!!', file=sys.stdout)
+
 @bp.route('/test', methods=('GET', 'POST'))
 def test():
     if request.method == 'POST':
