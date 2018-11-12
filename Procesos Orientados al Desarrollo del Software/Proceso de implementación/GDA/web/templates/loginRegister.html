@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta http-equiv="encoding" content="ISO-8859-1 >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Ingreso</title>
 	
-	<script type="text/javascript" src="../Lib/jquery.js"></script> <!-- JQuery -->
-	<script type="text/javascript" src="../Lib/materialize/js/materialize.js"></script> <!-- Materialize JS -->
-	
-	<link rel="stylesheet" type="text/css" href="../Lib/materialize/css/materialize.css"> <!-- Materialize CSS -->
+	<link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Materialize material-icons -->
 </head>
 <body>
     <!--Contenedor General-->
-    <div class="container">
+    <div id="mainContainer" class="container">
         <div class="row">
             <div class="col s8 offset-s2 m6 offset-m3">
                 <div class="card center-align">
@@ -34,9 +33,12 @@
                     </ul>
                     </div>
                     <div class="card-content grey lighten-4">
+                    {% if error %}
+                    <center><label><font color="red">{{ error }}</font></label></center>
+                    {% endif %}
                     <div id="test4">
                         <div class="row">
-                            <form action="" method="post">
+                            <form action="/auth/login" id="formLogin" method="POST">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">account_circle</i>
                                     <input placeholder="Nombre de Usuario" id="usernameLogin" name="username" type="text" class="validate">
@@ -44,21 +46,22 @@
                                 </div> 
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">vpn_key</i>
-                                    <input type="password" placeholder="Tu Contraseña" id="passwordLogin" name="password" type="text" class="validate">
+                                    <input type="password" placeholder="Tu Contraseña" id="passwordLogin" name="password" class="validate">
                                     <label for="passwordLogin">Contraseña</label>
                                 </div>  
                                 <div>
-                                    <button type="button" id="login" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Ingresar</button>
+                                    <button type="submit" onsubmit="return validateLoginForm()" id="login" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Ingresar</button>
+                                    <!-- <button type="submit" id="login" form="formLogin" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Ingresar</button> -->
                                 </div>                             
                             </form>                          
                         </div>                       
                     </div>
                     <div id="test6">
                         <div class="row">
-                            <form action="" method="post">
+                            <form action="/auth/register" id=formRegister" method="POST">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">border_color</i>
-                                    <input placeholder="Tu Nombre" id="email" name="email" type="text" class="validate">
+                                    <input placeholder="Tu Nombre" id="nombre" name="nombre" type="text" class="validate">
                                     <label for="email">Nombre/s</label>
                                 </div>                             
                                 <div class="input-field col s12">
@@ -78,7 +81,7 @@
                                 </div> 
 								<div class="input-field col s12">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input placeholder="Nombre de Usuario" id="usernameRegister" name="registerUsername" type="text" class="validate">
+                                    <input placeholder="Nombre de Usuario" id="usernameRegister" name="username" type="text" class="validate">
                                     <label for="usernameRegister">Usuario</label>
                                 </div>  
                                 <div class="input-field col s12">
@@ -87,7 +90,8 @@
                                     <label for="passwordRegister">Contraseña</label>
                                 </div>  
                                 <div>
-                                    <button type="button" id="registrarse" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Registrarse</button>
+                                    <button type="submit" onsubmit="return validateRegisterForm()" id="registrarse" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Registrarse</button>
+                                    <!-- <button type="submit" id="registrarse" from="formRegister" class="waves-effect waves-light btn red"><i class="material-icons right">arrow_forward</i>Registrarse</button> -->
                                 </div>                             
                             </form>                          
                         </div>                    
@@ -98,6 +102,8 @@
         </div>
     </div>
 </body>
+    <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+    <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script type="text/javascript" src="../js/loginRegister.js"></script>
+    <script type="text/javascript" src={{ url_for('static', filename='js/loginRegister.js') }}></script>
 </html>

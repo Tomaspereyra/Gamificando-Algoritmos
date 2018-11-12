@@ -3,34 +3,43 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="encoding" content="ISO-8859-1" >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gamificando Algoritmos - Home</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../Lib/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/home.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   
-	<ul id="dropdownLogueado" class="dropdown-content" style="width: 500px !important">
-		<li><a href="#!">Mi Cuenta</a></li>
-		<li><a href="#!">Mis Datos</a></li>
-		<li><a href="#!">Mis Cursos</a></li>
-		<li><a href="#!">Jugar</a></li>
-		<li class="divider"></li>
-		<li><a href="#!">Acerca de / Contacto</a></li>
-	</ul>
+
   
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Gamificando Algoritmos</a>
-      <ul class="right hide-on-med-and-down">
-		<li><a href="#!">Ingresar</a></li>
-      </ul>
 
-	  <ul class="right hide-on-med-and-down">
-		<li><a class="dropdown-trigger" href="#!" data-target="dropdownLogueado">Martin Rios<i class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-	  
+      <!-- Registered ul -->
+        {% if user %}
+        <ul id="dropdownLogueado" class="dropdown-content" style="width: 500px !important">
+            <li><a href="#!">Mi Cuenta</a></li>
+            <li><a href="#!">Mis Datos</a></li>
+            <li><a href="#!">Mis Cursos</a></li>
+            <li><a href="http://localhost:5000/home/explorarCursos">Jugar</a></li>
+            <li class="divider"></li>
+            <li><a href="http://localhost:5000/auth/logout">Salir</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Grupo 5 - Software inteligente</a></li>
+	    </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdownLogueado">{{ user }}<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+	  {% else %}
+      <!-- Login ul -->
+          <ul class="right hide-on-med-and-down">
+            <li><a href="http://localhost:5000/auth">Ingresar</a></li>
+          </ul>
+      {% endif %}
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
@@ -43,7 +52,7 @@
         <h5 class="header col s12 light">Una novedosa manera de aprender a programar</h5>
       </div>
       <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">¡Jugar!</a>
+        <a href="http://localhost:5000/home/explorarCursos" id="download-button" class="btn-large waves-effect waves-light orange">¡Jugar!</a>
       </div>
       <br><br>
 
@@ -109,10 +118,10 @@
         <div class="col l3 s12">
           <h5 class="white-text">Contacto</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="#!">riosmartin93@gmail.com</a></li>
+            <li><a class="white-text" href="#!">igoliveto@gmail.com</a></li>
+            <li><a class="white-text" href="#!">pereyratomas18@gmail.com</a></li>
+            <li><a class="white-text" href="#!">lucianootegui56@hotmail.com</a></li>
           </ul>
         </div>
       </div>
@@ -127,10 +136,13 @@
 
   <!--  Scripts-->
   <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-  <!-- <script src="../Lib/materialize/js/materialize.js"></script> -->
-  <script src="../js/home.js"></script>
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
+
+  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+
+
+
 
   </body>
 </html>

@@ -1,35 +1,30 @@
+var HOME_PATH = "http://localhost:5050//home";
+
 $(document).ready(function(){
 	//INIT
 	init();
 	//EVENTOS
 	$("#login" ).click(function() {
-        tryLogin();
+        //tryLogin();
     });   
     $("#registrarse" ).click(function() {
-        tryRegister();
+        //tryRegister();
     });
+    var form = $('#MyForm');
 });   
+
+function validateLoginForm(e){
+    if (!validateLoginInfo())
+        e.preventDefault();
+}
+
+function validateRegisterForm(e){
+    if (!validateRegisterInfo())
+        e.preventDefault();
+}
 
 function tryLogin(){
 	if (validateLoginInfo()){
-		/*
-		var username_ = $("#usernameLogin").val();
-		var password_ = $("#passwordLogin").val();
-		var data = {
-			username : username_,
-			password : password_
-		};
-		console.log("tryLogin() : " + JSON.stringify(data));
-		$.ajax({
-			url: "http://localhost:5000/auth/login",
-			json : data,
-			type : "POST",
-			done : function (data) {
-				alert("Done()...");
-				doneLogin(data);
-			}
-		})*/
-		
 		var username_ = $("#usernameLogin").val();
 		var password_ = $("#passwordLogin").val();
 		var data = {
@@ -40,13 +35,30 @@ function tryLogin(){
 		$.ajax({
 			url: "http://localhost:5000/auth/login?username=" + username_ + "&password=" + password_,
 			type : "POST",
-			dataType : "json"
-		}).always (function (data) {
-			console.log("Done Login. Data Received : " + JSON.stringify(data));
-			doneLogin(data);
+			datatype: "json",
+			success: function(data) {
+
+            }
 		})
 		
 	}
+}
+
+function IsJSON(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
+function getLoginUsername(){
+    return $("#usernameLogin").val();
+}
+
+function getLoginPassword(){
+
 }
 
 function validateLoginInfo(){
@@ -69,11 +81,12 @@ function showError(data){
 }
 
 function doneLogin(data){
-	if (data.error != null){
-		showError(data);
-	} else {
-		alert("Usted ha ingresado al sistema con exito!");
-	}
+    if (data.error != null){
+        showError(data);
+    } else {
+        console.log("Redirecting...");
+        //window.location.replace(HOME_PATH + "?username=" + );
+    }
 }
 
 function tryRegister(){
