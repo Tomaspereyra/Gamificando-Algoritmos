@@ -1,0 +1,39 @@
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="http://localhost:5000/" class="brand-logo">Gamificando Algoritmos</a>
+
+        {% if user %}
+            {% set username =  user %}
+        {% else %}
+            {% set username =  None %}
+        {% endif %}
+
+        <input type="hidden" id="usernameField" name="username" value={{ username}} >
+
+        </input>
+      <!-- Registered ul -->
+        {% if user %}
+        {% set urlMiCuenta = "http://localhost:5000/miCuenta?username=" + user %}
+        {% set urlExplorarCursos = "http://localhost:5000/explorarCursos?username=" + user %}
+        {% set urlMisCursos = "http://localhost:5000/misCursos?username=" + user %}
+        <ul id="dropdownLogueado" class="dropdown-content" style="width: 500px !important">
+
+            <li><a href= {{ urlMiCuenta }}>Mi Cuenta</a></li>
+            <li><a href= {{ urlMisCursos }}>Mis Cursos</a></li>
+            <li><a href= {{ urlExplorarCursos }}>Jugar</a></li>
+            <li class="divider"></li>
+            <li><a href="http://localhost:5000/auth/logout">Salir</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Grupo 5 - Software inteligente</a></li>
+	    </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdownLogueado" style="width:300" ><b>{{ user }}</b><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+	  {% else %}
+      <!-- Login ul -->
+          <ul class="right hide-on-med-and-down">
+            <li><a href="http://localhost:5000/auth">Ingresar</a></li>
+          </ul>
+      {% endif %}
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>

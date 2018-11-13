@@ -42,7 +42,7 @@ def register():
 
             if error is None:
                 usuarioABM.registrarUsuario(username, password, mail, nombre, apellido, fechaNacimiento)
-                print('Response data : ' + username + " pw:" + password, file=sys.stdout)
+                #print('Response data : ' + username + " pw:" + password, file=sys.stdout)
                 return render_template("index.html", user=username)
             else:
                 return render_template("loginRegister.html", error=error)
@@ -52,9 +52,9 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     error = None
-    print('Req : ' + str(request))
+    #print('Req : ' + str(request))
     content = request.values
-    print('Content  : ' + str(content))
+    #print('Content  : ' + str(content))
     print('/login -> ' + request.method, file=sys.stdout)
     try:
 
@@ -67,7 +67,7 @@ def login():
         elif not content['password'] == user.password:
             error = 'Incorrect password.'
 
-        print('Error : ' + str(error), file=sys.stdout)
+        #print('Error : ' + str(error), file=sys.stdout)
 
         if error is None:
 

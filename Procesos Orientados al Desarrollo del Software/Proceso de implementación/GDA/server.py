@@ -17,7 +17,7 @@ sys.setdefaultencoding('ISO-8859-1')
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
-from controladores import auth, home
+from controladores import auth, home, Usuario
 from flask_cors import CORS
 
 app = Flask(__name__,
@@ -34,6 +34,7 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 app.register_blueprint(auth.bp)
 app.register_blueprint(home.bp)
+app.register_blueprint(Usuario.bp)
 
 
 def list_routes():
@@ -58,6 +59,9 @@ def hello():
     list_routes()
     return render_template("index.html")
 
+@app.route('/jugarTest')
+def jugarTest():
+    return render_template("laberinto.html")
 
 if __name__ == "__main__":
     app.run()

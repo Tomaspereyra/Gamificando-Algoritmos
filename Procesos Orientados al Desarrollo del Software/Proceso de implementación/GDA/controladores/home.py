@@ -17,7 +17,7 @@ bp = Blueprint('home', __name__, url_prefix='/home')
 
 @bp.route('/', methods=('GET', 'POST'))
 def goHome():
-    content = request.args
+    content = request.values
     print ("Content : " + str(content), file=sys.stdout)
     user = content.get("username")
     print ("User : " + str(user), file=sys.stdout)
@@ -26,12 +26,5 @@ def goHome():
     print(' -> POST/GET()', file=sys.stdout)
     return render_template("index.html", username=user)
 
-
-
-@bp.route('/explorarCursos', methods=('GET', 'POST'))
-def goToExplore():
-
-    print('/explorarCursos -> POST/GET()', file=sys.stdout)
-    return render_template("exploreGames.html")
 
 
