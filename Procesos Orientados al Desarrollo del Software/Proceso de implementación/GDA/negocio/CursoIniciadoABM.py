@@ -9,7 +9,7 @@ class CursoIniciadoABM:
         return self.dao.traerCursosPorEstudiante(estudiante.getIdEstudiante())
 
     def comenzarCurso(self, estudiante, curso):
-        self.dao.agregar(estudiante.getIdEstudiante(), curso.getIdCurso())
+        return self.dao.agregar(estudiante.getIdEstudiante(), curso.getIdCurso())
 
     def eliminarCursoIniciado(self, cursoIniciado):
         self.dao.eliminar(cursoIniciado)

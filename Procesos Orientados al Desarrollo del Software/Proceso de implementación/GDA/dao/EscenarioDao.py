@@ -21,8 +21,9 @@ class EscenarioDao:
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
+        filasAfectadas = 0
         try:
-            cursor.execute("""insert into Escenario (bloquesPermitidos, cantBloquesMax, hint, posibleSolucion,
+            filasAfectadas = cursor.execute("""insert into Escenario (bloquesPermitidos, cantBloquesMax, hint, posibleSolucion,
                            descripcion,Curso_idCurso) values('%i','%i','%s','%s','%s','%i')""" % (
                 bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso))
             sesion.commit()
@@ -32,6 +33,7 @@ class EscenarioDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+            return filasAfectadas
 
     def eliminar(self, escenario):
         sesion = self.iniciarOperacion()

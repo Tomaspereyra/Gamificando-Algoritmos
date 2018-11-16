@@ -19,10 +19,11 @@ class DocenteDao:
     def agregarDocente(self, idUsuario):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
+        resultado = 0
         try:
-            cursor.execute("""insert into Docente(Usuario_idUsuario) 
+           resultado = cursor.execute("""insert into Docente(Usuario_idUsuario) 
            values('%i')""" % idUsuario)
-            sesion.commit()
+           sesion.commit()
         except:
             print "Error en ejecucion de la query"
             sesion.getEstado().rollback()  # volver al estado anterior
@@ -30,6 +31,7 @@ class DocenteDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+            return resultado
 
     def eliminar(self, docente):
 

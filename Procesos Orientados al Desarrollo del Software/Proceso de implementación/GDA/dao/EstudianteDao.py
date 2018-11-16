@@ -22,8 +22,9 @@ class EstudianteDao:
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
+        filasAfectadas = 0
         try:
-            cursor.execute("""insert into Estudiante(Usuario_idUsuario)
+            filasAfectadas = cursor.execute("""insert into Estudiante(Usuario_idUsuario)
               values('%i')""" % (usuario.getId()))
 
             sesion.commit()
@@ -34,6 +35,7 @@ class EstudianteDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+        return filasAfectadas
 
     def eliminar(self, estudiante):
         sesion = self.iniciarOperacion()

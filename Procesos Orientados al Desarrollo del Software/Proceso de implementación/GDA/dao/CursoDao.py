@@ -18,19 +18,18 @@ class CursoDao:
         return sesion
 
     def agregar(self, sePuedeSaltear, nombre, descripcion, idDocente, juego):
-
         sesion = self.iniciarOperacion()
-
         cursor = sesion.obtenerCursor()
-
+        resultado = 0
         try:
-            cursor.execute("""insert into Curso (sePuedeSaltear,nombre,descripcion, docente_idDocente, Juego_idJuego)
+            resultado = cursor.execute("""insert into Curso (sePuedeSaltear,nombre,descripcion, docente_idDocente, Juego_idJuego)
              values('%i', '%s','%s', '%i','%i')""" % (sePuedeSaltear, nombre, descripcion, idDocente, juego.getId()))
             sesion.commit()
-
         finally:
             cursor.close()
             sesion.cerrarConexion()
+            return resultado
+
 
     def eliminar(self, curso):
 
@@ -50,7 +49,7 @@ class CursoDao:
     def traerCurso(self, idCurso):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
-        curso = Curso(False, "-", "juego", "descpripcion")
+        curso = Curso(False, "-", "-", "-")
         escenario = EscenarioDao()
         try:
             cursor.execute("""select * from Curso where Curso.idCurso = '%i'""" % idCurso)

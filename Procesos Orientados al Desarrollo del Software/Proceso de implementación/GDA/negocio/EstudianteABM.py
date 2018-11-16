@@ -19,12 +19,13 @@ class EstudianteABM:
             return estudiante
 
     def agregarEstudiante(self, username, password, email, nombre, apellido, fechaNacimiento):
-        agregado = False
+        agregado = 0
         if self.traerEstudiante(username) is None:
             usuarioabm = UsuarioABM()
             usuarioabm.registrarUsuario(username, password, email, nombre, apellido, fechaNacimiento)
-            self.dao.agregar(usuarioabm.traerUsuario(username))
-            agregado = True
+            agregado = self.dao.agregar(usuarioabm.traerUsuario(username))
+        else:
+            print "Error, el usuario ya es un estudiante"
 
         return agregado
 

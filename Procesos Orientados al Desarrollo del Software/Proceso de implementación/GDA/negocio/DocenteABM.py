@@ -17,13 +17,13 @@ class DocenteABM:
         return docente
 
     def registrarDocente(self, username, password, email, nombre, apellido, fechaNacimiento):
-        agregado = False
+        agregado = 0
         if self.traerDocente(username) is None:
             usuario = UsuarioABM()
             usuario.registrarUsuario(username, password, email, nombre, apellido, fechaNacimiento)
 
-            self.dao.agregarDocente(int(usuario.traerUsuario(username).getId()))
-            agregado = True
+            agregado = self.dao.agregarDocente(int(usuario.traerUsuario(username).getId()))
+
         else:
             print "Nombre de usuario en uso."
 

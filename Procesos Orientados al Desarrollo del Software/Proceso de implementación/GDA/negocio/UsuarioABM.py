@@ -12,11 +12,14 @@ class UsuarioABM:
         return self.dao.traerUsuario(username)
 
     def registrarUsuario(self, username, password, email, nombre, apellido, fechaNacimiento):
+        filasAfectadas = 0
         if self.traerUsuario(username) is None:
             usuario = Usuario(username, password, email, nombre, apellido, fechaNacimiento)
-            self.dao.agregar(usuario)
+            filasAfectadas = self.dao.agregar(usuario)
         else:
             print('El usuario ya esta registrado', file=sys.stdout)
+
+        return filasAfectadas
 
 
     def eliminarUsuario(self, usuario):

@@ -19,12 +19,13 @@ class UsuarioDao:
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
+        filasAfectadas = 0
         try:
-            cursor.execute("""insert into Usuario(username,password,email,nombre,apellido, fechaNacimiento)
+              filasAfectadas= cursor.execute("""insert into Usuario(username,password,email,nombre,apellido, fechaNacimiento)
               values('%s', '%s', '%s', '%s', '%s', '%s' )""" % (
                 usuario.getUsername(), usuario.getPassword(), usuario.getEmail(), usuario.getNombre(),
                 usuario.getApellido(), usuario.getFechaNacimiento()))
-            sesion.commit()
+              sesion.commit()
         except:
             print "Error en ejecucion de la query"
             sesion.getEstado().rollback()  # volver al estado anterior
@@ -32,6 +33,7 @@ class UsuarioDao:
         finally:
             cursor.close()
             sesion.cerrarConexion()
+            return filasAfectadas
 
     def eliminar(self, usuario):
         sesion = self.iniciarOperacion()
