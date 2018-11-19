@@ -27,10 +27,11 @@
         <div class="row center">
           <div class="collection">
             {% for curso in cursos: %}
-              {% set link = "http://localhost:5000/jugarCurso?idCurso=" + curso.idCurso|string %}
+              {% print(username) %}
+              {% set link = "http://localhost:5000/cursos/jugar?username=" +  user  + "&idCurso=" + curso.idCurso|string %}
               {% set nroEscenarios = curso.escenario|length|string %}
               {% set text = "<< " + curso.nombre + " >>" %}
-            <a href={{ link }}  class="collection-item"><span class="badge">{{ nroEscenarios }} escenarios</span><b> {{ text }} </b></a>
+            <a href={{ link }}  class="collection-item"><span class="badge"> {{ nroEscenarios }} escenarios</span><b> {{ text }} </b></a>
             {% endfor %}
           </div>
         </div>

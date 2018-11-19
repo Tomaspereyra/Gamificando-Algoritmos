@@ -9,6 +9,9 @@ class JuegoABM:
     def traerJuego(self, nombre):
         return self.dao.traerJuego(nombre)
 
+    def traerJuegoPorId(self, idJuego):
+        return self.dao.traerJuegoPorId(idJuego)
+
     def agregarJuego(self, nombre, descripcion):
         agregado = False
         if self.traerJuego(nombre) is None:

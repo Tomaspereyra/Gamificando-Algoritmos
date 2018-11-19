@@ -11,11 +11,14 @@ class CursoIniciadoABM:
     def traerCursosIniciadosPorIdEstudiante(self, idEstudiante):
         return self.dao.traerCursosPorEstudiante(idEstudiante)
 
+    def traerCursoIniciado(self, estudiante, idCurso):
+        return self.dao.traerCursoIniciado(estudiante, idCurso)
+
     def comenzarCurso(self, estudiante, curso):
         return self.dao.agregar(estudiante.getIdEstudiante(), curso.getIdCurso())
 
     def eliminarCursoIniciado(self, cursoIniciado):
         self.dao.eliminar(cursoIniciado)
 
-    def traerCurso(self, idCurso):
-        return self.dao.traerCurso(idCurso)
+    def traerCurso(self, idCursoIniciado):
+        return self.dao.traerCurso(idCursoIniciado)

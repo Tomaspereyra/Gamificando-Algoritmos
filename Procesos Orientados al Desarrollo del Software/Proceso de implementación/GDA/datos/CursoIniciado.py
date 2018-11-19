@@ -26,6 +26,10 @@ class CursoIniciado:
     def getEscenarios(self):
         return self.escenarioRealizado
 
+    def setEscenarios(self, escenarios):
+        self.escenarioRealizado = []
+        self.escenarioRealizado.extend(escenarios)
+
     def __str__(self):
         return str(self.getCurso().__str__() + "Escenarios: " + str(self.imprimirLista()))
 

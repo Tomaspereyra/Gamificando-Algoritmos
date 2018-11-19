@@ -10,7 +10,7 @@ __email__ = "riosmartin93@gmail.com"
 __status__ = "Prototype"
 
 import sys
-
+from util.session_utils import *
 reload(sys)
 sys.setdefaultencoding('ISO-8859-1')
 
@@ -58,7 +58,7 @@ def list_routes():
 @app.route('/')
 def hello():
     list_routes()
-    return render_template("index.html")
+    return render_template("index.html", user=getCurrentUser(session))
 
 @app.route('/jugarTest')
 def jugarTest():

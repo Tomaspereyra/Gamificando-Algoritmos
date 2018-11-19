@@ -1,5 +1,6 @@
 from __future__ import print_function
 import json
+from util.session_utils import  *
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
@@ -19,12 +20,13 @@ bp = Blueprint('home', __name__, url_prefix='/home')
 def goHome():
     content = request.values
     print ("Content : " + str(content), file=sys.stdout)
-    user = content.get("username")
-    print ("User : " + str(user), file=sys.stdout)
-    print('/home -> POST/GET() - User : ' + str(user), file=sys.stdout)
+
+    print('/home -> POST/GET() - User : ' + str(getCurrentUser(session)), file=sys.stdout)
 
     print(' -> POST/GET()', file=sys.stdout)
-    return render_template("index.html", username=user)
+    return render_template("index.html", user=getCurrentUser(session))
 
-
+@bp.before_request
+def beforeRequest():
+    updateCurrentUser(session)
 

@@ -1,6 +1,6 @@
 from __future__ import print_function
 # coding=utf-8
-
+from util.session_utils import *
 import json
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
@@ -22,8 +22,9 @@ def myAccount():
     try:
         content = request.values
         print ("/miCuenta() -> Content : " + str(content), file=sys.stdout)
+        print ("Username global : " + str(getCurrentUser(session)), file=sys.stdout)
         try:
-            username = content.get("username")
+            username = getCurrentUser(session)
             user = usuarioABM.traerUsuario(username)
         except:
             username = None
@@ -33,4 +34,6 @@ def myAccount():
     except Exception as e:
         print("ERROR : " + e.message)
 
-
+@bp.before_request
+def beforeRequest():
+    updateCurrentUser(session)

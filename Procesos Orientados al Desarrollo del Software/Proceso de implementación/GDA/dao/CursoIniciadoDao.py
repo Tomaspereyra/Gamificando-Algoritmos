@@ -61,15 +61,32 @@ class CursoIniciadoDao:
         cursodao = CursoDao()
         try:
             cursor.execute("""select * from cursoiniciado where cursoiniciado.idCursoIniciado='%i'""" % idCurso)
+            daoEscenario = EscenarioEnProcesoDao()
             resultado = cursor.fetchone()
-            escenario = EscenarioEnProcesoDao()
             curso.setIdCursoIniciado(resultado[0])
             curso.setCurso(cursodao.traerCurso(resultado[2]))
-            curso.agregarEscenario(escenario.traerEscenariosPorCurso(curso.getIdCursoIniciado()))
+            curso.setEscenarios(daoEscenario.traerEscenariosPorCurso(curso.getIdCursoIniciado()))
         finally:
             cursor.close()
             sesion.cerrarConexion()
             return curso
+
+    def traerCursoIniciado(self, estudiante, curso):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        cursoIniciado = CursoIniciado()
+        cursodao = CursoDao()
+        try:
+            cursor.execute("""select * from cursoiniciado where cursoiniciado.Estudiante_idEstudiante='%i' AND cursoiniciado.Curso_idCurso='%i'""" % estudiante.idEstudiante, curso.idCurso)
+            daoEscenario = EscenarioEnProcesoDao()
+            resultado = cursor.fetchone()
+            cursoIniciado.setIdCursoIniciado(resultado[0])
+            cursoIniciado.setCurso(cursodao.traerCurso(resultado[2]))
+            cursoIniciado.setEscenarios(daoEscenario.traerEscenariosPorCurso(cursoIniciado.getIdCursoIniciado()))
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+            return cursoIniciado
 
     def traerCursosPorEstudiante(self, idEstudiante):
         sesion = self.iniciarOperacion()

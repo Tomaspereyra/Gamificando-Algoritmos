@@ -1,6 +1,6 @@
 # coding=utf-8
 from __future__ import print_function
-
+from util.session_utils import *
 import json
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
@@ -13,9 +13,15 @@ import sys
 from util.errores import *
 from negocio.CursoABM import CursoABM
 from negocio.CursoIniciadoABM import CursoIniciadoABM
+from negocio.DocenteABM import DocenteABM
+from negocio.EstudianteABM import EstudianteABM
+from negocio.JuegoABM import JuegoABM
 
 cursoABM = CursoABM()
 cursoIniciadoABM = CursoIniciadoABM()
+docenteABM = DocenteABM()
+juegoABM = JuegoABM()
+estudianteABM = EstudianteABM()
 
 bp = Blueprint('cursos', __name__, url_prefix='/cursos')
 
@@ -23,66 +29,91 @@ bp = Blueprint('cursos', __name__, url_prefix='/cursos')
 @bp.route('/', methods=('GET', 'POST'))
 def cursosGeneral():
     content = request.values
-    user = content.get("username")
+
+    user = getCurrentUser(session)
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
     cursos = cursoABM.traerCursos()
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    return render_template("verCursos.html", user=user, cursos=cursos)
 
 @bp.route('/docente', methods=('GET', 'POST'))
 def cursosDocente():
     content = request.values
-    user = content.get("username")
+    user = getCurrentUser(session)
     idDocente = content.get("idDocente")
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
     cursos = cursoABM.traerCursosPorIdDocente(idDocente)
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    return render_template("verCursos.html", user=user, cursos=cursos)
 
 @bp.route('/estudiante', methods=('GET', 'POST'))
 def cursosEstudiante():
     content = request.values
-    user = content.get("username")
+    user = getCurrentUser(session)
     idEstudiante = content.get("idEstudiante")
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
     cursos = cursoIniciadoABM.traerCursosIniciadosPorIdEstudiante(idEstudiante)
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    return render_template("verCursos.html", user=user, cursos=cursos)
 
 @bp.route('/jugar', methods=('GET', 'POST'))
 def jugarCurso():
+
     content = request.values
-    user = content.get("username")
-    idCurso = content.get("idCurso")
-    cursos = cursoIniciadoABM.traerCurso(idCurso)
-    #Ver si existe, si no crearlo y mandarselo a la vista
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
+    user = getCurrentUser(session)
     print("Content : " + str(content), file=sys.stdout)
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    idCurso = content.get("idCurso")
+    try:
+        estudiante = estudianteABM.traerEstudiante(user)
+        if not estudiante:
+            print("Error : Estudiante " + user + " no existe ", file=sys.stdout)
+            return render_template("index.html", user=user)
+        curso = cursoABM.traerCurso(idCurso)
+        cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, idCurso)
+        #Ver si existe, si no crearlo y mandarselo a la vista
+        if not cursoIniciado:
+            #Creamos
+            print("Creando cursoIniciado... ", file=sys.stdout)
+            cursoIniciado = cursoIniciadoABM.comenzarCurso(estudiante, curso)
+            print("Creado : " + str(cursoIniciado), file=sys.stdout)
+            return render_template("index.html", user=user)
+        return render_template("escenariosEnCurso.html", user=user, curso=cursoIniciado, nombreCurso=curso.nombre)
+    except Exception as e:
+        print("Error encontrado : " + e.message, file=sys.stdout)
+        return render_template("index.html", user=user)
 
 @bp.route('/editar', methods=('GET', 'POST'))
 def editarCurso():
     content = request.values
-    user = content.get("username")
+    user = getCurrentUser(session)
     idCurso = content.get("idCurso")
     cursos = cursoIniciadoABM.traerCurso(idCurso)
     #Ver si existe, si no crearlo y mandarselo a la vista
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    return render_template("verCursos.html", user=user, curso=curso)
 
 @bp.route('/crear', methods=('GET', 'POST'))
 def crearCurso():
+
     content = request.values
-    user = content.get("username")
+    print("Content : " + str(content), file=sys.stdout)
+    user = getCurrentUser(session)
     sePuedeSaltear = bool(content.get("sePuedeSaltear"))
     nombre = content.get("nombre")
     descripcion = content.get("descripcion")
     descripcion = content.get("descripcion")
     idJuego = content.get("idJuego")
-    docente = docenteABM.traerDocente(user)
-    curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juego)
-    #Ver si existe, si no crearlo y mandarselo a la vista
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
-    print("Content : " + str(content), file=sys.stdout)
-    return render_template("verCursos.html", username=user, cursos=cursos)
+    try:
+        docente = docenteABM.traerDocente(user)
+        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuego(idJuego))
+        #Ver si existe, si no crearlo y mandarselo a la vista
+        return render_template("editarCurso.html", user=user, curso=curso)
+    except Exception as e:
+        print("Error encontrado : " + e.message, file=sys.stdout)
+        return render_template("index.html", user=user)
+
+@bp.before_request
+def beforeRequest():
+    updateCurrentUser(session)
+

@@ -1,13 +1,13 @@
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="http://localhost:5000/" class="brand-logo">Gamificando Algoritmos</a>
+    {% if user %}
+        {% set username =  user %}
+        <div class="nav-wrapper container"><a id="logo-container" href= {{ "http://localhost:5000?username=" ~ user }}  class="brand-logo">Gamificando Algoritmos</a>
+    {% else %}
+        {% set username =  None %}
+        <div class="nav-wrapper container"><a id="logo-container" href="http://localhost:5000/" class="brand-logo">Gamificando Algoritmos</a>
+    {% endif %}
 
-        {% if user %}
-            {% set username =  user %}
-        {% else %}
-            {% set username =  None %}
-        {% endif %}
-
-        <input type="hidden" id="usernameField" name="username" value={{ username}} >
+        <input type="hidden" id="usernameField" name="username" value={{ username }} >
 
         </input>
       <!-- Registered ul -->

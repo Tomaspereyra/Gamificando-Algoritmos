@@ -1,5 +1,6 @@
 from __future__ import print_function
 import json
+from util.session_utils import *
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
@@ -117,3 +118,7 @@ def logout():
     print (str(session['user_id']))
     session.clear()
     return render_template("index.html")
+
+@bp.before_request
+def beforeRequest():
+    updateCurrentUser(session)

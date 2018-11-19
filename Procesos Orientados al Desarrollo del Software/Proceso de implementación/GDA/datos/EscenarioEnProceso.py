@@ -1,5 +1,5 @@
 from datos.Escenario import Escenario
-
+from negocio.EscenarioABM import EscenarioABM
 
 class EscenarioEnProceso:
     def __init__(self, puntajeObtenido=0, solucionBrindada="-", cantidadBloquesUtilizados=0, tiempoSolucion=0, intentos=0, fechaInicio=0, fechaFinalizacion=0):
@@ -16,6 +16,10 @@ class EscenarioEnProceso:
 
     def getId(self):
         return self.id
+
+    def getEscenario(self):
+        abm = EscenarioABM()
+        return abm.traerEscenario(self.idEscenario)
 
     def getPuntajeObtenido(self):
         return self.puntajeObtenido

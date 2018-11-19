@@ -19,8 +19,9 @@ class Curso:
     def setNombre(self, nombre):
         self.nombre = nombre
 
-    def setListaEscenario(self, escenario):
-        self.escenario.append(escenario)
+    def setListaEscenario(self, escenarios):
+        self.escenario = []
+        self.escenario.extend(escenarios)
 
     def getIdCurso(self):
         return self.idCurso
