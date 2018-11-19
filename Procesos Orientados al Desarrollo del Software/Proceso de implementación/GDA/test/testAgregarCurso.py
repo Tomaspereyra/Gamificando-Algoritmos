@@ -7,7 +7,7 @@ class Test:
     def __init__(self):
         pass
 
-    def agregarCurso(self,sePuedeSaltar, nombre, descripcion, usuarioDocente, nombreJuego):
+    def agregarCurso(self, sePuedeSaltar, nombre, descripcion, usuarioDocente, nombreJuego):
         curso = CursoABM()
         docente = DocenteABM()
         juego = JuegoABM()
@@ -16,4 +16,4 @@ class Test:
 
 test = Test()
 
-test.agregarCurso(0, "Nuevo Curso", "Desc", "Profe", "Juego Nuevo")
+test.agregarCurso(False, "Nuevo Curso", "Desc", "Profe", "Juego Nuevo")

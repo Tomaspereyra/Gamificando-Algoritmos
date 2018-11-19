@@ -99,4 +99,34 @@ class CursoDao:
         return lstCursos
 
 
+    def traerCursos(self):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        lstCursos = []
+        curso = Curso()
+        escenario = EscenarioDao()
+        try:
+            cursor.execute("select * from Curso")
+            resultado = cursor.fetchall()
+            for fila in range(len(resultado)):
+                for columna in range(len(resultado[fila])):
+                    if columna == 0:
+                        curso.setIdCurso(resultado[fila][columna])
+                    if columna == 1:
+                        curso.setPuedeSaltear(resultado[fila][columna])
+                    if columna == 2:
+                        curso.setNombre(resultado[fila][columna])
+                    if columna == 3:
+                        curso.setDescripcion(resultado[fila][columna])
+                        curso.setListaEscenario(escenario.traerEscenariosPorCurso(curso.getIdCurso()))
+                    if columna == 5:
+                        juego = JuegoDao()
+                        curso.setJuego(juego.traerJuegoPorId(resultado[fila][columna]))
+                        lstCursos.append(curso)
+                        curso = Curso()  # creo una nueva instancia por que se maneja
+                        #  por referencia, si no, se pisan en la lista.
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
 
+        return lstCursos

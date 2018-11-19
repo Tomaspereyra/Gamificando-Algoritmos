@@ -14,7 +14,7 @@
         {% if user %}
         {% set urlMiCuenta = "http://localhost:5000/miCuenta?username=" + user %}
         {% set urlExplorarCursos = "http://localhost:5000/explorarCursos?username=" + user %}
-        {% set urlMisCursos = "http://localhost:5000/misCursos?username=" + user %}
+        {% set urlMisCursos = "http://localhost:5000/cursos/estudiante?username=" + user %}
         <ul id="dropdownLogueado" class="dropdown-content" style="width: 500px !important">
 
             <li><a href= {{ urlMiCuenta }}>Mi Cuenta</a></li>

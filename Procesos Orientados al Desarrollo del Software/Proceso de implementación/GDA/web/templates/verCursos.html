@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="encoding" content="ISO-8859-1" >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gamificando Algoritmos - Home</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  {% include "header.html" %}
+  
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Cursos Disponibles</h1>
+      {% if cursos|length > 0 %}
+        <div class="row center">
+          <h5 class="header col s12 light">¡Elegí el curso que querés explorar!</h5>
+        </div>
+        <div class="row center">
+          <div class="collection">
+            {% for curso in cursos: %}
+              {% set link = "http://localhost:5000/jugarCurso?idCurso=" + curso.idCurso|string %}
+              {% set nroEscenarios = curso.escenario|length|string %}
+              {% set text = "<< " + curso.nombre + " >>" %}
+            <a href={{ link }}  class="collection-item"><span class="badge">{{ nroEscenarios }} escenarios</span><b> {{ text }} </b></a>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="row center">
+          <h5 class="header col s12 light">¡No se encontraron cursos!</h5>
+        </div>
+      {% endif %}
+
+      <br><br>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!--  Scripts-->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
+
+  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+
+
+  {% include "footer.html" %}
+
+  </body>
+</html>

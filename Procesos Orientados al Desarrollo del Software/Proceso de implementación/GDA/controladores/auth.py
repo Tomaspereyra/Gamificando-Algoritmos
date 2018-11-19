@@ -10,8 +10,13 @@ import sys
 
 from util.errores import *
 from negocio.UsuarioABM import UsuarioABM
+from negocio.DocenteABM import DocenteABM
+from negocio.EstudianteABM import EstudianteABM
 
 usuarioABM = UsuarioABM()
+docenteABM = DocenteABM()
+estudianteABM = EstudianteABM()
+
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
@@ -31,6 +36,8 @@ def register():
             nombre = content.get('nombre')
             apellido = content.get('apellido')
             fechaNacimiento = content.get('fechaNacimiento')
+            esDocente = bool(content.get('esDocente'))
+
             error = None
 
             if not username:
@@ -41,7 +48,10 @@ def register():
                 error = 'User {} is already registered.'.format(username)
 
             if error is None:
-                usuarioABM.registrarUsuario(username, password, mail, nombre, apellido, fechaNacimiento)
+                if esDocente:
+                    docenteABM.registrarDocente(username, password, mail, nombre, apellido, fechaNacimiento)
+                else:
+                    estudianteABM.agregarEstudiante(username, password, mail, nombre, apellido, fechaNacimiento)
                 #print('Response data : ' + username + " pw:" + password, file=sys.stdout)
                 return render_template("index.html", user=username)
             else:
