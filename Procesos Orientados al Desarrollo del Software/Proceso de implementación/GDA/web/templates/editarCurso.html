@@ -22,15 +22,15 @@
       <h1 class="header center orange-text">Editar Curso</h1>
       <form class = "col s12">
         <div class="row center">
-            <div class = "input-field col s6">
-              <input placeholder = "Nombre" name="nombre" type = "text" class = "active validate"  id = "nombre" value = {{ curso.nombre }}>
+            <div class = "input-field col s8">
+              <input placeholder = "Nombre" name="nombre" type = "text" class = "active validate"  id = "nombre" value = "{{ curso.nombre }}">
                 </input>
               <label for = "nombre">Nombre</label>
            </div>
         </div>
         <div class="row center">
             <div class = "input-field col s6">
-              <input placeholder = "Descripcion" name="descripcion" type = "text" class = "active validate"  id = "descripcion" value = {{ curso.descripcion }} >
+              <input placeholder = "Descripcion" name="descripcion" type = "text" class = "active validate"  id = "descripcion" value = "{{ curso.descripcion }}" >
                 </input>
               <label for = "descripcion">Descripcion</label>
            </div>
@@ -38,7 +38,7 @@
         <div class="row center">
           <div class = "input-field col s6">
               <input placeholder = "Cantidad Max. Bloques" name="cantBloquesMax" type = "text" class = "active validate" id = "cantBloquesMax"
-                     value = {{ curso.cantBloquesMax }} >
+                     value = "{{ curso.cantBloquesMax }}" >
               </input>
               <label for = "cantBloquesMax">Cantidad Max. Bloques</label>
            </div>
@@ -46,13 +46,22 @@
         <div class="row center">
           <div class = "input-field col s6">
               <input placeholder = "Hint - Sugerencia" name="hint" id = "hint"
-                     type = "text" class = "active validate"  value = {{ curso.hint }}>
+                     type = "text" class = "active validate"  value = "{{ curso.hint }}">
                 </input>
               <label for = "hint">Hint</label>
            </div>
         </div>
+      </form>
+        <div class="row center">
+          <div >
+              <button id="actualizarCurso" type="button" class="btn waves-effect waves-light" name="actualizarCurso">¡Actualizar Datos!
+                <i class="material-icons right">send</i>
+              </button>
+
+           </div>
+        </div>
       <div class="row center">
-        <h5 class="header col s12 light">¡Aquí podrás editar la información del curso o sus escenarios!</h5>
+        <h5 class="header col s12 light">¡Escenarios!</h5>
       </div>
       {% if curso.escenario|length > 0 %}
         <div class="row center">
@@ -60,9 +69,8 @@
         </div>
       <div class="row center">
           <div class="collection">
-            {% for escenarioEnCurso in curso.escenarioRealizado: %}
-              {% set escenario = escenarioEnCurso.getEscenario() %}
-              {% set link = "http://localhost:5000/cursos/editarEscenario?idEscenario=" + escenarioEnCurso.idEscenario|string %}
+            {% for escenario in curso.escenario : %}
+              {% set link = "http://localhost:5000/cursos/editarEscenario?idEscenario=" + escenario.idEscenario|string %}
               {% set puntaje = "Editar" %}
               {% set text = "<< " + escenario.descripcion + " >>" %}
             <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> {{ text }} </b></a>
@@ -78,7 +86,7 @@
       <div class="row center">
           <a href={{ link }}  class="collection-item"><span class="badge"> </span><b><font size="16"> <u>¡Agregar Escenario! </u></font></b></a>
       </div>
-      </form>
+
       <br><br>
 
     </div>
