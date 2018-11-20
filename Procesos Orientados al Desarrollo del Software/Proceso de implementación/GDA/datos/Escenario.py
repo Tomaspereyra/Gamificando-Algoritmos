@@ -9,7 +9,11 @@ class Escenario:
         self.hint = hint
         self.posiblesSolucion = posibleSolucion
         self.descripcion = descripcion
+        self.idEscenario = -1
+        self.idCurso = -1
 
+    def setIdCurso(self, idCurso):
+        self.idCurso = idCurso
 
     def setIdEscenario(self, idEscenario):
         self.idEscenario=idEscenario

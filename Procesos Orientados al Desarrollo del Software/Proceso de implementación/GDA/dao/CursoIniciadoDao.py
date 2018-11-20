@@ -24,16 +24,14 @@ class CursoIniciadoDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         filasAfectadas = 0
-
+        print("ids : " + str(idEstudiante) + " - " + str(idCurso))
         try:
             filasAfectadas = cursor.execute("""insert into CursoIniciado(Estudiante_idEstudiante, Curso_idCurso) 
-             values ('%i','%i')""" % (
-                idEstudiante, idCurso))
+             values ('%i','%i')""" % (long(idEstudiante), long(idCurso)))
             sesion.commit()
-        except:
-            print "Error en la ejecucion de la query"
+        except Exception as e:
+            print "Error en la ejecucion de la query : " + e.message
             sesion.getEstado().rollback()
-
         finally:
             cursor.close()
             sesion.cerrarConexion()
@@ -74,15 +72,18 @@ class CursoIniciadoDao:
     def traerCursoIniciado(self, estudiante, curso):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
-        cursoIniciado = CursoIniciado()
         cursodao = CursoDao()
+        cursoIniciado = None
         try:
             cursor.execute("""select * from cursoiniciado where cursoiniciado.Estudiante_idEstudiante='%i' AND cursoiniciado.Curso_idCurso='%i'""" % estudiante.idEstudiante, curso.idCurso)
             daoEscenario = EscenarioEnProcesoDao()
             resultado = cursor.fetchone()
+            cursoIniciado = CursoIniciado()
             cursoIniciado.setIdCursoIniciado(resultado[0])
             cursoIniciado.setCurso(cursodao.traerCurso(resultado[2]))
             cursoIniciado.setEscenarios(daoEscenario.traerEscenariosPorCurso(cursoIniciado.getIdCursoIniciado()))
+        except:
+            return None
         finally:
             cursor.close()
             sesion.cerrarConexion()

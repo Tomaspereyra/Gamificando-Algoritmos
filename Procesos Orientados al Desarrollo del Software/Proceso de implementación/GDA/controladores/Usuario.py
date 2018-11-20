@@ -33,7 +33,3 @@ def myAccount():
         return render_template("myAccount.html", userObj=user, user=username)
     except Exception as e:
         print("ERROR : " + e.message)
-
-@bp.before_request
-def beforeRequest():
-    updateCurrentUser(session)

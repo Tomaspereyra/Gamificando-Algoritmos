@@ -7,6 +7,7 @@ class CursoIniciado:
     def __init__(self, curso="-"):
         self.curso = curso
         self.escenarioRealizado = []
+        self.idCursoIniciado = -1;
 
     def setCurso(self, curso):
         self.curso = curso

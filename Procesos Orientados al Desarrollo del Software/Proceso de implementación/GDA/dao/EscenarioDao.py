@@ -1,4 +1,6 @@
+from __future__ import print_function
 import MySQLdb
+import sys
 from Conexion import Sesion
 from datos.Escenario import Escenario
 from dao.EscenarioLaberintoDao import EscenarioLaberintoDao
@@ -11,7 +13,7 @@ class EscenarioDao:
         try:
             sesion = Sesion()  # iniciar sesion con la bd
         except MySQLdb.OperationalError:
-            print "Error en la conexion"
+            print ("Error en la conexion")
             sesion = None
 
         return sesion
@@ -28,7 +30,7 @@ class EscenarioDao:
                 bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso))
             sesion.commit()
         except:
-            print "Error en la ejecucion de la query"
+            print ("Error en la ejecucion de la query")
             sesion.getEstado().rollback()
         finally:
             cursor.close()
@@ -44,7 +46,7 @@ class EscenarioDao:
                 """delete Escenario from Escenario where Escenario.idEscenario = '%i'""" % (escenario.getIdEscenario()))
             sesion.commit()
         except:
-            print "Error, no se pudo eliminar el escenario"
+            print ("Error, no se pudo eliminar el escenario")
             sesion.getEstado().rollback()
         finally:
             cursor.close()
@@ -55,15 +57,24 @@ class EscenarioDao:
         cursor = sesion.obtenerCursor()
         resultado = None
         escenariolab = EscenarioLaberintoDao()
+        escenarios = []
         try:
             cursor.execute("""select * from Escenario where Escenario.Curso_idCurso='%i'""" % idCurso)
             resultado = cursor.fetchall()
+            print("Resultado : " + str(resultado), file=sys.stdout)
+            if resultado is not None:
+                for tuple in resultado:
+                    e = Escenario(tuple[1], tuple[2], tuple[3], tuple[4], tuple[5])
+                    e.setIdEscenario(tuple[0])
+                    e.setIdCurso(tuple[6])
+                    escenarios.append(e)
+
         except:
-            print "Error no se pudo traer los escenarios"
+            print ("Error no se pudo traer los escenarios", file=sys.stdout)
         finally:
             cursor.close()
             sesion.cerrarConexion()
-        return resultado
+        return escenarios
 
     def traerEscenario(self, idEscenario):
         sesion = self.iniciarOperacion()
@@ -78,7 +89,7 @@ class EscenarioDao:
                 escenario.setIdEscenario(resultado[0])
 
         except:
-            print "Error no se pudo traer los escenarios"
+            print ("Error no se pudo traer los escenarios")
         finally:
             cursor.close()
             sesion.cerrarConexion()

@@ -1,5 +1,6 @@
 # coding=utf-8
 from __future__ import print_function
+import datetime
 from util.session_utils import *
 import json
 from flask import (
@@ -12,13 +13,17 @@ import sys
 
 from util.errores import *
 from negocio.CursoABM import CursoABM
+from negocio.EscenarioABM import EscenarioABM
 from negocio.CursoIniciadoABM import CursoIniciadoABM
 from negocio.DocenteABM import DocenteABM
 from negocio.EstudianteABM import EstudianteABM
 from negocio.JuegoABM import JuegoABM
+from negocio.EscenarioEnProcesoABM import EscenarioEnProcesoABM
 
 cursoABM = CursoABM()
 cursoIniciadoABM = CursoIniciadoABM()
+escenarioEnProcesoABM = EscenarioEnProcesoABM()
+escenarioABM = EscenarioABM()
 docenteABM = DocenteABM()
 juegoABM = JuegoABM()
 estudianteABM = EstudianteABM()
@@ -66,20 +71,27 @@ def jugarCurso():
     try:
         estudiante = estudianteABM.traerEstudiante(user)
         if not estudiante:
-            print("Error : Estudiante " + user + " no existe ", file=sys.stdout)
+            print("Error : Estudiante " + str(user) + " no existe ", file=sys.stdout)
             return render_template("index.html", user=user)
         curso = cursoABM.traerCurso(idCurso)
         cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, idCurso)
         #Ver si existe, si no crearlo y mandarselo a la vista
         if not cursoIniciado:
             #Creamos
+            now = datetime.datetime.now()
             print("Creando cursoIniciado... ", file=sys.stdout)
-            cursoIniciado = cursoIniciadoABM.comenzarCurso(estudiante, curso)
+            cursoIniciadoABM.comenzarCurso(estudiante, curso)
+            cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)
+            for e in curso.escenario:
+                print("Escenario : " + str(e) , file=sys.stdout)
+                escenarioEnProcesoABM.comenzarEscenario(now, e.idEscenario, cursoIniciado.idCursoIniciado)
+                cursoIniciado.agregarEscenario()
             print("Creado : " + str(cursoIniciado), file=sys.stdout)
-            return render_template("index.html", user=user)
+        else:
+            print("Curso Iniciado existe : " + str(cursoIniciado), file=sys.stdout)
         return render_template("escenariosEnCurso.html", user=user, curso=cursoIniciado, nombreCurso=curso.nombre)
     except Exception as e:
-        print("Error encontrado : " + e.message, file=sys.stdout)
+        print("Error encontrado : " + repr(e) + " - " + e.message, file=sys.stdout)
         return render_template("index.html", user=user)
 
 @bp.route('/editar', methods=('GET', 'POST'))
@@ -112,8 +124,3 @@ def crearCurso():
     except Exception as e:
         print("Error encontrado : " + e.message, file=sys.stdout)
         return render_template("index.html", user=user)
-
-@bp.before_request
-def beforeRequest():
-    updateCurrentUser(session)
-

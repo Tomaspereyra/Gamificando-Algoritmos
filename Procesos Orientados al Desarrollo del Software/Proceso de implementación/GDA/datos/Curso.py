@@ -8,7 +8,7 @@ class Curso:
         self.escenario = []
         self.juego = juego
         self.descripcion = descripcion
-
+        self.idCurso = -1
 
     def setIdCurso(self, idCurso):
         self.idCurso = idCurso

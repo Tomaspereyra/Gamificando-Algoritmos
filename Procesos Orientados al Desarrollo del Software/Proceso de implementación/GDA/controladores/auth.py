@@ -53,7 +53,6 @@ def register():
                     docenteABM.registrarDocente(username, password, mail, nombre, apellido, fechaNacimiento)
                 else:
                     estudianteABM.agregarEstudiante(username, password, mail, nombre, apellido, fechaNacimiento)
-                #print('Response data : ' + username + " pw:" + password, file=sys.stdout)
                 return render_template("index.html", user=username)
             else:
                 return render_template("loginRegister.html", error=error)
@@ -118,7 +117,3 @@ def logout():
     print (str(session['user_id']))
     session.clear()
     return render_template("index.html")
-
-@bp.before_request
-def beforeRequest():
-    updateCurrentUser(session)

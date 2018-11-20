@@ -18,13 +18,13 @@ class EscenarioEnProcesoDao:
 
         return sesion
 
-    def comenzarEscenario(self, fechaInicio, idEscenario, idCurso):
+    def comenzarEscenario(self, fechaInicio, idEscenario, idCursoIniciado):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
 
         try:
             cursor.execute("""insert into EscenarioEnProceso(fechaInicio, Escenario_idEscenario, 
-            CursoIniciado_idCursoIniciado) values ('%s', '%i','%i')""" % (fechaInicio, idEscenario, idCurso))
+            CursoIniciado_idCursoIniciado) values ('%s', '%i','%i')""" % (fechaInicio, idEscenario, idCursoIniciado))
             sesion.commit()
         finally:
              cursor.close()

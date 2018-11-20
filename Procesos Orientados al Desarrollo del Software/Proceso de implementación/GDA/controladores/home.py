@@ -25,8 +25,3 @@ def goHome():
 
     print(' -> POST/GET()', file=sys.stdout)
     return render_template("index.html", user=getCurrentUser(session))
-
-@bp.before_request
-def beforeRequest():
-    updateCurrentUser(session)
-

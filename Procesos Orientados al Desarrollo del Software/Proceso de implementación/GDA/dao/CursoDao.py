@@ -52,14 +52,17 @@ class CursoDao:
         curso = Curso(False, "-", "-", "-")
         escenario = EscenarioDao()
         try:
-            cursor.execute("""select * from Curso where Curso.idCurso = '%i'""" % idCurso)
+            cursor.execute("""select * from Curso where Curso.idCurso = %i""" % long(idCurso))
             resultado = cursor.fetchone()
             if resultado is not None:
                 juego = JuegoDao()
                 curso = Curso(resultado[1], resultado[2], juego.traerJuegoPorId(resultado[5]), resultado[3])
                 curso.setIdCurso(resultado[0])
                 curso.setListaEscenario(escenario.traerEscenariosPorCurso(curso.getIdCurso()))
-
+            else:
+                return None
+        except Exception as e:
+            print("Error al procesar query. error : " + e.message)
         finally:
             cursor.close()
             sesion.cerrarConexion()
