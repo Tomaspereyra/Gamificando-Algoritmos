@@ -42,22 +42,12 @@
               <label for = "descripcion">Descripcion</label>
            </div>
         </div>
-        <div class="row center">
-          <div class = "input-field col s6">
-              <input placeholder = "Cantidad Max. Bloques" name="cantBloquesMax" type = "text" class = "active validate" id = "cantBloquesMax"
-                     value = "{{ curso.cantBloquesMax }}" >
-              </input>
-              <label for = "cantBloquesMax">Cantidad Max. Bloques</label>
-           </div>
-        </div>
-        <div class="row center">
-          <div class = "input-field col s6">
-              <input placeholder = "Hint - Sugerencia" name="hint" id = "hint"
-                     type = "text" class = "active validate"  value = "{{ curso.hint }}">
-                </input>
-              <label for = "hint">Hint</label>
-           </div>
-        </div>
+        <p>
+          <label>
+            <input type="checkbox" class="filled-in" name="sePuedeSaltear" id="sePuedeSaltear" checked="{{ curso.sePuedeSaltear }}" />
+            <span>Se puede saltar Escenario </span>
+          </label>
+        </p>
       </form>
         <div class="row center">
           <div >

@@ -16,18 +16,19 @@ function actualizarCurso(){
     var idCurso = $("#idCurso").val();
     var nombre = $("#nombre").val();
     var desc = $("#descripcion").val();
-    var hint = $("#hint").val();
-    var cantMaxBloques = $("#cantMaxBloques").val();
+    //var hint = $("#hint").val();
+    var sePuedeSaltear = $("#sePuedeSaltear").val();
+    //var cantMaxBloques = $("#cantMaxBloques").val();
 
-
-    console.log("actualizarCurso() : " + JSON.stringify(data));
+    //"&hint=" + hint +
+    //console.log("actualizarCurso() : " + JSON.stringify(data));
     $.ajax({
         url: "http://localhost:5000/cursos/guardarInfoCurso?idCurso=" +
-            idCurso + "&nombre=" + nombre + "&descripcion=" + desc + "&hint=" + hint + "&cantMaxBloques=" + cantMaxBloques,
-        type : "POST",
-        success: function(data) {
-            afterActualizar(data);
-        }
+            idCurso + "&nombre=" + nombre + "&descripcion=" + desc  + "&sePuedeSaltear=" + sePuedeSaltear,
+        type : "POST"
+
+    }).always(function(data){
+        afterActualizar(data);
     })
 
 }

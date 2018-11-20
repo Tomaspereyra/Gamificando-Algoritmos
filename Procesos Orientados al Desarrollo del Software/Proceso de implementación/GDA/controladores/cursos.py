@@ -121,12 +121,16 @@ def guardarInfoCurso():
         idCurso = int(content.get("idCurso"))
         nombre = content.get("nombre")
         descripcion = content.get("descripcion")
-        sePuedeSaltar = bool(content.get("sePuedeSaltar"))
+        sePuedeSaltar = content.get("sePuedeSaltear")
+        if sePuedeSaltar == "on":
+            sePuedeSaltar = 1
+        else:
+            sePuedeSaltar = 0
         curso = cursoABM.traerCurso(idCurso)
         curso.setNombre(nombre)
         curso.setDescripcion(descripcion)
         curso.setPuedeSaltear(sePuedeSaltar)
-        CursoABM.actualizarCurso(curso)
+        cursoABM.actualizarCurso(curso)
         data = {
             "success": True
         }
@@ -150,7 +154,7 @@ def guardarInfoEscenario():
         escenario.setDescripcion(descripcion=descripcion)
         escenario.setHint(hint)
         escenario.setCantBloquesMax(cantMaxBloques)
-        escenarioABM.()
+        escenarioABM.actualizarEscenario(escenario)
         data = {
             "success": True
         }
