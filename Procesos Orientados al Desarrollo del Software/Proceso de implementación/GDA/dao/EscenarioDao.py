@@ -94,3 +94,25 @@ class EscenarioDao:
             cursor.close()
             sesion.cerrarConexion()
         return escenario
+
+    def traerUltimoEscenario(self):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        resultado = None
+        escenario = None
+        try:
+            idMax = cursor.execute("""select * from Escenario where idEscenario = (select min(idEscenario) Escenario)""")
+            cursor.close()
+            cursor = sesion.obtenerCursor()
+            cursor.execute("""select * from Escenario where Escenario.idEscenario='%i'""" % idMax)
+            resultado = cursor.fetchone()
+            if resultado is not None:
+                escenario = Escenario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
+                escenario.setIdEscenario(resultado[0])
+
+        except:
+            print("Error no se pudo traer los escenarios")
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+        return escenario

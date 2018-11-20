@@ -1,8 +1,7 @@
 import MySQLdb
 from Conexion import Sesion
 from datos.EscenarioLaberinto import EscenarioLaberinto
-
-
+from datos.Escenario import  Escenario
 class EscenarioLaberintoDao:
 
     def iniciarOperacion(self):
@@ -15,14 +14,14 @@ class EscenarioLaberintoDao:
 
         return sesion
 
-    def agregar(self, escenarioLaberinto):
-
+    def agregar(self, mapa):
+        idEscenario = traerUltimoEscenario(self)
         sesion = self.iniciarOperacion()
 
         cursor = sesion.obtenerCursor()
         try:
-            cursor.execute("""insert into EscenarioLaberinto(mapa, idEscenario)
-              values('%s', '%i')""" % (escenarioLaberinto.getMapa(), escenarioLaberinto.getIdEscenario()))
+            cursor.execute("""insert into EscenarioLaberinto(mapa, Escenario_idEscenario)
+              values('%s', '%i')""" % (mapa, idEscenario.getIdEscenario()))
             sesion.commit()
         except:
             print "Error en ejecucion de la query"
@@ -70,3 +69,27 @@ class EscenarioLaberintoDao:
 escenarioLab = EscenarioLaberintoDao()
 
 print escenarioLab.traerEscenarioLaberinto(1)
+
+
+def traerUltimoEscenario(self):
+    sesion = self.iniciarOperacion()
+    cursor = sesion.obtenerCursor()
+    resultado = None
+    escenario = None
+    try:
+        idMax = cursor.execute(
+            """select * from Escenario where idEscenario = (select min(idEscenario) Escenario)""")
+        cursor.close()
+        cursor = sesion.obtenerCursor()
+        cursor.execute("""select * from Escenario where Escenario.idEscenario='%i'""" % idMax)
+        resultado = cursor.fetchone()
+        if resultado is not None:
+            escenario = Escenario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
+            escenario.setIdEscenario(resultado[0])
+
+    except:
+        print("Error no se pudo traer los escenarios")
+    finally:
+        cursor.close()
+        sesion.cerrarConexion()
+    return escenario

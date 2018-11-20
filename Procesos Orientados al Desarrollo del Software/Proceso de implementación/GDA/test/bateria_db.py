@@ -5,7 +5,7 @@ from negocio.CursoABM import CursoABM
 from negocio.EscenarioABM import EscenarioABM
 from negocio.DocenteABM import DocenteABM
 from negocio.JuegoABM import JuegoABM
-
+from negocio.EscenarioLaberintoABM import EscenarioLaberintoABM
 def bateria_Prueaba():
     cursoIniciadoABM = CursoIniciadoABM()
     estudianteABM = EstudianteABM()
@@ -14,6 +14,8 @@ def bateria_Prueaba():
     escenarioABM = EscenarioABM()
     docenteABM = DocenteABM()
     juegoABM = JuegoABM()
+    escenarioLaberintoABM = EscenarioLaberintoABM()
+
     for x in range(1, 6):
         docenteABM.registrarDocente("usuario"+str(x),"password", "usuario"+str(x)+"@mail.com", "nombre"+str(x), "apellido"+str(x), "29/9/2018")
     for x in range(6, 11):
@@ -23,6 +25,8 @@ def bateria_Prueaba():
     for x in range (1,3):
         cursoAbm.agregarCurso(True, "Curso"+str(x), "DescripcionCurso"+str(x), docenteABM.traerDocente("usuario"+str(x)), juegoABM.traerJuego("juego1"))
     cursoIniciadoABM.comenzarCurso(estudianteABM.traerEstudiante("usuario6"),cursoAbm.traerCurso(1))
+    escenarioLaberintoABM.agregarEscenarioLaberinto(10, 5, "hint", "posibleSolucion", "descripcion", 1,"1111111111111111111")
+
 
 
 
