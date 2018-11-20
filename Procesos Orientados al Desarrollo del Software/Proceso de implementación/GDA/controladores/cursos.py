@@ -3,6 +3,7 @@ from __future__ import print_function
 import datetime
 from util.session_utils import *
 import json
+from util.errores import *
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
@@ -110,6 +111,55 @@ def jugarCurso():
         print("Error encontrado : " + repr(e) + " - " + e.message , file=sys.stdout)
         traceback.print_exc()
         return render_template("index.html", user=user)
+
+@bp.route('/guardarInfoCurso', methods=('GET', 'POST'))
+def guardarInfoCurso():
+    content = request.values
+    user = getCurrentUser(session)
+
+    try:
+        idCurso = int(content.get("idCurso"))
+        nombre = content.get("nombre")
+        descripcion = content.get("descripcion")
+        sePuedeSaltar = bool(content.get("sePuedeSaltar"))
+        curso = cursoABM.traerCurso(idCurso)
+        curso.setNombre(nombre)
+        curso.setDescripcion(descripcion)
+        curso.setPuedeSaltear(sePuedeSaltar)
+        CursoABM.actualizarCurso(curso)
+        data = {
+            "success": True
+        }
+        return createResponseAsJSON(data)
+    except Exception as e:
+        print("Error encontrado : " + repr(e) + " - " + e.message, file=sys.stdout)
+        traceback.print_exc()
+        return crearError(-1, "Error al procesar solicitud!")
+
+@bp.route('/guardarInfoEscenario', methods=('GET', 'POST'))
+def guardarInfoEscenario():
+    content = request.values
+    user = getCurrentUser(session)
+
+    try:
+        idEscenario= int(content.get("idEscenario"))
+        descripcion = content.get("descripcion")
+        hint = content.get("hint")
+        cantMaxBloques= int(content.get("cantMaxBloques"))
+        escenario = escenarioABM.traerEscenario(idEscenario)
+        escenario.setDescripcion(descripcion=descripcion)
+        escenario.setHint(hint)
+        escenario.setCantBloquesMax(cantMaxBloques)
+        escenarioABM.()
+        data = {
+            "success": True
+        }
+        return createResponseAsJSON(data)
+    except Exception as e:
+        print("Error encontrado : " + repr(e) + " - " + e.message, file=sys.stdout)
+        traceback.print_exc()
+        return crearError(-1, "Error al procesar solicitud!")
+
 
 @bp.route('/editar', methods=('GET', 'POST'))
 def editarCurso():

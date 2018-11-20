@@ -9,6 +9,9 @@ class EscenarioABM:
     def traerEscenario(self, idEscenario):
         return self.dao.traerEscenario(idEscenario)
 
+    def actualizarEscenario(self, escenario):
+        return self.dao.actualizarEscenario(escenario)
+
     def agregarEscenario(self, bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso):
 
         return self.dao.agregar(bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso)

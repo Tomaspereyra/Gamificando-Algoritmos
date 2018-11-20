@@ -30,6 +30,20 @@ class CursoDao:
             sesion.cerrarConexion()
             return resultado
 
+    def actualizarCurso(self, curso):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        try:
+            cursor.execute("""update Curso set nombre='%s',descripcion='%s',sePuedeSaltear='%s' where idCurso= '%s'""" % (
+                curso.getNombre(), curso.getDescripcion(),
+                curso.getSepuedeSaltar(), curso.getIdCurso()))
+            sesion.commit()
+        except:
+            print "Error, no se pudo actualizar"
+            sesion.getEstado().rollback()
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
 
     def eliminar(self, curso):
 

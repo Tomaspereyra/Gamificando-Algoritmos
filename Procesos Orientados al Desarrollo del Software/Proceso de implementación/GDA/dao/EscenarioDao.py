@@ -37,6 +37,21 @@ class EscenarioDao:
             sesion.cerrarConexion()
             return filasAfectadas
 
+    def actualizarEscenario(self, escenario):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        try:
+            cursor.execute("""update Escenario set descripcion='%s',cantBloquesMax='%s', hint='%s' where idEscenario = '%s'""" % (
+                escenario.getDescripcion(), escenario.getCantBloquesMax(),
+                escenario.getHint(), escenario.getIdEscenario()))
+            sesion.commit()
+        except:
+            print ("Error, no se pudo actualizar")
+            sesion.getEstado().rollback()
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+
     def eliminar(self, escenario):
         sesion = self.iniciarOperacion()
 
