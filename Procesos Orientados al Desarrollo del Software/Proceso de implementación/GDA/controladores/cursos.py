@@ -71,7 +71,10 @@ def cursosEstudiante():
     idEstudiante = estudiante.idEstudiante
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
-    cursos = cursoIniciadoABM.traerCursosIniciadosPorIdEstudiante(idEstudiante)
+    cursosIniciados = cursoIniciadoABM.traerCursosIniciadosPorIdEstudiante(idEstudiante)
+    cursos = []
+    for cursoIniciado in cursosIniciados:
+        cursos.append(cursoIniciado.curso)
     return render_template("verCursos.html", user=user, cursos=cursos, Docente=False)
 
 @bp.route('/jugar', methods=('GET', 'POST'))

@@ -15,12 +15,19 @@
 <body>
 
   {% include "header.html" %}
-  
+
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
       <h1 class="header center orange-text">Editar Curso</h1>
       <form class = "col s12">
+          <div class="row center">
+            <div class = "input-field col s8">
+              <input placeholder = "Nombre" disabled  name="idCurso" type = "text" class = ""  id = "idCurso" value = "{{ curso.idCurso }}">
+                </input>
+              <label for = "nombre">Nombre</label>
+           </div>
+        </div>
         <div class="row center">
             <div class = "input-field col s8">
               <input placeholder = "Nombre" name="nombre" type = "text" class = "active validate"  id = "nombre" value = "{{ curso.nombre }}">
@@ -73,7 +80,7 @@
               {% set link = "http://localhost:5000/cursos/editarEscenario?idEscenario=" + escenario.idEscenario|string %}
               {% set puntaje = "Editar" %}
               {% set text = "<< " + escenario.descripcion + " >>" %}
-            <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> {{ text }} </b></a>
+              <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> <font size="5">{{ text }} </font></b></a>
             {% endfor %}
           </div>
         </div>
@@ -103,7 +110,7 @@
   <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
   <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
 
-  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+  <script type="text/javascript" src={{ url_for('static', filename='js/editarCurso.js') }}></script>
 
 
   {% include "footer.html" %}
