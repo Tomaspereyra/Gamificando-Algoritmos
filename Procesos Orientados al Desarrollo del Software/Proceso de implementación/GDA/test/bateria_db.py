@@ -27,7 +27,21 @@ def bateria_Prueaba():
     cursoIniciadoABM.comenzarCurso(estudianteABM.traerEstudiante("usuario6"),cursoAbm.traerCurso(1))
     escenarioLaberintoABM.agregarEscenarioLaberinto(10, 5, "hint", "posibleSolucion", "descripcion", 1,"1111111111111111111")
 
+def bateria_prueba_traer():
+    cursoIniciadoABM = CursoIniciadoABM()
+    estudianteABM = EstudianteABM()
+    usuarioABM = UsuarioABM()
+    cursoAbm = CursoABM()
+    escenarioABM = EscenarioABM()
+    docenteABM = DocenteABM()
+    juegoABM = JuegoABM()
+    escenarioLaberintoABM = EscenarioLaberintoABM()
+    docenteABM.registrarDocente("docente", "password", "usuario@mail.com", "docente", "apellido", "29/9/2018")
+    estudianteABM.agregarEstudiante("estudiante", "password", "usuario@mail.com", "estudiante", "apellido", "29/9/2018")
+    juegoABM.agregarJuego("juego", "DecripcionJuego")
+    cursoAbm.agregarCurso(True, "nombreCurso", "DescripcionCurso",docenteABM.traerDocente("docente"), juegoABM.traerJuego("juego"))
+    cursoIniciadoABM.comenzarCurso(estudianteABM.traerEstudiante("estudiante"), cursoAbm.traerCurso(1))
+
+bateria_prueba_traer()
 
 
-
-bateria_Prueaba()
