@@ -20,6 +20,10 @@ def bateria_Prueaba():
         estudianteABM.agregarEstudiante("usuario"+str(x),"password", "usuario"+str(x)+"@mail.com", "nombre"+str(x), "apellido"+str(x), "29/9/2018")
     for x in range (1, 3):
         juegoABM.agregarJuego("juego"+str(x), "DecripcionJuego"+str(x))
-    cursoAbm.agregarCurso(True, "Curso1", "DescripcionCurso1", docenteABM.traerDocente("usuario1"), juegoABM.traerJuego("juego1"))
+    for x in range (1,3):
+        cursoAbm.agregarCurso(True, "Curso"+str(x), "DescripcionCurso"+str(x), docenteABM.traerDocente("usuario"+str(x)), juegoABM.traerJuego("juego1"))
+    cursoIniciadoABM.comenzarCurso(estudianteABM.traerEstudiante("usuario6"),cursoAbm.traerCurso(1))
+
+
 
 bateria_Prueaba()
