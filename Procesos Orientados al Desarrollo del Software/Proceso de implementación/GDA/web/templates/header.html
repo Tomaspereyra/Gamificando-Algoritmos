@@ -12,9 +12,9 @@
         </input>
       <!-- Registered ul -->
         {% if user %}
-        {% set urlMiCuenta = "http://localhost:5000/miCuenta?username=" + user %}
-        {% set urlExplorarCursos = "http://localhost:5000/explorarCursos?username=" + user %}
-        {% set urlMisCursos = "http://localhost:5000/cursos/estudiante?username=" + user %}
+        {% set urlMiCuenta = "http://localhost:5000/miCuenta" %}
+        {% set urlExplorarCursos = "http://localhost:5000/cursos/" %}
+        {% set urlMisCursos = "http://localhost:5000/cursos/misCursos" %}
         <ul id="dropdownLogueado" class="dropdown-content" style="width: 500px !important">
 
             <li><a href= {{ urlMiCuenta }}>Mi Cuenta</a></li>

@@ -28,9 +28,9 @@
           <div class="collection">
             {% for escenarioEnCurso in curso.escenarioRealizado: %}
               {% set escenario = escenarioEnCurso.getEscenario() %}
-              {% set link = "http://localhost:5000/jugarEscenario?idEscenario=" + escenarioEnCurso.idEscenario|string %}
+              {% set link = "http://localhost:5000/cursos/jugarEscenario?idEscenario=" + escenarioEnCurso.idEscenario|string %}
               {% if escenarioEnCurso.puntajeObtenido %}
-                 {% set puntaje = escenarioEnCurso.puntajeObtenido|string + " Puntos"%}
+                 {% set puntaje = "Finalizado : " + escenarioEnCurso.puntajeObtenido|string + " Puntos"%}
               {% else %}
                  {% set puntaje = escenarioEnCurso.intentos|string + " Intentos"%}
               {% endif %}

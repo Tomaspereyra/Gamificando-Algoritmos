@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="encoding" content="ISO-8859-1" >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gamificando Algoritmos - Mi Cuenta</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  {% include "header.html" %}
+  
+  {% if user and estudiante %}
+  <center> <h1 class="header center orange-text">Información de Estudiante</h1> </center>
+  <center>
+    <table class = "centered stripped" style="width:600px">
+
+       <tbody>
+          <tr>
+             <td>Nombre</td>
+             <td>{{ estudiante.nombre }}</td>
+          </tr>
+
+          <tr>
+             <td>Apellido</td>
+             <td>{{ estudiante.apellido }}</td>
+          </tr>
+
+          <tr>
+             <td>Fecha de Nacimiento</td>
+             <td>{{ estudiante.fechaNacimiento }}</td>
+          </tr>
+
+          <tr>
+             <td>Email</td>
+             <td>{{ estudiante.email }}</td>
+          </tr>
+
+          <tr>
+             <td>Nombre de Usuario</td>
+             <td>{{ estudiante.username }}</td>
+          </tr>
+
+       </tbody>
+     </table>
+    </center>
+    <center> <h1 class="header center orange-text">Estadísticas</h1> </center>
+
+    <center>
+      <table class = "centered stripped" style="width:600px">
+
+         <tbody>
+            <tr>
+               <td>Cursos completados</td>
+               <td>XXX</td>
+            </tr>
+
+            <tr>
+               <td>Escenarios Completados</td>
+               <td>YYY</td>
+            </tr>
+
+            <tr>
+               <td>Mejor Tiempo</td>
+               <td>ZZZ</td>
+            </tr>
+         </tbody>
+       </table>
+      </center>
+  {% else %}
+      <center> <h1 class="header center orange-text">¡Error al procesar!</h1> </center>
+  {% endif %}
+
+
+
+
+  <!--  Scripts-->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
+
+  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+
+
+  {% include "footer.html" %}
+
+  </body>
+</html>

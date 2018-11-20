@@ -11,6 +11,9 @@ class EscenarioEnProceso:
         self.fechaInicio = fechaInicio
         self.fechaFinalizacion = fechaFinalizacion
 
+    def finalizado(self):
+        return self.puntajeObtenido is not None
+
     def setId(self, idEscenario):
         self.id = idEscenario
 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="encoding" content="ISO-8859-1" >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gamificando Algoritmos - Escenarios</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  {% include "header.html" %}
+  
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Editar Curso</h1>
+      <form class = "col s12">
+        <div class="row center">
+          <div class = "input-field col s6">
+              <i class = "material-icons prefix">account_circle</i>
+              <input placeholder = "Nombre" name="nombre" value = {{ curso.nombre }} id = "nombre"
+                 type = "text" class = "active validate" required />
+              <label for = "nombre">Nombre</label>
+           </div>
+        </div>
+        <div class="row center">
+          <div class = "input-field col s6">
+              <i class = "material-icons prefix">account_circle</i>
+              <input placeholder = "Cantidad Max. Bloques" name="cantBloquesMax" value = {{ curso.cantBloquesMax }} id = "cantBloquesMax"
+                 type = "text" class = "active validate" required />
+              <label for = "nombre">Cantidad Max. Bloques</label>
+           </div>
+        </div>
+        <div class="row center">
+          <div class = "input-field col s6">
+              <i class = "material-icons prefix">account_circle</i>
+              <input placeholder = "Hint - Sugerencia" name="hint" value = {{ curso.hint }} id = "hint"
+                 type = "text" class = "active validate" required />
+              <label for = "hint">Hint</label>
+           </div>
+        </div>
+      </form>
+      <div class="row center">
+        <h5 class="header col s12 light">¡Aquí podrás editar la información del curso o sus escenarios!</h5>
+      </div>
+      {% if curso.escenario|length > 0 %}
+        <div class="row center">
+          <h5 class="header col s12 light">¡Elige un escenario para editarlo!</h5>
+        </div>
+      <div class="row center">
+          <div class="collection">
+            {% for escenarioEnCurso in curso.escenarioRealizado: %}
+              {% set escenario = escenarioEnCurso.getEscenario() %}
+              {% set link = "http://localhost:5000/cursos/editarEscenario?idEscenario=" + escenarioEnCurso.idEscenario|string %}
+              {% set puntaje = "Editar" %}
+              {% set text = "<< " + escenario.descripcion + " >>" %}
+            <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> {{ text }} </b></a>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="row center">
+          <h5 class="header col s12 light">¡Este curso no cuenta con Escenarios aún!</h5>
+        </div>
+      {% endif %}
+      {% set linkAgregar = "http://localhost:5000/cursos/agregarEscenario?idCurso=" + curso.idCurso|string %}
+      <a href={{ link }}  class="collection-item"><span class="badge"> </span><b> ¡Agregar Escenario! </b></a>
+      <br><br>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!--  Scripts-->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
+
+  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+
+
+  {% include "footer.html" %}
+
+  </body>
+</html>
