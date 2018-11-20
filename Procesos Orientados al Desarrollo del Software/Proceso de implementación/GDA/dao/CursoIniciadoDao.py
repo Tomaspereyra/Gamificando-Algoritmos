@@ -75,14 +75,15 @@ class CursoIniciadoDao:
         cursodao = CursoDao()
         cursoIniciado = None
         try:
-            cursor.execute("""select * from cursoiniciado where cursoiniciado.Estudiante_idEstudiante='%i' AND cursoiniciado.Curso_idCurso='%i'""" % estudiante.idEstudiante, curso.idCurso)
+            cursor.execute("""select * from cursoiniciado where cursoiniciado.Estudiante_idEstudiante='%i' AND cursoiniciado.Curso_idCurso='%i'""" % (estudiante.idEstudiante, curso.idCurso))
             daoEscenario = EscenarioEnProcesoDao()
             resultado = cursor.fetchone()
             cursoIniciado = CursoIniciado()
             cursoIniciado.setIdCursoIniciado(resultado[0])
             cursoIniciado.setCurso(cursodao.traerCurso(resultado[2]))
             cursoIniciado.setEscenarios(daoEscenario.traerEscenariosPorCurso(cursoIniciado.getIdCursoIniciado()))
-        except:
+        except Exception as e:
+            print("Error en Query : " + e.message)
             return None
         finally:
             cursor.close()

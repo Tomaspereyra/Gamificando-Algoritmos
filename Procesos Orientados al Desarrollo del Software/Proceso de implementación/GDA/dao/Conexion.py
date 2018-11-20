@@ -3,7 +3,7 @@ import MySQLdb
 
 class Sesion:
      def __init__(self):
-         self.estado=MySQLdb.connect(host="localhost", user="root", passwd="root", db="proyectodb")
+         self.estado=MySQLdb.connect(host="localhost", user="root", passwd="", db="proyectodb")
 
 
      def getEstado(self):

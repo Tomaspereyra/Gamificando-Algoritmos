@@ -20,7 +20,7 @@
     <div class="container">
       <br><br>
       <h1 class="header center orange-text">Escenarios en Curso</h1>
-      {% if cursos|length > 0 %}
+      {% if curso.escenarioRealizado|length > 0 %}
         <div class="row center">
           <h5 class="header col s12 light">¡Elegí el Escenario que querés jugar!</h5>
         </div>
@@ -29,9 +29,13 @@
             {% for escenarioEnCurso in curso.escenarioRealizado: %}
               {% set escenario = escenarioEnCurso.getEscenario() %}
               {% set link = "http://localhost:5000/jugarEscenario?idEscenario=" + escenarioEnCurso.idEscenario|string %}
-              {% set puntaje = escenarioEnCurso.puntajeObtenido|string %}
-              {% set text = "<< " + escenario.nombre + " >>" %}
-            <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} puntos obtenidos</span><b> {{ text }} </b></a>
+              {% if escenarioEnCurso.puntajeObtenido %}
+                 {% set puntaje = escenarioEnCurso.puntajeObtenido|string + " Puntos"%}
+              {% else %}
+                 {% set puntaje = escenarioEnCurso.intentos|string + " Intentos"%}
+              {% endif %}
+              {% set text = "<< " + escenario.descripcion + " >>" %}
+            <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> {{ text }} </b></a>
             {% endfor %}
           </div>
         </div>

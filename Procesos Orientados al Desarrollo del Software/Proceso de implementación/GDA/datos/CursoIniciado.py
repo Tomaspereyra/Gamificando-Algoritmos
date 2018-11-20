@@ -35,4 +35,7 @@ class CursoIniciado:
         return str(self.getCurso().__str__() + "Escenarios: " + str(self.imprimirLista()))
 
     def imprimirLista(self):
-        return ''.join('\n'.join(map(str, sl)) for sl in self.getEscenarios())
+        try:
+            return ''.join('\n'.join(map(str, sl)) for sl in self.getEscenarios())
+        except:
+            return "[]"

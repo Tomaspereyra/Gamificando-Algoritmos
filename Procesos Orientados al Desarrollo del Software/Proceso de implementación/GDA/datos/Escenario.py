@@ -52,6 +52,6 @@ class Escenario:
         return self.idEscenario
 
     def __str__(self):
-        return str("Datos Escenario:" + str(self.getBloquesPerimitidos())+ str(self.getCantBloquesMax()) +
+        return str("Datos Escenario:" + str(self.getBloquesPerimitidos()) + str(self.getCantBloquesMax()) +
                    self.getHint() + self.getPosiblesSolucion() + self.getDescripcion())
 

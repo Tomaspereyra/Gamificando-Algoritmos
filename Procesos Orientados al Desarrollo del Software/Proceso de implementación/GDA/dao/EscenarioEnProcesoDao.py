@@ -24,7 +24,7 @@ class EscenarioEnProcesoDao:
 
         try:
             cursor.execute("""insert into EscenarioEnProceso(fechaInicio, Escenario_idEscenario, 
-            CursoIniciado_idCursoIniciado) values ('%s', '%i','%i')""" % (fechaInicio, idEscenario, idCursoIniciado))
+            CursoIniciado_idCursoIniciado, intentos) values ('%s', '%i','%i', '%i')""" % (str(fechaInicio), idEscenario, idCursoIniciado, 0))
             sesion.commit()
         finally:
              cursor.close()

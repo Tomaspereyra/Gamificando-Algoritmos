@@ -6,6 +6,7 @@ import json
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
+import traceback
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import current_app as app
 
@@ -83,15 +84,16 @@ def jugarCurso():
             cursoIniciadoABM.comenzarCurso(estudiante, curso)
             cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)
             for e in curso.escenario:
-                print("Escenario : " + str(e) , file=sys.stdout)
+                print("Escenario : " + str(e), file=sys .stdout)
                 escenarioEnProcesoABM.comenzarEscenario(now, e.idEscenario, cursoIniciado.idCursoIniciado)
-                cursoIniciado.agregarEscenario()
+            cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)  # Traemos de vuelta para actualizar escenarios
             print("Creado : " + str(cursoIniciado), file=sys.stdout)
         else:
             print("Curso Iniciado existe : " + str(cursoIniciado), file=sys.stdout)
         return render_template("escenariosEnCurso.html", user=user, curso=cursoIniciado, nombreCurso=curso.nombre)
     except Exception as e:
-        print("Error encontrado : " + repr(e) + " - " + e.message, file=sys.stdout)
+        print("Error encontrado : " + repr(e) + " - " + e.message , file=sys.stdout)
+        traceback.print_exc()
         return render_template("index.html", user=user)
 
 @bp.route('/editar', methods=('GET', 'POST'))

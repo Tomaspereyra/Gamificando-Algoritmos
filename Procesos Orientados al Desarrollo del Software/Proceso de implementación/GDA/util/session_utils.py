@@ -13,4 +13,4 @@ def getCurrentUser(session):
 def updateCurrentUser(session):
     global CURRENT_USER
     CURRENT_USER = getCurrentUser(session)
-    print(' updateCurrentUser() : user -> ' + CURRENT_USER, file=sys.stdout)
+    #print(' updateCurrentUser() : user -> ' + CURRENT_USER, file=sys.stdout)
