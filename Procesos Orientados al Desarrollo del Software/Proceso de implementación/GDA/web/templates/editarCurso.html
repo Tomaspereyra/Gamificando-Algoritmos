@@ -22,30 +22,35 @@
       <h1 class="header center orange-text">Editar Curso</h1>
       <form class = "col s12">
         <div class="row center">
-          <div class = "input-field col s6">
-              <i class = "material-icons prefix">account_circle</i>
-              <input placeholder = "Nombre" name="nombre" value = {{ curso.nombre }} id = "nombre"
-                 type = "text" class = "active validate" required />
+            <div class = "input-field col s6">
+              <input placeholder = "Nombre" name="nombre" type = "text" class = "active validate"  id = "nombre" value = {{ curso.nombre }}>
+                </input>
               <label for = "nombre">Nombre</label>
            </div>
         </div>
         <div class="row center">
-          <div class = "input-field col s6">
-              <i class = "material-icons prefix">account_circle</i>
-              <input placeholder = "Cantidad Max. Bloques" name="cantBloquesMax" value = {{ curso.cantBloquesMax }} id = "cantBloquesMax"
-                 type = "text" class = "active validate" required />
-              <label for = "nombre">Cantidad Max. Bloques</label>
+            <div class = "input-field col s6">
+              <input placeholder = "Descripcion" name="descripcion" type = "text" class = "active validate"  id = "descripcion" value = {{ curso.descripcion }} >
+                </input>
+              <label for = "descripcion">Descripcion</label>
            </div>
         </div>
         <div class="row center">
           <div class = "input-field col s6">
-              <i class = "material-icons prefix">account_circle</i>
-              <input placeholder = "Hint - Sugerencia" name="hint" value = {{ curso.hint }} id = "hint"
-                 type = "text" class = "active validate" required />
+              <input placeholder = "Cantidad Max. Bloques" name="cantBloquesMax" type = "text" class = "active validate" id = "cantBloquesMax"
+                     value = {{ curso.cantBloquesMax }} >
+              </input>
+              <label for = "cantBloquesMax">Cantidad Max. Bloques</label>
+           </div>
+        </div>
+        <div class="row center">
+          <div class = "input-field col s6">
+              <input placeholder = "Hint - Sugerencia" name="hint" id = "hint"
+                     type = "text" class = "active validate"  value = {{ curso.hint }}>
+                </input>
               <label for = "hint">Hint</label>
            </div>
         </div>
-      </form>
       <div class="row center">
         <h5 class="header col s12 light">¡Aquí podrás editar la información del curso o sus escenarios!</h5>
       </div>
@@ -70,7 +75,10 @@
         </div>
       {% endif %}
       {% set linkAgregar = "http://localhost:5000/cursos/agregarEscenario?idCurso=" + curso.idCurso|string %}
-      <a href={{ link }}  class="collection-item"><span class="badge"> </span><b> ¡Agregar Escenario! </b></a>
+      <div class="row center">
+          <a href={{ link }}  class="collection-item"><span class="badge"> </span><b><font size="16"> <u>¡Agregar Escenario! </u></font></b></a>
+      </div>
+      </form>
       <br><br>
 
     </div>

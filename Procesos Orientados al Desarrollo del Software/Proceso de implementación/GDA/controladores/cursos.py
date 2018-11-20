@@ -114,7 +114,7 @@ def editarCurso():
     user = getCurrentUser(session)
     try:
         idCurso = content.get("idCurso")
-        curso = cursoIniciadoABM.traerCurso(idCurso)
+        curso = cursoABM.traerCurso(idCurso)
         return render_template("editarCurso.html", user=user, curso=curso)
     except Exception as e:
         print("Error encontrado : " + repr(e) + " - " + e.message, file=sys.stdout)
