@@ -75,7 +75,7 @@ def jugarCurso():
             print("Error : Estudiante " + str(user) + " no existe ", file=sys.stdout)
             return render_template("index.html", user=user)
         curso = cursoABM.traerCurso(idCurso)
-        cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, idCurso)
+        cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)
         #Ver si existe, si no crearlo y mandarselo a la vista
         if not cursoIniciado:
             #Creamos
