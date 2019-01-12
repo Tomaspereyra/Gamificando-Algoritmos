@@ -26,11 +26,11 @@ class EscenarioDao:
         filasAfectadas = 0
         try:
             filasAfectadas = cursor.execute("""insert into Escenario (bloquesPermitidos, cantBloquesMax, hint, posibleSolucion,
-                           descripcion,Curso_idCurso) values('%i','%i','%s','%s','%s','%i')""" % (
-                bloquesPermitidos, cantBloquesMax, hint, posibleSolucion, descripcion, idCurso))
+                           descripcion,Curso_idCurso) values('%s','%i','%s','%s','%s','%i')""" % (
+                bloquesPermitidos, int(cantBloquesMax), hint, posibleSolucion, descripcion, int(idCurso)))
             sesion.commit()
-        except:
-            print ("Error en la ejecucion de la query")
+        except Exception as e:
+            print ("Error en la ejecucion de la query : " + e.message)
             sesion.getEstado().rollback()
         finally:
             cursor.close()

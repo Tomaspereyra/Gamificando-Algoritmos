@@ -180,14 +180,17 @@ def editarCurso():
 
 @bp.route('/agregarEscenario', methods=('GET', 'POST'))
 def agregarEscenario():
+
     content = request.values
     user = getCurrentUser(session)
-    idCurso = content.get("idCurso")
-    curso = cursoABM.traerCurso(idCurso)
-    if curso:
-        return render_template("crearEscenario.html", user=user, curso=curso)
-    else:
-        return render_template("verCursos.html", user=user, curso=curso)
+    try:
+        idCurso = content.get("idCurso")
+        escenarioABM.agregarEscenario("", 0, "", "", "Nuevo Escenario", idCurso)
+        curso = cursoABM.traerCurso(idCurso)
+        return render_template("editarCurso.html", user=user, curso=curso)
+    except Exception as e:
+        print("Error encontrado : " + e.message, file=sys.stdout)
+        return render_template("editarCurso.html", user=user, curso=curso)
 
 @bp.route('/jugarEscenario', methods=('GET', 'POST'))
 def jugarEscenario():
