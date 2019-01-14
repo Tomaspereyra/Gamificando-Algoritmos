@@ -62,7 +62,10 @@ def cursosDocente():
     print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
     print("Content : " + str(content), file=sys.stdout)
     cursos = cursoABM.traerCursosPorIdDocente(idDocente)
-    return render_template("verCursos.html", user=user, cursos=cursos, docente=True)
+    juegos = juegoABM.traerJuegos()
+
+
+    return render_template("verCursos.html", user=user, cursos=cursos, docente=True, juegos = juegos)
 
 @bp.route('/estudiante', methods=('GET', 'POST'))
 def cursosEstudiante():
@@ -203,7 +206,7 @@ def jugarEscenario():
     else:
         return render_template("verCursos.html", user=user, curso=curso)
 
-@bp.route('/crear', methods=('GET', 'POST'))
+@bp.route('/agregarCurso', methods=('GET', 'POST'))
 def crearCurso():
 
     content = request.values
@@ -211,12 +214,13 @@ def crearCurso():
     user = getCurrentUser(session)
     sePuedeSaltear = bool(content.get("sePuedeSaltear"))
     nombre = content.get("nombre")
+
     descripcion = content.get("descripcion")
-    descripcion = content.get("descripcion")
-    idJuego = content.get("idJuego")
+    idJuego = content.get("juego")
+    print ("id"+ idJuego,file=sys.stdout)
     try:
         docente = docenteABM.traerDocente(user)
-        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuego(idJuego))
+        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuegoPorId(idJuego))
         #Ver si existe, si no crearlo y mandarselo a la vista
         return render_template("editarCurso.html", user=user, curso=curso)
     except Exception as e:

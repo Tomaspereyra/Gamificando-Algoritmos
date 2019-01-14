@@ -23,3 +23,10 @@ class JuegoABM:
     def eliminarJuego(self, nombre):
         self.dao.eliminar(self.traerJuego(nombre))
 
+    def traerJuegos(self):
+        return self.dao.traerJuegos()
+
+
+juego = JuegoABM()
+print juego.traerJuegoPorId(1).getNombre()
+
