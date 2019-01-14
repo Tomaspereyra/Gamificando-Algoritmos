@@ -14,11 +14,12 @@ from util.errores import *
 from negocio.UsuarioABM import UsuarioABM
 from negocio.DocenteABM import DocenteABM
 from negocio.EstudianteABM import EstudianteABM
+from negocio.CursoABM import CursoABM
 
 usuarioABM = UsuarioABM()
 docenteABM = DocenteABM()
 estudianteABM = EstudianteABM()
-
+cursoABM = CursoABM()
 
 bp = Blueprint('miCuenta', __name__, url_prefix='/miCuenta')
 
@@ -30,9 +31,12 @@ def myAccount():
         print ("Username global : " + str(getCurrentUser(session)), file=sys.stdout)
         try:
             username = getCurrentUser(session)
-            estudianteProfesor = docenteABM.traerDocente(username);
+            estudianteProfesor = docenteABM.traerDocente(username)
+
             if estudianteProfesor:
-                return render_template("miCuentaDocente.html", docente=estudianteProfesor, user=username)
+                cursos = cursoABM.traerCursosPorIdDocente(estudianteProfesor.getIdDocente())
+                print (str(cursos.__len__()), file=sys.stdout)
+                return render_template("miCuentaDocente.html", docente=estudianteProfesor, user=username, cursos=cursos)
             else:
                 estudianteProfesor = estudianteABM.traerEstudiante(username)
                 return render_template("miCuentaEstudiante.html", estudiante=estudianteProfesor, user=username)
@@ -40,6 +44,6 @@ def myAccount():
             username = None
             user = None
             print ("User : " + str(user), file=sys.stdout)
-            return render_template("MiCuentaEstudiante.html", userObj=user, user=username)
+            return render_template("miCuentaEstudiante.html", userObj=user, user=username)
     except Exception as e:
         print("ERROR : " + e.message)

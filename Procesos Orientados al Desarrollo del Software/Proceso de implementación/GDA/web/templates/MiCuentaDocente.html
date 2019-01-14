@@ -50,6 +50,7 @@
        </tbody>
      </table>
     </center>
+
     <center> <h1 class="header center orange-text">Estadísticas</h1> </center>
 
     <center>
@@ -57,19 +58,22 @@
 
          <tbody>
             <tr>
-               <td>Cursos completados</td>
-               <td>XXX</td>
+               <td>Cursos Creados</td>
+                {% if cursos | length >0 %}
+                 {% set cantidad = cursos|length|string %}
+                  <td>{{cantidad}}</td>
+                 {% else %}
+                <td>0</td>
+                {% endif %}
+
             </tr>
 
             <tr>
-               <td>Escenarios Completados</td>
+               <td>Escenarios Creados</td>
                <td>YYY</td>
             </tr>
 
-            <tr>
-               <td>Mejor Tiempo</td>
-               <td>ZZZ</td>
-            </tr>
+
          </tbody>
        </table>
       </center>

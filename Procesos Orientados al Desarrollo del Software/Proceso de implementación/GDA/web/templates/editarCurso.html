@@ -42,6 +42,14 @@
               <label for = "descripcion">Descripcion</label>
            </div>
         </div>
+        <div class = "row center">
+          <div class ="input-field col s6">
+            <input placeholder= "Juego" disabled name="juego" type = "text" class = "" id = "idJuego" value ="{{ curso.juego.nombre }}"/>
+            <label for = "idJuego" >Juego</label>
+          </div>
+        </div>
+
+
         <p>
           <label>
             <input type="checkbox" class="filled-in" name="sePuedeSaltear" id="sePuedeSaltear" checked="{{ curso.sePuedeSaltear }}" />
