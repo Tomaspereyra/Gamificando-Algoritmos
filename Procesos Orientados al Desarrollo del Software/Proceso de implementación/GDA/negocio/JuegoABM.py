@@ -27,6 +27,5 @@ class JuegoABM:
         return self.dao.traerJuegos()
 
 
-juego = JuegoABM()
-print juego.traerJuegoPorId(1).getNombre()
+
 

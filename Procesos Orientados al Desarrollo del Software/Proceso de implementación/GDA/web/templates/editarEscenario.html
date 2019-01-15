@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="encoding" content="ISO-8859-1" >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gamificando Algoritmos - Home</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  {% include "header.html" %}
+<div class="row center section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+      <h1 class="header center orange-text">Editar Escenario</h1>
+      <form action="/escenarios/actualizarEscenario" class = "col s12">
+          <div class="row center">
+            <div class = "input-field col s8">
+              <input placeholder = "idEscenario" disabled  name="idEscenario" type = "text" class = "active validate"  id = "idEscenario" value = "{{ escenario.idEscenario }}">
+                <input type="hidden" name="idescenario" value="{{escenario.idEscenario}}">
+              <label for = "idEscenario">Id Escenario</label>
+           </div>
+        </div>
+        <div class="row center">
+            <div class = "input-field col s8">
+              <input placeholder = "BloquesPermitidos" name="bloquesPermitidos" type = "text" class = "active validate"  id = "bloquesPermitidos" value = "{{ escenario.bloquesPermitidos }}">
+              <label for = "bloquesPermitidos" >Bloques Permitidos</label>
+           </div>
+        </div>
+        <div class="row center">
+            <div class = "input-field col s8">
+              <input placeholder = "Bloques Maximos" name="bloquesMax" type = "text" class = "active validate"  id = "bloquesMax" value = "{{ escenario.cantBloquesMax }}" >
+
+              <label for = "bloquesMax">Cantidad Maxima de Bloques</label>
+           </div>
+        </div>
+        <div class = "row center">
+          <div class ="input-field col s8">
+            <input placeholder= "Hint" name="hint" type = "text" class = "" id = "hint" value ="{{ escenario.hint }}"/>
+            <label for = "hint" >Hint</label>
+          </div>
+        </div>
+         <div class="row center">
+             <div class="input-field col s8">
+               <input placeholder="Descripcion" type="text" class="activate validate" name="descripcion" id="descripcion" value="{{ escenario.descripcion}}" />
+               <label for = "descripcion"> Descripcion</label>
+             </div>
+         </div>
+          <div class="row center">
+             <div class="input-field col s8">
+               <input placeholder="posibleSolucion" type="text" class="activate validate" name="posibleSolucion" id="posibleSolucion" value="{{ escenario.posiblesSolucion}}" />
+               <label for = "posibleSolucion"> Posible Solucion</label>
+             </div>
+         </div>
+
+        <div class="row center">
+          <div >
+              <button id="actualizarEscenario" type="submit" class="btn waves-effect waves-light" name="actualizarEscenario">¡Actualizar Datos!
+                <i class="material-icons right">send</i>
+              </button>
+
+           </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+  <!--  Scripts-->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
+  <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
+
+  <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+   {% include "footer.html" %}
+</body>
+</html>

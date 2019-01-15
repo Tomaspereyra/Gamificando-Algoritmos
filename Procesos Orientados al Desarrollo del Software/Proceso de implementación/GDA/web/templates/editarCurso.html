@@ -75,7 +75,7 @@
       <div class="row center">
           <div class="collection">
             {% for escenario in curso.escenario : %}
-              {% set link = "http://localhost:5000/cursos/editarEscenario?idEscenario=" + escenario.idEscenario|string %}
+              {% set link = "http://localhost:5000/escenarios/editarEscenario?idEscenario=" + escenario.idEscenario|string %}
               {% set puntaje = "Editar" %}
               {% set text = "<< " + escenario.descripcion + " >>" %}
               <a href={{ link }}  class="collection-item"><span class="badge">{{ puntaje }} </span><b> <font size="5">{{ text }} </font></b></a>
@@ -89,11 +89,81 @@
       {% endif %}
       {% set linkAgregar = "http://localhost:5000/cursos/agregarEscenario?idCurso=" + curso.idCurso|string %}
       <div class="row center">
-          <a href={{ linkAgregar }}  class="collection-item"><span class="badge"> </span><b><font size="16"> <u>¡Agregar Escenario! </u></font></b></a>
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">¡Agregar Escenario! </a>
+
+             <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <form action="/escenarios/crearEscenario" id="formEscenario" method="POST">
+                <div class="modal-content">
+                   <h4>Nuevo Escenario</h4>
+
+                  <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="bloquesPermitidos" class="autocomplete">
+                            <label for="autocomplete-input">Bloques Permitidos </label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                  <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="cantidadDeBloques" class="autocomplete">
+                            <label for="autocomplete-input">Cantidad Maxima de Bloques</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                  <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="hint" class="autocomplete">
+                            <label for="autocomplete-input">Hint</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                  <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="descripcion" class="autocomplete">
+                            <label for="autocomplete-input">Descripcion</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                  <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="posibleSolucion" class="autocomplete">
+                            <label for="autocomplete-input">Posible Solucion</label>
+                            <input type="hidden" id="cursoid" name = "curso" value ="{{curso.idCurso}}">
+                        </div>
+                     </div>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn waves-effect waves-light" type="submit" name="agregar">Agregar
+                      <i class="material-icons right">send</i>
+                  </button>
+                 </form>
+                 </div>
+            </div>
       </div>
 
       <br><br>
-
     </div>
   </div>
 
@@ -109,6 +179,10 @@
   <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
 
   <script type="text/javascript" src={{ url_for('static', filename='js/editarCurso.js') }}></script>
+  <script>
+    $(document).ready(function(){
+    $('.modal').modal(); });
+  </script>
 
 
   {% include "footer.html" %}

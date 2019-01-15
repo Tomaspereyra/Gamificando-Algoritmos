@@ -4,7 +4,7 @@ from datos.Curso import Curso
 class Escenario:
 
     def __init__(self, bloquesPermitidos=0, cantBloquesMax=0, hint="-", posibleSolucion="-", descripcion="-"):
-        self.bloquesPerimitidos = bloquesPermitidos
+        self.bloquesPermitidos = bloquesPermitidos
         self.cantBloquesMax = cantBloquesMax
         self.hint = hint
         self.posiblesSolucion = posibleSolucion
@@ -16,7 +16,7 @@ class Escenario:
         self.idCurso = idCurso
 
     def setIdEscenario(self, idEscenario):
-        self.idEscenario=idEscenario
+        self.idEscenario = idEscenario
 
     def setBloquesPermitidos(self, bloques):
         self.bloquesPerimitidos = bloques
