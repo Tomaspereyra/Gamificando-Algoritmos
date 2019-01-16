@@ -117,3 +117,5 @@ def logout():
     print (str(session['user_id']))
     session.clear()
     return render_template("index.html")
+
+

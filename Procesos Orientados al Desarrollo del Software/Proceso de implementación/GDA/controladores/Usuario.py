@@ -80,3 +80,44 @@ def editarCuenta():
         print("Error : " + e.message)
         docente = docenteABM.traerDocente(username)
         return render_template("MiCuentaDocente.html", user=user, docente=docente)
+
+@bp.route ('/cambiarContrasena', methods=('GET','POST'))
+def cambiarContrasena():
+    content = request.values
+    user = getCurrentUser(session)
+    contrasenaActual = content.get('contrasenaActual')
+    id = content.get('idusuario')
+    contrasenaNueva = content.get('contrasenaNueva')
+    confirmacion = content.get('contrasenaConfirmacion')
+    error = None
+    estudiante = estudianteABM.traerEstudiante(user)
+    try:
+        if not contrasenaActual:
+            error = "Ingrese Contrasena actual"
+        elif not contrasenaNueva:
+            error = "Ingrese Contrasena nueva"
+        elif not confirmacion:
+            error = "Repita la nueva contrasena"
+
+        if error is None:
+            usuario = usuarioABM.traerUsuarioPorId(id)
+            if contrasenaActual == usuario.getPassword():
+                if contrasenaNueva == confirmacion:
+                    usuario.setPassword(contrasenaNueva)
+                    usuarioABM.editarUsuario(usuario.getUsername(), usuario)
+                else:
+                    error = "La contrasena nueva no coincide"
+            else:
+                error = "Contrasena incorrecta"
+        if estudiante is not None:
+           return render_template("MiCuentaEstudiante.html", error=error, user=user, estudiante=estudiante)
+        else:
+            docente = docenteABM.traerDocente(user)
+            return render_template("MiCuentaDocente.html", error=error, user=user, docente=docente)
+    except Exception as e:
+        print("Error : "+ e.message,file=sys.stdout)
+        return render_template("MiCuentaEstudiante.html", error=error, user=user, estudiante=estudiante)
+
+
+
+
