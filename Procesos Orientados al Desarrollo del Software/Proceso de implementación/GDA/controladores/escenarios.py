@@ -84,7 +84,7 @@ def actualizarEscenario():
 
     escenario = Escenario(bloquesPermitidos, bloquesMax, hint, posibleSolucion, descripcion)
     escenario.setIdEscenario(idEscenario)
-    
+
 
 
 

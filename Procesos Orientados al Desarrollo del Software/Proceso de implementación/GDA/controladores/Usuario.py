@@ -15,6 +15,8 @@ from negocio.UsuarioABM import UsuarioABM
 from negocio.DocenteABM import DocenteABM
 from negocio.EstudianteABM import EstudianteABM
 from negocio.CursoABM import CursoABM
+from datos.Docente import Docente
+from datos.Usuario import Usuario
 
 usuarioABM = UsuarioABM()
 docenteABM = DocenteABM()
@@ -23,19 +25,20 @@ cursoABM = CursoABM()
 
 bp = Blueprint('miCuenta', __name__, url_prefix='/miCuenta')
 
+
 @bp.route('/', methods=('GET', 'POST'))
 def myAccount():
     try:
         content = request.values
-        print ("/miCuenta() -> Content : " + str(content), file=sys.stdout)
-        print ("Username global : " + str(getCurrentUser(session)), file=sys.stdout)
+        print("/miCuenta() -> Content : " + str(content), file=sys.stdout)
+        print("Username global : " + str(getCurrentUser(session)), file=sys.stdout)
         try:
             username = getCurrentUser(session)
             estudianteProfesor = docenteABM.traerDocente(username)
 
-            if estudianteProfesor:
+            if estudianteProfesor is not None:
                 cursos = cursoABM.traerCursosPorIdDocente(estudianteProfesor.getIdDocente())
-                print (str(cursos.__len__()), file=sys.stdout)
+                print(str(cursos.__len__()), file=sys.stdout)
                 return render_template("miCuentaDocente.html", docente=estudianteProfesor, user=username, cursos=cursos)
             else:
                 estudianteProfesor = estudianteABM.traerEstudiante(username)
@@ -43,7 +46,37 @@ def myAccount():
         except:
             username = None
             user = None
-            print ("User : " + str(user), file=sys.stdout)
+            print("User : " + str(user), file=sys.stdout)
             return render_template("miCuentaEstudiante.html", userObj=user, user=username)
     except Exception as e:
         print("ERROR : " + e.message)
+
+
+@bp.route('/editarCuenta', methods=('GET', 'POST'))
+def editarCuenta():
+    content = request.values
+    user = getCurrentUser(session)
+    idUsuario = content.get('idusuario')
+    username = content.get('username')
+    contrasena = content.get('contrasena')
+    email = content.get('email')
+    nombre = content.get('nombre')
+    apellido = content.get('apellido')
+    fechaNacimiento = content.get('fechaNacimiento')
+    usuario = Usuario(username, contrasena, email, nombre, apellido, fechaNacimiento)
+
+
+    try:
+        usuarioViejo = usuarioABM.traerUsuarioPorId(idUsuario)
+        usuarioABM.editarUsuario(usuarioViejo.getUsername(), usuario)
+        docente = docenteABM.traerDocente(username)
+        if docente is not None:
+            cursos = cursoABM.traerCursosPorIdDocente(docente.getIdDocente())
+            return render_template("MiCuentaDocente.html", user=user, docente=docente, cursos=cursos)
+        else:
+            estudiante = estudianteABM.traerEstudiante(username)
+            return render_template("MiCuentaEstudiante.html", user=user, estudiante=estudiante)
+    except Exception as e:
+        print("Error : " + e.message)
+        docente = docenteABM.traerDocente(username)
+        return render_template("MiCuentaDocente.html", user=user, docente=docente)
