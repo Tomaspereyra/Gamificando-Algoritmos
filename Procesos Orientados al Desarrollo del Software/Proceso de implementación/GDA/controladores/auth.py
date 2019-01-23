@@ -30,7 +30,7 @@ def register():
     if request.method == 'POST':
         try:
             print('/register -> POST()', file=sys.stdout)
-            content = request.values
+            content            = request.values
             username = content.get('username')
             password = content.get('password')
             mail = content.get('email')

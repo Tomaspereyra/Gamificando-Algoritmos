@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <title>Blockly Lockpicker Test</title>
+
+	<script type="text/javascript" src="../Lib/jquery.js"></script> <!-- JQuery -->
+
+	<script type="text/javascript" src="../Lib/phaser/phaser.min.js"></script>
+
+	<script type="text/javascript" src="../Lib/materialize/js/materialize.js"></script> <!-- Materialize JS -->
+	<link rel="stylesheet" type="text/css" href="../Lib/materialize/css/materialize.css"> <!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Materialize material-icons -->
+
+	<script type="text/javascript" src="../Lib/blockly/blockly_compressed.js"></script> <!-- Blockly -->
+	<script type="text/javascript" src="../Lib/blockly/msg/js/en.js"></script> <!-- Blockly Language Support -->
+	<script type="text/javascript" src="../Lib/blockly/generators/javascript.js"></script> <!-- Blockly Language Support -->
+
+	<script type="text/javascript" src="lockpicker_blocks.js"></script> <!-- Maze Custom Blocks -->
+	<script type="text/javascript" src="lockpickerModel.js"></script> <!-- Maze Model -->
+	<script type="text/javascript" src="lockpickerController.js"></script> <!-- Maze Controller -->
+
+
+</head>
+<body>
+	<div class='row'>
+		<div id='blockly-div' class="col s5" style="height: 600px; width: 1000px;"></div>
+		<div id='intermediate-div' class="col s2 center-align">
+			<div class='row center-align' align="center" >
+				<button class="btn waves-effect waves-light" type='button' id='play-button'>¡Jugar!<i class="material-icons right">done_outline</i>
+				</button>
+			</div>
+			<div class='row center-align' align="center" >
+				<button class="btn waves-effect waves-light" type='button' id='reset-button'>¡Reiniciar!<i class="material-icons right">autorenew</i>
+				</button>
+			</div>
+			<div class='row center-align' align="center" >
+				<button class="btn waves-effect waves-light" type='button' id='set-map-string-button'>¡Ingresar String Mapa!<i class="material-icons right">build</i>
+				</button>
+			</div>
+		</div>
+
+		<div id='phaser-div' class="col s5" style="height: 512px; width: 512px;"></div>
+	</div>
+</body>
+
+<xml id="toolbox" style="display: none">
+  <block type="set_current_digit"></block>
+  <block type="get_current_digit"></block>
+  <block type="get_last_digit"></block>
+  <block type="get_antelast_digit"></block>
+  <block type="input_count"></block>
+  <block type="multiply"></block>
+  <block type="sum"></block>
+  <block type="subtract"></block>
+  <block type="divide"></block>
+  <block type="while_not_finished"></block>
+  <block type="number"></block>
+  <block type="multiply_current_digit"></block>
+  <block type="add_to_current_digit"></block>
+  <block type="subtract_current_digit"></block>
+  <block type="divide_current_digit"></block>
+  
+</xml>
+
+<script>
+  var workspace = Blockly.inject('blockly-div',
+      {toolbox: document.getElementById('toolbox')});
+</script>
