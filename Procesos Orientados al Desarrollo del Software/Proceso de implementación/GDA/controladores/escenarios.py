@@ -20,6 +20,7 @@ from negocio.DocenteABM import DocenteABM
 from negocio.EstudianteABM import EstudianteABM
 from negocio.JuegoABM import JuegoABM
 from negocio.EscenarioEnProcesoABM import EscenarioEnProcesoABM
+from datos.Escenario import Escenario
 
 cursoABM = CursoABM()
 cursoIniciadoABM = CursoIniciadoABM()
@@ -32,97 +33,68 @@ estudianteABM = EstudianteABM()
 bp = Blueprint('escenarios', __name__, url_prefix='/escenarios')
 
 
-@bp.route('/', methods=('GET', 'POST'))
-def cursosGeneral():
-    content = request.values
-
-    user = getCurrentUser(session)
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
-    print("Content : " + str(content), file=sys.stdout)
-    cursos = cursoABM.traerCursos()
-    return render_template("verCursos.html", user=user, cursos=cursos)
-
-@bp.route('/docente', methods=('GET', 'POST'))
-def cursosDocente():
-    content = request.values
-    user = getCurrentUser(session)
-    idDocente = content.get("idDocente")
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
-    print("Content : " + str(content), file=sys.stdout)
-    cursos = cursoABM.traerCursosPorIdDocente(idDocente)
-    return render_template("verCursos.html", user=user, cursos=cursos)
-
-@bp.route('/estudiante', methods=('GET', 'POST'))
-def cursosEstudiante():
-    content = request.values
-    user = getCurrentUser(session)
-    idEstudiante = content.get("idEstudiante")
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
-    print("Content : " + str(content), file=sys.stdout)
-    cursos = cursoIniciadoABM.traerCursosIniciadosPorIdEstudiante(idEstudiante)
-    return render_template("verCursos.html", user=user, cursos=cursos)
-
-@bp.route('/jugar', methods=('GET', 'POST'))
-def jugarCurso():
-
-    content = request.values
-    user = getCurrentUser(session)
-    print("Content : " + str(content), file=sys.stdout)
-    idCurso = content.get("idCurso")
-    try:
-        estudiante = estudianteABM.traerEstudiante(user)
-        if not estudiante:
-            print("Error : Estudiante " + str(user) + " no existe ", file=sys.stdout)
-            return render_template("index.html", user=user)
-        curso = cursoABM.traerCurso(idCurso)
-        cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)
-        #Ver si existe, si no crearlo y mandarselo a la vista
-        if not cursoIniciado:
-            #Creamos
-            now = datetime.datetime.now()
-            print("Creando cursoIniciado... ", file=sys.stdout)
-            cursoIniciadoABM.comenzarCurso(estudiante, curso)
-            cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)
-            for e in curso.escenario:
-                print("Escenario : " + str(e), file=sys .stdout)
-                escenarioEnProcesoABM.comenzarEscenario(now, e.idEscenario, cursoIniciado.idCursoIniciado)
-            cursoIniciado = cursoIniciadoABM.traerCursoIniciado(estudiante, curso)  # Traemos de vuelta para actualizar escenarios
-            print("Creado : " + str(cursoIniciado), file=sys.stdout)
-        else:
-            print("Curso Iniciado existe : " + str(cursoIniciado), file=sys.stdout)
-        return render_template("escenariosEnCurso.html", user=user, curso=cursoIniciado, nombreCurso=curso.nombre)
-    except Exception as e:
-        print("Error encontrado : " + repr(e) + " - " + e.message , file=sys.stdout)
-        traceback.print_exc()
-        return render_template("index.html", user=user)
-
-@bp.route('/editar', methods=('GET', 'POST'))
-def editarCurso():
-    content = request.values
-    user = getCurrentUser(session)
-    idCurso = content.get("idCurso")
-    cursos = cursoIniciadoABM.traerCurso(idCurso)
-    #Ver si existe, si no crearlo y mandarselo a la vista
-    print('/cursos -> POST/GET() - User : ' + str(user), file=sys.stdout)
-    print("Content : " + str(content), file=sys.stdout)
-    return render_template("verCursos.html", user=user, curso=curso)
-
-@bp.route('/crear', methods=('GET', 'POST'))
-def crearCurso():
-
+@bp.route('/crearEscenario', methods=('GET', 'POST'))
+def crearEscenario():
     content = request.values
     print("Content : " + str(content), file=sys.stdout)
     user = getCurrentUser(session)
-    sePuedeSaltear = bool(content.get("sePuedeSaltear"))
-    nombre = content.get("nombre")
+    bloquesPermitidos = content.get("bloquesPermitidos")
+    cantidadDeBloques = content.get("cantidadDeBloques")
+    hint = content.get("hint")
     descripcion = content.get("descripcion")
-    descripcion = content.get("descripcion")
-    idJuego = content.get("idJuego")
+    posibleSolucion = content.get("posibleSolucion")
+    idcurso = content.get("curso")
     try:
-        docente = docenteABM.traerDocente(user)
-        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuego(idJuego))
-        #Ver si existe, si no crearlo y mandarselo a la vista
-        return render_template("editarCurso.html", user=user, curso=curso)
+
+        escenarioABM.agregarEscenario(bloquesPermitidos, cantidadDeBloques, hint, posibleSolucion, descripcion, idcurso)
+        curso = cursoABM.traerCurso(idcurso)
+
+        return render_template("editarCurso.html", curso=curso, user=user)
     except Exception as e:
         print("Error encontrado : " + e.message, file=sys.stdout)
         return render_template("index.html", user=user)
+
+
+@bp.route('/editarEscenario', methods=('GET', 'POST'))
+def editarEscenario():
+    content = request.values
+    print("Content : " + str(content), file=sys.stdout)
+    user = getCurrentUser(session)
+    idEscenario = content.get("idEscenario")
+    try:
+        escenario = escenarioABM.traerEscenario(idEscenario)
+
+        return render_template("editarEscenario.html", escenario=escenario, user=user)
+    except Exception as e:
+        print ("Error encontrado: " + e.message, file=sys.stdout)
+        return render_template("index.html", user=user)
+
+@bp.route('/actualizarEscenario',methods =('GET', 'POST'))
+def actualizarEscenario():
+    content = request.values
+    print("Content : " + str(content), file=sys.stdout)
+    user = getCurrentUser(session)
+    idEscenario = content.get("idescenario")
+
+    bloquesPermitidos = content.get("bloquesPermitidos")
+    bloquesMax = content.get("bloquesMax")
+    hint = content.get("hint")
+    descripcion = content.get("descripcion")
+    posibleSolucion = content.get("posibleSolucion")
+
+    escenario = Escenario(bloquesPermitidos, bloquesMax, hint, posibleSolucion, descripcion)
+    escenario.setIdEscenario(idEscenario)
+
+
+
+
+    try:
+        escenarioABM.actualizarEscenario(escenario)
+        escenario = escenarioABM.traerEscenario(idEscenario)
+        return render_template("editarEscenario.html", user = user, escenario=escenario)
+    except Exception as e:
+        print ("Error encontrado: "+ e.message, file=sys.stdout)
+        return render_template("editarEscenario.html", user=user)
+
+
+

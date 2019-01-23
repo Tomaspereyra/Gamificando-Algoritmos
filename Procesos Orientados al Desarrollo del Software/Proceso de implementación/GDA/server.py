@@ -1,4 +1,3 @@
-
 # coding=utf-8
 __author__ = "Martin Rios"
 __copyright__ = "None"
@@ -11,13 +10,14 @@ __status__ = "Prototype"
 
 import sys
 from util.session_utils import *
+
 reload(sys)
 sys.setdefaultencoding('ISO-8859-1')
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify, Flask
 )
-from controladores import auth, home, Usuario, cursos
+from controladores import auth, home, Usuario, cursos,escenarios
 from flask_cors import CORS
 
 app = Flask(__name__,
@@ -26,16 +26,16 @@ app = Flask(__name__,
             static_url_path='/web/static')
 
 app.config.from_mapping(
-        SECRET_KEY='dev',
-    )
+    SECRET_KEY='dev',
+)
 app.config['CORS-HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"*": {"origins": "*"}})
-
 
 app.register_blueprint(auth.bp)
 app.register_blueprint(home.bp)
 app.register_blueprint(Usuario.bp)
 app.register_blueprint(cursos.bp)
+app.register_blueprint(escenarios.bp)
 
 
 def list_routes():
@@ -55,14 +55,18 @@ def list_routes():
     for line in sorted(output):
         print line
 
+
 @app.route('/')
 def hello():
     list_routes()
     return render_template("index.html", user=getCurrentUser(session))
 
+
 @app.route('/jugarTest')
 def jugarTest():
     return render_template("laberinto.html")
 
+
 if __name__ == "__main__":
+    app.debug = True
     app.run()

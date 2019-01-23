@@ -67,7 +67,24 @@ class UsuarioDao:
 
         return usuario
 
-    def actualizarUsuario(self, usuario, usuarioActualizado):
+    def traerUsuarioPorId(self, id):
+        sesion = self.iniciarOperacion()
+        cursor = sesion.obtenerCursor()
+        usuario = None
+        try:
+            cursor.execute("""select * from Usuario where Usuario.idUsuario='%i'""" % int(id))
+            resultado = cursor.fetchone()
+            if resultado is not None:
+                usuario = Usuario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5], resultado[6])
+                usuario.setIdUsuario(resultado[0])
+
+        finally:
+            cursor.close()
+            sesion.cerrarConexion()
+
+        return usuario
+
+    def actualizarUsuario(self, username, usuarioActualizado):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         try:
@@ -75,11 +92,8 @@ class UsuarioDao:
                     where username= '%s'""" % (
                 usuarioActualizado.getUsername(), usuarioActualizado.getPassword(),
                 usuarioActualizado.getEmail(), usuarioActualizado.getNombre(),
-                usuarioActualizado.getApellido(), usuarioActualizado.getFechaNacimiento(), usuario.getUsername()))
+                usuarioActualizado.getApellido(), usuarioActualizado.getFechaNacimiento(), username))
             sesion.commit()
-        except:
-            print "Error, no se pudo actualizar"
-            sesion.getEstado().rollback()
         finally:
             cursor.close()
             sesion.cerrarConexion()

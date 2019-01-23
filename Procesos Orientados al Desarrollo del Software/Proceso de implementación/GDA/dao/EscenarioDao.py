@@ -41,9 +41,9 @@ class EscenarioDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         try:
-            cursor.execute("""update Escenario set descripcion='%s',cantBloquesMax='%s', hint='%s' where idEscenario = '%s'""" % (
+            cursor.execute("""update Escenario set descripcion='%s',cantBloquesMax='%s', hint='%s', posibleSolucion='%s' where idEscenario = '%s'""" % (
                 escenario.getDescripcion(), escenario.getCantBloquesMax(),
-                escenario.getHint(), escenario.getIdEscenario()))
+                escenario.getHint(), escenario.getPosiblesSolucion(), escenario.getIdEscenario()))
             sesion.commit()
         except:
             print ("Error, no se pudo actualizar")
@@ -95,16 +95,13 @@ class EscenarioDao:
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         resultado = None
-        escenario = None
+        escenario = Escenario()
         try:
-            cursor.execute("""select * from Escenario where Escenario.idEscenario='%i'""" % idEscenario)
+            cursor.execute("""select * from Escenario where Escenario.idEscenario='%i'""" % int(idEscenario))
             resultado = cursor.fetchone()
             if resultado is not None:
                 escenario = Escenario(resultado[1], resultado[2], resultado[3], resultado[4], resultado[5])
                 escenario.setIdEscenario(resultado[0])
-
-        except:
-            print ("Error no se pudo traer los escenarios")
         finally:
             cursor.close()
             sesion.cerrarConexion()

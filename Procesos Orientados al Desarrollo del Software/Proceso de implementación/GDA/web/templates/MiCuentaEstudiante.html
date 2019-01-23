@@ -9,8 +9,10 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <link href={{ url_for('static', filename='Lib/materialize/css/materialize.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href={{ url_for('static', filename='css/home.css') }} type="text/css" rel="stylesheet" media="screen,projection"/>
+
 </head>
 <body>
 
@@ -49,7 +51,138 @@
 
        </tbody>
      </table>
-    </center>
+
+    <br>
+         {% if error %}
+          <center><label><h5 color="red">{{ error }}</h5></label></center>
+         <br>
+         {% endif %}
+         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modificar datos</a>
+         <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Cambiar contraseña</a>
+
+        <!-- Modal Structure -->
+           <div id="modal1" class="modal">
+             <form action="/miCuenta/editarCuenta" id="formEditar" method="GET">
+               <div class="modal-content">
+                 <h4>Editar Cuenta</h4>
+
+                 <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="text" id="autocomplete-input" name="username" class="autocomplete" value="{{estudiante.username}}">
+                            <input type = "hidden" name="idusuario" value="{{estudiante.getId()}}">
+                            <label for="autocomplete-input">Nombre de Usuario</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="text" id="autocomplete-input" name="email" class="autocomplete" value="{{estudiante.email}}">
+                           <label for="autocomplete-input">Email</label>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="text" id="autocomplete-input" name="nombre" class="autocomplete" value="{{estudiante.nombre}}">
+                           <label for="autocomplete-input">Nombre</label>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+                  <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="text" id="autocomplete-input" name="apellido" class="autocomplete" value="{{estudiante.apellido}}">
+                           <label for="autocomplete-input">Apellido</label>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="date" id="autocomplete-input" name="fechaNacimiento" min="1910-00-00" class="autocomplete" value="{{estudiante.fechaNacimiento}}">
+                           <label for="autocomplete-input">Fecha de Nacimiento (AAAA-MM-DD)</label>
+                             <span class="validity"></span>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+               </div>
+
+                <div class="modal-footer">
+                      <button class="btn waves-effect waves-light" type="submit" name="editar">Editar
+                      <i class="material-icons right">send</i>
+                      </button>
+                </div>
+             </form>
+           </div>
+      <!-- Modal Structure -->
+           <div id="modal2" class="modal">
+             <form action="/miCuenta/cambiarContrasena" id="formEditar" method="POST">
+               <div class="modal-content">
+                 <h4>Cambiar contraseña</h4>
+                   {% if error %}
+                    <center><label><font color="red">{{ error }}</font></label></center>
+                    {% endif %}
+                 <div class="row">
+                   <div class="col s12">
+                     <div class="row">
+                        <div class="input-field col s12">
+
+                            <input type="password" id="autocomplete-input" name="contrasenaActual" class="autocomplete">
+                            <input type = "hidden" name="idusuario" value="{{estudiante.getId()}}">
+                            <label for="autocomplete-input">Contraseña Actual</label>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="password" id="autocomplete-input" name="contrasenaNueva" class="autocomplete">
+                           <label for="autocomplete-input">Contraseña Nueva</label>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                    <div class="col s12">
+                       <div class="row">
+                         <div class="input-field col s12">
+
+                           <input type="password" id="autocomplete-input" name="contrasenaConfirmacion" class="autocomplete">
+                           <label for="autocomplete-input">Confirmar Contraseña</label>
+                         </div>
+                       </div>
+                    </div>
+                 </div>
+               </div>
+                <div class="modal-footer">
+                      <button class="btn waves-effect waves-light" type="submit"  name="editar" >Cambiar
+                      <i class="material-icons right">send</i>
+                      </input>
+                </div>
+             </form>
+           </div>
+  </center>
     <center> <h1 class="header center orange-text">Estadísticas</h1> </center>
 
     <center>
@@ -72,7 +205,7 @@
             </tr>
          </tbody>
        </table>
-      </center>
+  </center>
   {% else %}
       <center> <h1 class="header center orange-text">¡Error al procesar!</h1> </center>
   {% endif %}
@@ -81,12 +214,42 @@
 
 
   <!--  Scripts-->
-  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src={{ url_for('static', filename='Lib/jquery.js') }}></script> <!-- JQuery -->
   <script type="text/javascript" src={{ url_for('static', filename='Lib/materialize/js/materialize.js') }}></script> <!-- Materialize JS -->
 
   <script type="text/javascript" src={{ url_for('static', filename='js/home.js') }}></script>
+<script>
+$(document).ready(function(){
+$('.modal').modal(); });
+</script>
 
+<script>
+
+
+    function validarPassword(){
+		var contrasenaActual_ = $("#contrasenaActual").val();
+		var contrasenaNueva_ = $("#contrasenaNueva").val();
+		var confirmacion_ = $("#contrasenaConfirmacion").val();
+		var idusuario_= $("#idusuario").val();
+		var data = {
+			contrasenaActual : contrasenaActual_,
+			contrasenaNueva : contrasenaNueva_,
+			confirmacion : confirmacion_,
+			idusuario : idusuario_
+		};
+		console.log("validarPassword() : " + JSON.stringify(data));
+		$.ajax({
+			url: "http://localhost:5000/miCuenta/cambiarContrasena?contrasenaActual=" + contrasenaActual_ + "&idusuario=" + idusuario_ +"&contrasenaNueva="+contrasenaNueva_+"&contrasenaConfirmacion="+confirmacion_+"&editar=",
+			type : "POST",
+			datatype: "json",
+			success: function(data) {
+              console.log("hola");
+            }
+		})
+	}
+
+</script>
 
   {% include "footer.html" %}
 
