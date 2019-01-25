@@ -54,8 +54,12 @@
 
     <br>
          {% if error %}
-          <center><label><h5 color="red">{{ error }}</h5></label></center>
+          <center><label><h5 color="red">Curso eliminado</h5></label></center>
          <br>
+         {% else %}
+           <center><label><h5 color="red">{{error}}</h5></label></center>
+           <br>
+
          {% endif %}
          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modificar datos</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Cambiar contraseña</a>

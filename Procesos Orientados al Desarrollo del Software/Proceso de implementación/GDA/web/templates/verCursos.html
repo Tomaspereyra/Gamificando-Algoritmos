@@ -20,6 +20,11 @@
     <div class="container">
       <br><br>
       <h1 class="header center orange-text">Cursos Disponibles</h1>
+        <br>
+                {% if  error %}
+                <center><label><h5 color="red">{{error}}</h5></label></center>
+              <br>
+                {% endif %}
       {% if cursos|length > 0 %}
         <div class="row center">
           <h5 class="header col s12 light">¡Elegí el curso que querés explorar!</h5>

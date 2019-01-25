@@ -53,8 +53,8 @@ class CursoDao:
             cursor.execute("""delete Curso from Curso where Curso.idCurso 
             = '%i'""" % (curso.getIdCurso()))
             sesion.commit()
-        except:
-            print "Error no se pudo eliminar el curso"
+        except MySQLdb.Error as e:
+            print ("Error encontrado : " + e)
             sesion.getEstado().rollback()
         finally:
             cursor.close()
@@ -147,3 +147,4 @@ class CursoDao:
             sesion.cerrarConexion()
 
         return lstCursos
+

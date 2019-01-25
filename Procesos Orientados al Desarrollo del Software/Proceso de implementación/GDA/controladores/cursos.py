@@ -226,3 +226,22 @@ def crearCurso():
     except Exception as e:
         print("Error encontrado : " + e.message, file=sys.stdout)
         return render_template("index.html", user=user)
+
+@bp.route('/eliminarCurso', methods=('GET','POST'))
+def eliminar():
+    content = request.values
+    print ("Content: " + str(content), file= sys.stdout)
+    user = getCurrentUser(session)
+    id = content.get("idcurso")
+    error = None
+    try:
+        error = cursoABM.eliminar(id)
+        docente = docenteABM.traerDocente(user)
+        cursos = cursoABM.traerCursosPorIdDocente(docente.getIdDocente())
+        error = " Curso Eliminado"
+        return render_template("verCursos.html", user=user, error=error, cursos=cursos, docente = docente)
+    except Exception as e:
+        print ("Error encontrado : "+  e.message, file = sys.stdout)
+        error = "El curso no pudo eliminar"
+        curso = cursoABM.traerCurso(id)
+        return render_template("editarCurso.html",user=user, error = error,curso=curso)

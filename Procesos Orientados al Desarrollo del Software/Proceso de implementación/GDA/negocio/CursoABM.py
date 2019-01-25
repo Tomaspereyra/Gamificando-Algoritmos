@@ -26,3 +26,12 @@ class CursoABM:
     def traerCursosPorIdDocente(self, idDocente):
         return self.dao.traerCursosPorDocente(idDocente)
 
+    def eliminar(self, idCurso):
+        curso = self.dao.traerCurso(idCurso)
+        if curso is not None:
+            self.dao.eliminar(curso)
+            return True
+        else:
+            return False
+
+
