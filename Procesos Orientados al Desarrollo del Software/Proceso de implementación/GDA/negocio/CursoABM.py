@@ -13,9 +13,9 @@ class CursoABM:
     def actualizarCurso(self, curso):
         return self.dao.actualizarCurso(curso)
 
-    def agregarCurso(self, sePuedeSaltear, nombre, descripcion, docente, juego):
+    def agregarCurso(self, sePuedeSaltear, nombre, descripcion, docente, juego, fechaCreacion):
         juegoabm = JuegoABM()
-        return self.dao.agregar(sePuedeSaltear, nombre, descripcion, docente.getIdDocente(), juegoabm.traerJuego(juego.getNombre()))
+        return self.dao.agregar(sePuedeSaltear, nombre, descripcion, docente.getIdDocente(), juegoabm.traerJuego(juego.getNombre()), fechaCreacion)
 
     def traerCursos(self):
         return self.dao.traerCursos()

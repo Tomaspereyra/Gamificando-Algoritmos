@@ -125,6 +125,7 @@ def guardarInfoCurso():
         nombre = content.get("nombre")
         descripcion = content.get("descripcion")
         sePuedeSaltar = content.get("sePuedeSaltear")
+        fechaCreacion = content.get("fecha")
         if sePuedeSaltar == "on":
             sePuedeSaltar = 1
         else:
@@ -133,6 +134,7 @@ def guardarInfoCurso():
         curso.setNombre(nombre)
         curso.setDescripcion(descripcion)
         curso.setPuedeSaltear(sePuedeSaltar)
+        curso.setFechaCreacion(fechaCreacion)
         cursoABM.actualizarCurso(curso)
         data = {
             "success": True
@@ -217,10 +219,12 @@ def crearCurso():
 
     descripcion = content.get("descripcion")
     idJuego = content.get("juego")
+    fechaCreacion = content.get("fecha")
+
     print ("id"+ idJuego,file=sys.stdout)
     try:
         docente = docenteABM.traerDocente(user)
-        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuegoPorId(idJuego))
+        curso = cursoABM.agregarCurso(sePuedeSaltear, nombre, descripcion, docente, juegoABM.traerJuegoPorId(idJuego),fechaCreacion)
         #Ver si existe, si no crearlo y mandarselo a la vista
         return render_template("editarCurso.html", user=user, curso=curso)
     except Exception as e:
