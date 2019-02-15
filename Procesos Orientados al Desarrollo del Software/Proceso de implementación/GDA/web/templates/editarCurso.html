@@ -136,7 +136,7 @@
             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">¡Agregar Escenario! </a>
 
              <!-- Modal Structure -->
-            <div id="modal1" class="modal">
+            <div id="modal2" class="modal">
               <form action="/escenarios/crearEscenario" id="formEscenario" method="POST">
                 <div class="modal-content">
                    <h4>Nuevo Escenario</h4>
@@ -224,8 +224,12 @@
   <script type="text/javascript" src={{ url_for('static', filename='js/editarCurso.js') }}></script>
   <script>
     $(document).ready(function(){
-    $('.modal').modal(); });
+    $('.modal').modal();
+
+    //$('#modal1').modal('open');});
   </script>
+
+
 
 
   {% include "footer.html" %}

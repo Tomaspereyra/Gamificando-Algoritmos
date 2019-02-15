@@ -110,13 +110,13 @@ def cambiarContrasena():
             else:
                 error = "Contrasena incorrecta"
         if estudiante is not None:
-           return render_template("MiCuentaEstudiante.html", error=error, user=user, estudiante=estudiante)
+           return render_template("MiCuentaEstudiante.html", errorcontrasena=error, user=user, estudiante=estudiante)
         else:
             docente = docenteABM.traerDocente(user)
-            return render_template("MiCuentaDocente.html", error=error, user=user, docente=docente)
+            return render_template("MiCuentaDocente.html", errorcontrasena=error, user=user, docente=docente)
     except Exception as e:
         print("Error : "+ e.message,file=sys.stdout)
-        return render_template("MiCuentaEstudiante.html", error=error, user=user, estudiante=estudiante)
+        return render_template("MiCuentaEstudiante.html", errorcontrasena=error, user=user, estudiante=estudiante)
 
 
 
