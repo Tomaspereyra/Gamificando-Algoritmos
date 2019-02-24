@@ -2,13 +2,20 @@ from Docente import Docente
 
 
 class Curso:
-    def __init__(self, sePuedeSaltear=False, nombre="-", juego="-", descripcion="-"):
+    def __init__(self, sePuedeSaltear=False, nombre="-", juego="-", descripcion="-", fechaCreacion="-"):
         self.sePuedeSaltear = sePuedeSaltear
         self.nombre = nombre
         self.escenario = []
         self.juego = juego
         self.descripcion = descripcion
         self.idCurso = -1
+        self.fechaCreacion = fechaCreacion
+
+    def setFechaCreacion(self, fecha):
+        self.fechaCreacion = fecha
+
+    def getFechaCreacion(self):
+        return self.fechaCreacion
 
     def setIdCurso(self, idCurso):
         self.idCurso = idCurso

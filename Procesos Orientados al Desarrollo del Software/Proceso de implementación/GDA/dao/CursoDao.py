@@ -17,13 +17,13 @@ class CursoDao:
 
         return sesion
 
-    def agregar(self, sePuedeSaltear, nombre, descripcion, idDocente, juego):
+    def agregar(self, sePuedeSaltear, nombre, descripcion, idDocente, juego, fechaCreacion):
         sesion = self.iniciarOperacion()
         cursor = sesion.obtenerCursor()
         resultado = 0
         try:
-            resultado = cursor.execute("""insert into Curso (sePuedeSaltear,nombre,descripcion, docente_idDocente, Juego_idJuego)
-             values('%i', '%s','%s', '%i','%i')""" % (sePuedeSaltear, nombre, descripcion, idDocente, juego.getId()))
+            resultado = cursor.execute("""insert into Curso (sePuedeSaltear,nombre,descripcion, docente_idDocente, Juego_idJuego, fechaCreacion)
+             values('%i', '%s','%s', '%i','%i', '%i')""" % (sePuedeSaltear, nombre, descripcion, idDocente, juego.getId(), fechaCreacion))
             sesion.commit()
         finally:
             cursor.close()
@@ -70,7 +70,7 @@ class CursoDao:
             resultado = cursor.fetchone()
             if resultado is not None:
                 juego = JuegoDao()
-                curso = Curso(resultado[1], resultado[2], juego.traerJuegoPorId(resultado[5]), resultado[3])
+                curso = Curso(resultado[1], resultado[2], juego.traerJuegoPorId(resultado[5]), resultado[3], resultado [6])
                 curso.setIdCurso(resultado[0])
                 curso.setListaEscenario(escenario.traerEscenariosPorCurso(curso.getIdCurso()))
             else:
@@ -106,6 +106,8 @@ class CursoDao:
                     if columna == 5:
                         juego = JuegoDao()
                         curso.setJuego(juego.traerJuegoPorId(resultado[fila][columna]))
+                    if columna == 6:
+                        curso.setFechaCreacion(resultado[fila][columna])
                         lstCursos.append(curso)
                         curso = Curso()  # creo una nueva instancia por que se maneja
                         #  por referencia, si no, se pisan en la lista.
@@ -114,7 +116,6 @@ class CursoDao:
             sesion.cerrarConexion()
 
         return lstCursos
-
 
     def traerCursos(self):
         sesion = self.iniciarOperacion()
@@ -139,6 +140,8 @@ class CursoDao:
                     if columna == 5:
                         juego = JuegoDao()
                         curso.setJuego(juego.traerJuegoPorId(resultado[fila][columna]))
+                    if columna == 6:
+                        curso.setFechaCreacion(resultado[fila][columna])
                         lstCursos.append(curso)
                         curso = Curso()  # creo una nueva instancia por que se maneja
                         #  por referencia, si no, se pisan en la lista.
