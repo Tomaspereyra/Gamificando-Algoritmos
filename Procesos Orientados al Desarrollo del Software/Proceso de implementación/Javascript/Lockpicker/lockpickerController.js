@@ -44,6 +44,9 @@ var digitsAnimated = 0;
 
 //Phaser Scene Functions
 
+var lockText;
+var lockpickText;
+
 gameScene.preload = function () {
 	console.log("Preload()...");
 	//Cargamos los sprites (Imagenes)
@@ -59,6 +62,14 @@ gameScene.preload = function () {
 gameScene.create = function () {    
 	console.log("gameScene.create()...");
 	CreateTestLock();
+	var lockTitle = this.add.text(256, 64, 'Lock to solve:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
+	lockTitle.setOrigin(0.5, 0.5);
+	lockText = this.add.text(256, 128, '1 2 3 4 5 ', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
+	lockText.setOrigin(0.5,0.5);
+	var lockTitle = this.add.text(256, 128*3 - 96, 'Your lockpick:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
+	lockTitle.setOrigin(0.5, 0.5);
+	lockpickText = this.add.text(256, 128 * 3, '1 _ _ _ _', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
+	lockpickText.setOrigin(0.5,0.5);
 	//StartMap(CreateTestMap());
 	//StartMap(CreateTestMap2());
 }

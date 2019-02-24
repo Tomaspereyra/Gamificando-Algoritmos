@@ -72,7 +72,6 @@ gameScene.create = function () {
         frameRate: 10,
         repeat: -1
     });
-	
 }
 
 
