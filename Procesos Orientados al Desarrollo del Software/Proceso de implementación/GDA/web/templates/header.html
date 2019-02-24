@@ -6,9 +6,9 @@
         {% set username =  None %}
         <div class="nav-wrapper container"><a id="logo-container" href="http://localhost:5000/" class="brand-logo">Gamificando Algoritmos</a>
     {% endif %}
-
+        {% set resources_path_var = url_for('static', filename='') %}
         <input type="hidden" id="usernameField" name="username" value= {{ username }} >
-
+        <input type="hidden" id="resources_path" name="resources_path" value= {{ resources_path_var }} >
         </input>
       <!-- Registered ul -->
         {% if user %}

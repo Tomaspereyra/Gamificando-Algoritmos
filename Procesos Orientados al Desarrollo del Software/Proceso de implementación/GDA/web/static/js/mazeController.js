@@ -49,15 +49,16 @@ gameScene.preload = function () {
 	this.load.image ('Exit', {{ url_for('static', filename='Assets/Exit.png') }});
 	this.load.image ('Player', {{ url_for('static', filename='Assets/Beholder.png') }});
 	*/
-
-	this.load.image ('Floor', '../Assets/Floor.png');
-	this.load.image ('Wall', '../Assets/Wall.png');
-	this.load.image ('Start', '../Assets/Start.png');
-	this.load.image ('Exit', '../Assets/Exit.png');
-	this.load.image ('Player', '../Assets/Beholder.png');
+    var resourcesPath = $("#resources_path").val();
+    console.log("Resources Path : " + resourcesPath)
+	this.load.image ('Floor', resourcesPath + 'Assets/Floor.png');
+	this.load.image ('Wall', resourcesPath + 'Assets/Wall.png');
+	this.load.image ('Start', resourcesPath + 'Assets/Start.png');
+	this.load.image ('Exit', resourcesPath + 'Assets/Exit.png');
+	this.load.image ('Player', resourcesPath + 'Assets/Beholder.png');
 
 	//this.load.spritesheet('explosion', {{ url_for('static', filename='Assets/FireExplosion.png') }}, {frameWidth: 32, frameHeight: 32});
-	this.load.spritesheet('explosion', '../Assets/FireExplosion.png', {frameWidth: 32, frameHeight: 32});
+	this.load.spritesheet('explosion', resourcesPath + 'Assets/FireExplosion.png', {frameWidth: 32, frameHeight: 32});
 	
 }
 
