@@ -32,7 +32,7 @@ Blockly.Blocks['set_current_digit'] = {
 Blockly.JavaScript['set_current_digit'] = function(block) {
   var value_arg = Blockly.JavaScript.valueToCode(block, 'arg', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'SetCurrentDigit(' + value_arg + ');\n';
+  var code = 'SetCurrentDigit' + value_arg + ';\n';
   return code;
 };
 
@@ -242,7 +242,7 @@ Blockly.Blocks['number'] = {
 Blockly.JavaScript['number'] = function(block) {
   var number_numero = block.getFieldValue('Numero');
   // TODO: Assemble JavaScript into code variable.
-  var code = numero;
+  var code = number_numero;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

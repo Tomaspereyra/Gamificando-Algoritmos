@@ -17,7 +17,6 @@ $( document ).ready(function() {
 			SetNewMap(mapString);
 		
 	});
-	CreateTestLock();
 });
 ///*** INIT DATA ***///
 	
@@ -35,6 +34,9 @@ var game = new Phaser.Game(config);
 
 ///*** FIN INIT  DATA ***///
 
+var MAX_ITERATIONS = 1000;
+
+
 var currentLock;
 var currentLockpick = new Lockpick();
 var currentIterations;
@@ -44,8 +46,12 @@ var digitsAnimated = 0;
 
 //Phaser Scene Functions
 
-var lockText;
+var lockpickTitle;
 var lockpickText;
+var lockpickUnderscores;
+var lockTitle;
+var lockText;
+var lockUnderscores;
 
 gameScene.preload = function () {
 	console.log("Preload()...");
@@ -61,19 +67,23 @@ gameScene.preload = function () {
 
 gameScene.create = function () {    
 	console.log("gameScene.create()...");
-	CreateTestLock();
-	var lockTitle = this.add.text(256, 64, 'Lock to solve:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
+	
+	lockTitle = this.add.text(256, 64, 'Cerrojo a Abrir:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
 	lockTitle.setOrigin(0.5, 0.5);
 	lockText = this.add.text(256, 128, '1 2 3 4 5 ', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
 	lockText.setOrigin(0.5,0.5);
-	var lockTitle = this.add.text(256, 128*3 - 96, 'Your lockpick:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
-	lockTitle.setOrigin(0.5, 0.5);
+	lockUnderscores = this.add.text(256, 128, '_ _ _ _ _', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
+	lockUnderscores.setOrigin(0.5,0.5);
+	lockpickTitle = this.add.text(256, 128*3 - 96, 'Tu Ganzúa:', { fontFamily: 'pixelartFont', fontSize: '32px', fill: '#FFFFFF' });
+	lockpickTitle.setOrigin(0.5, 0.5);
 	lockpickText = this.add.text(256, 128 * 3, '1 _ _ _ _', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
 	lockpickText.setOrigin(0.5,0.5);
+	lockpickUnderscores = this.add.text(256, 128 * 3, '_ _ _ _ _', { fontFamily: 'pixelartFont', fontSize: '96px', fill: '#FFFFFF' });
+	lockpickUnderscores.setOrigin(0.5,0.5);
+	CreateTestLock();
 	//StartMap(CreateTestMap());
 	//StartMap(CreateTestMap2());
 }
-
 
 gameScene.update = function() {
 	if (animating){
@@ -94,22 +104,44 @@ gameScene.update = function() {
 function StartGame(lock){
 	currentLock = lock;
 	console.log("Lock : " + lock);
-	this.Reset();
-	
+	PrintCurrentLock();
+	Reset();
 }
 
 function Reset(){
 	currentLockpick = new Lockpick();
+	this.PrintCurrentLockpick();
 }
 
 //Action functions (Delegate to current player ones)
+
+function PrintCurrentLock(){
+	PrintLock(currentLock);
+}
+
+function PrintLock(lock){
+	lockText.setText(lock.GetDigit(0) + " " + lock.GetDigit(1) + " " + lock.GetDigit(2) + " " + lock.GetDigit(3) + " " + lock.GetDigit(4));
+}
+
+function PrintCurrentLockpick(){
+	PrintLockpick(currentLockpick);
+}
+
+function PrintLockpick(lockpick){
+	var lockpickNewText = "";
+	lockpickNewText += lockpick.GetDigit(0);
+	for (var i = 1; i < lockpick.InputSize(); i++){
+		 lockpickNewText += " " + lockpick.GetDigit(i);
+	}
+	lockpickText.setText(lockpickNewText);
+}
 
 function SetCurrentDigit(x){
 	currentLockpick.SetCurrentValue(x);
 }
 
 function GetCurrentDigit(){
-	return currentLockpick.GetCurrentValue(x);
+	return currentLockpick.GetCurrentValue();
 }
 
 function MultiplyCurrentDigit(x){
@@ -132,7 +164,7 @@ function GetInputCount(){
 	return currentLockpick.InputSize();
 }
 
-function InputCurrentValue(){
+function InputCurrentDigit(){
 	currentLockpick.InputCurrentValue();
 }
 
@@ -150,17 +182,18 @@ function LockpickIsFull(){
 
 function FinishedInputting(){
 	return (LockpickIsFull() || HitIterationsCap());
-}
+}	
 
 function HitIterationsCap() {
-	return (currentIterations > MAX_ITERATIONS);
+	currentIterations++;
+	return (currentIterations >= MAX_ITERATIONS);
 }
 
 function PlayOrders(orderString){
 	console.log("Orders : \n" + orderString);
-	
+	currentIterations = 0;
 	eval(orderString);
-	
+	console.log("Lockpick : " + currentLockpick.input);
 	if (HitIterationsCap()){
 		alert("El algoritmo provoca un ciclo infinito.")
 		Reset();
@@ -170,8 +203,10 @@ function PlayOrders(orderString){
 }
 
 function StartAnimating(){
+	PrintCurrentLockpick();
 	animating = true;
 	digitsAnimated = 0;
+	FinishAnimation();
 }
 
 function FinishedAnimating(){
@@ -187,7 +222,7 @@ function FinishAnimation(){
 
 function CreateTestLock(){
 
-	var lock = new Lock([1, 2, 3, 4]);
+	var lock = new Lock([1, 2, 3, 4, 5]);
 	StartGame (lock);
 }
 

@@ -42,20 +42,6 @@ Lock.prototype.AddPasswordNumber = function (x){
 		console.log("Lock.AddPasswordNumber(" + x + ") : " + x + " is not a number!");
 }
 
-Lock.prototype.LastInput = function(){
-	if (this.password.length > 0)
-		return this.password[this.password.length-1];
-	else
-		return 0;
-}
-
-Lock.prototype.AnteLastInput = function(){
-	if (this.password.length > 1)
-		return this.password[this.password.length-2];
-	else
-		return 0;
-}
-
 Lock.prototype.Check = function(password){
 	if (this.password.length != password.length)
 		return false;
@@ -101,6 +87,10 @@ Lock.prototype.FromString = function (str){
 	
 }
 
+Lock.prototype.GetDigit = function(index){
+	return this.password[index];
+}
+
 Lock.prototype.Draw = function(scene){
 	var sprite;
 	for (var row = 0; row < this.height; row++){
@@ -119,7 +109,15 @@ function Lockpick(){
 	this.Reset();
 }
 
-Lockpick.GetCurrentValue = function(){
+Lockpick.prototype.GetDigit = function(index){
+	if (index >= this.input.length){
+		return "_";
+	} else {
+		return this.input[index];
+	}
+}
+
+Lockpick.prototype.GetCurrentValue = function(){
 	return this.currentValue;
 }
 
@@ -137,6 +135,20 @@ Lockpick.prototype.InputSize = function(){
 
 Lockpick.prototype.TryToOpen = function(lock){
 	return lock.Check(this.input);
+}
+	
+Lock.prototype.LastInput = function(){
+	if (this.input.length > 0)
+		return this.input[this.input.length-1];
+	else
+		return 0;
+}
+
+Lock.prototype.AnteLastInput = function(){
+	if (this.input.length > 1)
+		return this.input[this.input.length-2];
+	else
+		return 0;
 }
 	
 Lockpick.prototype.Reset = function(){
